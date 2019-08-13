@@ -1,1 +1,1 @@
-echo "web: gunicorn winneridiomas.wsgi --log-file -" > Procfile
+web: gunicorn winneridiomas.wsgi --log-file -
