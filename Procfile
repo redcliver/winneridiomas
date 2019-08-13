@@ -1,1 +1,1 @@
- web gunicorn winneridiomas.wsgi 
+ web: gunicorn winneridiomas.wsgi --log-file -
