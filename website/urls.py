@@ -5,12 +5,12 @@ from . import views
 urlpatterns = [
     url(r'^$', views.paginaPrincipal),
     url(r'^cursos', views.cursos),
-    url(r'^unidades', views.cursos),
-    url(r'^nivelamento', views.cursos),
-    url(r'^contato', views.cursos),
-    url(r'^entrar', views.cursos),
-    url(r'^instituicao', views.cursos),
-    url(r'^metodo', views.cursos),
-    url(r'^colaboradores', views.cursos),
+    url(r'^unidades', views.unidades),
+    url(r'^nivelamento', views.nivelamento),
+    url(r'^contato', views.contato),
+    url(r'^entrar', views.entrar),
+    url(r'^instituicao', views.instituicao),
+    url(r'^metodo', views.metodo),
+    url(r'^colaboradores', views.colaboradores),
 ]
 

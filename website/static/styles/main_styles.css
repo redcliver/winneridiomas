@@ -442,7 +442,7 @@ section
 	transition: all 200ms ease;
 }
     .main_nav_item a:hover {
-        color: #0c48ff;
+        color: #2e61fa;
         text-decoration: none;
         -webkit-animation: swing 0.5s ease;
         animation: swing 0.5s ease;
