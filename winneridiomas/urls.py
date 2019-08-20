@@ -16,11 +16,23 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
+from django.conf.urls import include, handler404, handler500
+from django.shortcuts import render
+
 
 urlpatterns = [
     #Pagina Principal
     url(r'^', include('website.urls')),
 
+
+    url(r'^/', include('website.urls')),
+
     #Admin
     url(r'^admin/', admin.site.urls),
+    
 ]
+
+handler404 = 'website.views.error_404'
+
+handler500 = 'website.views.error_500'
+

@@ -1,0 +1,29 @@
+@charset "utf-8";
+.nav-sombra {
+    box-shadow: 0 6px 6px -1px rgb(0, 0, 0, 0.3);
+}
+
+.nav-radius-tel {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.nav-radius-main {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.box-style {
+    background-color: aliceblue;
+    border-radius: 12px;
+}
+
+.box-color {
+    color: #000099;
+}
+
+.icones path {
+    color: blueviolet;
+  }
