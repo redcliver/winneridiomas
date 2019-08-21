@@ -11,6 +11,7 @@
 5. Initialize Hamburger
 6. Initialize Testimonials Slider
 7. Initialize Parallax
+8. SVG change color
 
 
 ******************************/
@@ -326,4 +327,5 @@ $(document).ready(function()
 			});
 		}
 	}
+
 });
