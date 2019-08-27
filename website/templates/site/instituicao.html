@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
-
 {% block body %}
 {% load static %}
-<div class="container">
-    <img class="d-block w-100" style="padding-top: 150px;" src="{% static '/images/404Error.jpg' %}" alt="First slide">
+<div class="main-container">
+	<div class="jumbotron container" style="background: #ffffff">
+	    <p><img src="{% static '/icones/instituto.svg' %}" class="svg cabecalho" alt=""><h3 class="cabecalho-text">Cursos</h3></p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col">
+                <h3 class="curso-head">WINNER IDIOMAS</h3>
+                <h5 class="cursos">Contando com mais de <span class="curso-head">10 anos de experiência</span> e unidades nas cidades de Três Lagoas, Água Clara e Ribas do Rio Pardo, a missão da Winner Idiomas é despertar seus alunos para o universo cultural dos países de língua inglesa, utilizando uma metodologia diferenciada de ensino rápida, eficaz e muito prazerosa. Na Winner Idiomas você encontra um ambiente propício para o aprendizado. Aqui, os alunos respiram Inglês ouvindo e falando desde que colocam seu primeiro pé dentro da escola. Enquanto aguardam o início das aulas podem praticar assistindo a conteúdos em Inglês na nossa sala de TV, bem como treinar o que já aprenderam com outros alunos e também nossos professores, que estão sempre disponíveis e prontos a ajudar.</h5>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
