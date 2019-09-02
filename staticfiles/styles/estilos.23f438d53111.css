@@ -45,7 +45,6 @@
     font-family: 'Oswald', sans-serif;
     letter-spacing: 2px;
     font-size: 34px;
-    padding-left: 10px;
 }
 
 .cursos {
@@ -63,10 +62,9 @@
     font-size: 30px;
 }
 
-.requerido{
-    color: red;
+
+#promocao{
+    display: none;
 }
 
 /* #0663FF */
-
-/* #007bff */

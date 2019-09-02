@@ -51,8 +51,13 @@
 			</nav>
 		</div>
 		<div class="nav-radius-tel header_side d-flex flex-row justify-content-center align-items-center">
-			<img src="{% static '/images/phone-call.svg' %}" alt="">
-			<span>+55 67 3522 9642</span>
+			<div style="display: inline">
+				<span><img src="{% static '/images/phone-call.svg' %}" alt="">
+				+55 67 3522-9642</span>
+				<br>
+				<span><img src="{% static '/images/whatsapp-logo.svg' %}" alt="">
+				+55 67 8471-5146</span>
+			</div>
 		</div>
 
 		<!-- Hamburger -->
@@ -199,7 +204,13 @@
 									<div class="footer_contact_icon">
 										<img  src="{% static '/icones/telefone.png' %}" alt="Telefone.">
 									</div>
-									67 3522 9642
+									+55 67 3522-9642
+								</li>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img  src="{% static '/icones/whatsapp.svg' %}" alt="WhatsApp.">
+									</div>
+									+55 67 8471-5146
 								</li>
 								<li class="footer_contact_item">
 									<div class="footer_contact_icon">
@@ -234,7 +245,6 @@
 	</footer>
 
 </div>
-
 <script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static '/styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static '/styles/bootstrap4/bootstrap.min.js' %}"></script>

@@ -1,8 +1,42 @@
 {% extends 'base.html' %}
-
 {% block body %}
 {% load static %}
-<div class="container">
-    <img class="d-block w-100" style="padding-top: 150px;" src="{% static '/images/404Error.jpg' %}" alt="First slide">
+<div class="main-container">
+	<div class="jumbotron container" style="background: #ffffff">
+        <p><img src="{% static '/icones/contato.svg' %}" class="svg cabecalho" alt="">  <h3 class="cabecalho-text">Contato</h3></p>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col">
+                <h4 class="text-justify">&nbsp; Dúvidas sobre algum curso ou serviço da Winner Idiomas? Não localizou nas perguntas frequentes a solução? Esse espaço foi criado para responder o que você não encontrou, registrar elogios e dar sugestões.</h4>
+            </div>
+            <div class="col">
+                <div class="col">
+                    <span>Nome<span class="requerido">*</span></span>
+                    <input type="text" class="form-control" placeholder="Nome" required>
+                </div><br>
+                <div class="col">
+                    <span>Sobrenome</span>
+                    <input type="text" class="form-control" placeholder="Sobrenome">
+                </div><br>
+                <div class="col">
+                    <span>E-mail<span class="requerido">*</span></span>
+                    <input type="text" class="form-control" placeholder="E-mail" required>
+                </div><br>
+                <div class="col">
+                    <span>Telefone</span>
+                    <input type="text" class="form-control" placeholder="Telefone">
+                </div><br>
+                <div class="col">
+                    <span>Contato<span class="requerido">*</span></span>
+                    <textarea class="form-control" rows="5" placeholder="Digite aqui..." required></textarea>
+                </div><br>
+                <div class="col float-right">
+                    <button type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
