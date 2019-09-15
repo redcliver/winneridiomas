@@ -67,10 +67,25 @@
     color: red;
 }
 
-.whats {
-    
-  }
-
+.whatsapp {
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background: #FFFFFF;
+    z-index: 10;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
 
 /* #0663FF */
 

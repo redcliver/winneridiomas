@@ -67,10 +67,11 @@
     color: red;
 }
 
-.whats {
-    
+.myBtn {
+    position: fixed;
+    bottom: 0px;
+    right: 0px; 
   }
-
 
 /* #0663FF */
 
