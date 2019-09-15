@@ -25,20 +25,66 @@
 		padding: 12px 20px;
 		border-radius: 10px;
 	}
+	#whatsapp-toggle-mobile{
+		display: none;
+	}
 	
-	#whatsapp-toggle {
+	#whatsapp-toggle-desktop {
 		position: fixed;
 		bottom: 10px;
 		left: 10px;
 		z-index: 10;
 	}
+
+	.side {
+		color: white;
+		padding: 12px 20px;
+		border-radius: 10px;
+		background-color: #28a745;
+	}
+	.side:hover{
+		background-color: #218838;
+		color:white;
+	}
+	
+	#side-toggle {
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		z-index: 10;
+	}
+
+	@media (max-width: 768px) {
+		#whatsapp-toggle-mobile{
+			display: inline-block;
+			position: fixed;
+			bottom: 10px;
+			left: 10px;
+			z-index: 10;	
+		}
+		.whatsapp {
+			color: white;
+			padding: 10px;
+			border-radius: 30px;
+		}
+	
+		#whatsapp-toggle-desktop {
+			display: none;
+		}
+
+	}
 	</style>
 </head>
 <body>
-	<div id="whatsapp-toggle">
-		<a class="btn btn-success whatsapp" href="https://wa.me/556784715146"><span><img src="{% static '/icones/whatsapp-logo-bottom.svg' %}" alt="">
-			+55 67 8471-5146</span></a>
+	<div id="whatsapp-toggle-mobile">
+		<a class="btn side whatsapp" href="https://wa.me/556784715146"><span><img src="{% static '/icones/whatsapp-logo-bottom.svg' %}" alt="">
+			</span></a>
 	</div>
+	<div id="whatsapp-toggle-desktop">
+			<a class="btn side whatsapp" href="https://wa.me/556784715146"><span><img src="{% static '/icones/whatsapp-logo-bottom.svg' %}" alt="">
+				+55 67 8471-5146</span></a>
+		</div>
+
 <div class="super_container">
 
 	<!-- Header -->
