@@ -109,6 +109,15 @@ div.item {
     font-weight: 600;
     text-transform: uppercase;
 }
+
+.captionSemCor {
+    display: block;
+    font-family: 'Quicksand', sans-serif; 
+    font-size: 24px; 
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
 .conteudo{
     font-family: 'Nanum Myeongjo', serif;
     color: #505050; 
@@ -122,6 +131,9 @@ div.item {
     margin-bottom: -40px;
 }
 
+.footerHeadTec{
+    color: #8b8b8b;
+}
 
 
 /* #0663FF */
