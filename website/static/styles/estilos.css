@@ -78,8 +78,50 @@
 }
 .arrow{
     height: 100px;
-    top: 50px;
+    margin-top: 75px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
+
+.alinhamento{
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+.conhecaCallan{
+    height: 250px;
+    top: 250px;
+}
+
+div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    max-width: 250px;
+}
+
+.caption {
+    display: block;
+    font-family: 'Quicksand', sans-serif; 
+    color: #007bff; 
+    font-size: 24px; 
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.conteudo{
+    font-family: 'Nanum Myeongjo', serif;
+    color: #505050; 
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 20px; 
+}
+
+.conhecaCallan-padding{
+    margin-top: 20px;
+    margin-bottom: -40px;
+}
+
 
 
 /* #0663FF */
