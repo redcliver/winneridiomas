@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from website.models import contato
+from django.core.mail import EmailMessage
 
 # Create your views here.
 def paginaPrincipal(request):
@@ -13,10 +15,28 @@ def unidades(request):
 def nivelamento(request):
     return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})
 
-def contato(request):
+def viewContato(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        sobrenome = request.POST.get('sobrenome')
+        email = request.POST.get('email')
+        telefone = request.POST.get('telefone')
+        mensagem = request.POST.get('mensagem')
+        novoContato = contato(nome=nome, sobrenome=sobrenome, email=email, telefone=telefone, mensagem=mensagem)
+        novoContato.save()
+        msgEmail = "Contato recebido via website. \n\n\n NOME:\n" + nome + " " + sobrenome +"\n\nTELEFONE:\n"+ telefone +"\n\nE-MAIL:\n"+ email + "\n\nMENSAGEM:\n" + mensagem + "\n\n\nEssa mensagem foi gerada automaticamente, não responta."
+        testeEmail = EmailMessage('Contato website', msgEmail, to=['igor.macedo.peres@gmail.com'])
+        testeEmail.send()
+        
+        confirmacao = "Mensagem enviada com sucesso!"
+        return render(request, 'site/contato.html', {'title': 'Contato', 'confirmacao': confirmacao})
+    
     return render(request, 'site/contato.html', {'title': 'Contato'})
 
 def entrar(request):
+    if request.method == 'POST':
+        objContato= contato.objects.all().last()
+        return render (request, 'site/devTeste.html', {'title':'Dev Teste', 'objContato':objContato})
     return render(request, 'site/login.html', {'title': 'Entrar'})
 
 def instituicao(request):
@@ -27,9 +47,6 @@ def metodo(request):
 
 def colaboradores(request):
     return render(request, 'site/colaboradores.html', {'title': 'Colaboradores'})
-
-
-
 
 def error_404(request, exception):
     return render(request, 'site/404.html', {'title': 'Error'})

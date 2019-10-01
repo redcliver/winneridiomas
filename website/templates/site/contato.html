@@ -11,31 +11,34 @@
             <div class="col">
                 <h4 class="text-justify">&nbsp; Dúvidas sobre algum curso ou serviço da Winner Idiomas? Não localizou nas perguntas frequentes a solução? Esse espaço foi criado para responder o que você não encontrou, registrar elogios e dar sugestões.</h4>
             </div>
-            <div class="col">
+            <form method="POST" action="/contato">
+                {% csrf_token %}
                 <div class="col">
-                    <span>Nome<span class="requerido">*</span></span>
-                    <input type="text" class="form-control" placeholder="Nome" required>
-                </div><br>
-                <div class="col">
-                    <span>Sobrenome</span>
-                    <input type="text" class="form-control" placeholder="Sobrenome">
-                </div><br>
-                <div class="col">
-                    <span>E-mail<span class="requerido">*</span></span>
-                    <input type="text" class="form-control" placeholder="E-mail" required>
-                </div><br>
-                <div class="col">
-                    <span>Telefone</span>
-                    <input type="text" class="form-control" placeholder="Telefone">
-                </div><br>
-                <div class="col">
-                    <span>Contato<span class="requerido">*</span></span>
-                    <textarea class="form-control" rows="5" placeholder="Digite aqui..." required></textarea>
-                </div><br>
-                <div class="col float-right">
-                    <button type="button" class="btn btn-primary">Enviar</button>
+                    <div class="col">
+                        <span>Nome<span class="requerido">*</span></span>
+                        <input type="text" class="form-control" placeholder="Nome" name="nome" required>
+                    </div><br>
+                    <div class="col">
+                        <span>Sobrenome</span>
+                        <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome">
+                    </div><br>
+                    <div class="col">
+                        <span>E-mail<span class="requerido">*</span></span>
+                        <input type="text" class="form-control" placeholder="E-mail" name="email" required>
+                    </div><br>
+                    <div class="col">
+                        <span>Telefone</span>
+                        <input type="text" class="form-control" placeholder="Telefone" name="telefone">
+                    </div><br>
+                    <div class="col">
+                        <span>Mensagem<span class="requerido">*</span></span>
+                        <textarea maxlength="500" class="form-control" rows="5" placeholder="Digite aqui..." name="mensagem" required></textarea>
+                    </div><br>
+                    <div class="col float-right">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

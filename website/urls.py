@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^cursos', views.cursos),
     url(r'^unidades', views.unidades),
     url(r'^nivelamento', views.nivelamento),
-    url(r'^contato', views.contato),
+    url(r'^contato', views.viewContato),
     url(r'^entrar', views.entrar),
     url(r'^instituicao', views.instituicao),
     url(r'^metodo', views.metodo),

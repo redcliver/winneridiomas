@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<div class="main-container">
+    <div class="jumbotron container" style="background: #ffffff">
+        <h3>{{objContato.nome}}</h3><br/>
+        <h3>{{objContato.sobrenome}}</h3><br/>
+        <h3>{{objContato.email}}</h3><br/>
+        <h3>{{objContato.telefone}}</h3><br/>
+        <h3>{{objContato.mensagem}}</h3><br/>
+    </div>
+</div>
+{% endblock %}

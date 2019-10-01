@@ -95,7 +95,8 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form>
+					<form method="POST">
+						{% csrf_token %}
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -114,11 +115,11 @@
 								<label class="custom-control-label" for="customControlInline">Lembrar</label>
 							</div>
 						</div>
+						<div class="d-flex justify-content-center mt-3 login_container">
+							<button type="submit" name="button" class="btn login_btn">Login</button>
+						</div>
 					</form>
 				</div>
-				<div class="d-flex justify-content-center mt-3 login_container">
-					<button type="button" name="button" class="btn login_btn">Login</button>
-                </div>
                 <div class="d-flex justify-content-center mt-3 login_container">
 					<button onclick="goBack()" type="button" name="button" class="btn login_btn">Voltar</button>
 				</div>
