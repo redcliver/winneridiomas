@@ -130,8 +130,8 @@ USE_TZ = True
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'winner.contato.email@gmail.com'
-EMAIL_HOST_PASSWORD = 'igor957855'
+EMAIL_HOST_USER = 'igor.macedo.peres@gmail.com'
+EMAIL_HOST_PASSWORD = 'igormacedo3355'
 EMAIL_PORT = 587
 
 
