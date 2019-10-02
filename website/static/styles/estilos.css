@@ -135,6 +135,15 @@ div.item {
     color: #8b8b8b;
 }
 
+.registroImg{
+    height: 256px;
+}
+
+.registroImg img{
+    width: 100%;
+    height: auto;
+}
+
 
 /* #0663FF */
 

@@ -16,19 +16,19 @@
                 {% csrf_token %}
                     <div class="col">
                         <span>Nome<span class="requerido">*</span></span>
-                        <input type="text" class="form-control" placeholder="Nome" name="nome" required>
+                        <input type="text" maxlength="200" class="form-control" placeholder="Nome" name="nome" required>
                     </div><br>
                     <div class="col">
                         <span>Sobrenome</span>
-                        <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome">
+                        <input type="text" maxlength="200" class="form-control" placeholder="Sobrenome" name="sobrenome">
                     </div><br>
                     <div class="col">
                         <span>E-mail<span class="requerido">*</span></span>
-                        <input type="text" class="form-control" placeholder="E-mail" name="email" required>
+                        <input type="text" maxlength="200" class="form-control" placeholder="E-mail" name="email" required>
                     </div><br>
                     <div class="col">
                         <span>Telefone</span>
-                        <input type="text" class="form-control" placeholder="Telefone" name="telefone">
+                        <input type="text" maxlength="14" class="form-control" placeholder="Telefone" name="telefone">
                     </div><br>
                     <div class="col">
                         <span>Mensagem<span class="requerido">*</span></span>

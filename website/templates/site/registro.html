@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% load static %}
+<div class="main-container">
+	<div class="jumbotron container" style="background: #ffffff">
+        <div class="row">
+            <div class="col-8">
+                <h1 style="font-family: 'Indie Flower', cursive; padding-top: 10%;">Cadastro realizado com sucesso!</h1>
+                <h4 style="font-family: 'Shadows Into Light', cursive; padding-top: 20%;">Obrigado por se registrar.</h4>
+            </div>
+            <div class="col-4" style="padding-top: 5%">
+                <img src="{% static '/images/confirmation.png' %}" class="registroImg" alt=""> 
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}

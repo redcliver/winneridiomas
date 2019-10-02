@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^instituicao', views.instituicao),
     url(r'^metodo', views.metodo),
     url(r'^colaboradores', views.colaboradores),
+    url(r'^registro', views.viewRegistro),
 ]
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from website.models import contato
+from website.models import contato, registro
 from django.core.mail import EmailMessage
 
 # Create your views here.
@@ -47,6 +47,14 @@ def metodo(request):
 
 def colaboradores(request):
     return render(request, 'site/colaboradores.html', {'title': 'Colaboradores'})
+
+def viewRegistro(request):
+    if request.method == "POST" and request.POST.get('emailRegistro') != "":
+        emailRegistro = request.POST.get('emailRegistro')
+        novoRegistro = registro(email=emailRegistro)
+        novoRegistro.save()
+        return render(request, 'site/registro.html', {'title': 'Receber novidades...'})
+    return render(request, 'site/registro.html', {'title': 'Receber novidades...'})
 
 def error_404(request, exception):
     return render(request, 'site/404.html', {'title': 'Error'})

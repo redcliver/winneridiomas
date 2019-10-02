@@ -21,6 +21,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<style>
 	.whatsapp {
@@ -211,9 +213,10 @@
 				<div class="row">
 					<div class="col text-center">
 						<div class="newsletter_form_container mx-auto">
-							<form action="post">
+							<form method="post" action="/registro">
+								{% csrf_token %} 
 								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-									<input id="newsletter_email" class="newsletter_email" type="email" placeholder="Endereço de e-mail" required="required" data-error="Digite um e-mail valido.">
+									<input id="newsletter_email" class="newsletter_email" name="emailRegistro" type="email" placeholder="Endereço de e-mail" required="required" data-error="Digite um e-mail valido.">
 									<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Cadastrar</button>
 								</div>
 							</form>
