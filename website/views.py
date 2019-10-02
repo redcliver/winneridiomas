@@ -25,7 +25,7 @@ def viewContato(request):
         novoContato = contato(nome=nome, sobrenome=sobrenome, email=email, telefone=telefone, mensagem=mensagem)
         novoContato.save()
         msgEmail = "Contato recebido via website. \n\n\n NOME:\n" + nome + " " + sobrenome +"\n\nTELEFONE:\n"+ telefone +"\n\nE-MAIL:\n"+ email + "\n\nMENSAGEM:\n" + mensagem + "\n\n\nEssa mensagem foi gerada automaticamente, não responta."
-        testeEmail = EmailMessage('Contato website', msgEmail, to=['winnercallan@uol.com.br'])
+        testeEmail = EmailMessage('Contato website', msgEmail, to=['igor.macedo.peres@gmail.com])
         testeEmail.send()
         
         confirmacao = "Mensagem enviada com sucesso!"
