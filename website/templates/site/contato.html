@@ -8,12 +8,12 @@
         <br />
         <br />
         <div class="row">
-            <div class="col">
+            <div class="col-6 ">
                 <h4 class="text-justify">&nbsp; Dúvidas sobre algum curso ou serviço da Winner Idiomas? Não localizou nas perguntas frequentes a solução? Esse espaço foi criado para responder o que você não encontrou, registrar elogios e dar sugestões.</h4>
             </div>
-            <form method="POST" action="/contato">
+            <div class="col-6 ">
+                <form method="POST" action="/contato">
                 {% csrf_token %}
-                <div class="col">
                     <div class="col">
                         <span>Nome<span class="requerido">*</span></span>
                         <input type="text" class="form-control" placeholder="Nome" name="nome" required>
@@ -37,8 +37,8 @@
                     <div class="col float-right">
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>
