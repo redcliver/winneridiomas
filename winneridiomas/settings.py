@@ -146,6 +146,7 @@ STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = '/entrar'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
