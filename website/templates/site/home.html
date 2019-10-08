@@ -309,4 +309,33 @@
 				
 		</div>
 	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="newsletter">
+				<div class="row">
+					<div class="col">
+						<div class="section_title text-center">
+							<h1>Cadastre-se para ficar por dentro das novidades.</h1>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col text-center">
+						<div class="newsletter_form_container mx-auto">
+							<form method="post" action="/registro">
+								{% csrf_token %} 
+								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+									<input id="newsletter_email" class="newsletter_email" name="emailRegistro" type="email" placeholder="Endereço de e-mail" required="required" data-error="Digite um e-mail valido.">
+									<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Cadastrar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</footer>
 {% endblock %}
