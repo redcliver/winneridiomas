@@ -34,10 +34,9 @@ def viewContato(request):
     return render(request, 'site/contato.html', {'title': 'Contato'})
 
 def entrar(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         objContato= contato.objects.all().last()
         return render (request, 'site/devTeste.html', {'title':'Dev Teste', 'objContato':objContato})
-    return render (request, 'site/devTeste.html', {'title':'Dev Teste', 'objContato':objContato})
 
 def instituicao(request):
     return render(request, 'site/instituicao.html', {'title': 'Instituicao'})
