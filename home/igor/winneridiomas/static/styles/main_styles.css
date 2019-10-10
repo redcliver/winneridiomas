@@ -1436,8 +1436,11 @@ input:last-of-type {
 *********************************/
 
 .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width: 100%;
-    padding-top: 86px;
+    padding-top: 15px;
     background: #1a1a1a;
 }
 

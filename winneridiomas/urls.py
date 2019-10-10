@@ -28,8 +28,8 @@ urlpatterns = [
     url(r'^login', LoginView.as_view(template_name='site/login.html'), name="login"),
     url(r'^logout', LogoutView.as_view(template_name='site/login.html'), name="login"),
 
-
-    url(r'^/', include('website.urls')),
+    # Controle Gerencia
+    url(r'^gerencia/', include('gerencia.urls')),
 
     #Admin
     url(r'^admin/', admin.site.urls),

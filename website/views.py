@@ -35,8 +35,25 @@ def viewContato(request):
 
 def entrar(request):
     if request.user.is_authenticated:
-        objContato= contato.objects.all().last()
-        return render (request, 'site/devTeste.html', {'title':'Dev Teste', 'objContato':objContato})
+        alunoVisivel = False
+        colaboradorVisivel = False
+        classeVisivel = False
+        aulasVisivel = False
+        contasVisivel = False
+        caixaVisivel = False
+        estoqueVisivel = False
+        controleVisivel = False
+        return render (request, 'gerencia/home.html', {'title':'Home', 
+                                                        'alunoVisivel':alunoVisivel,
+                                                        'colaboradorVisivel':colaboradorVisivel, 
+                                                        'classeVisivel':classeVisivel, 
+                                                        'aulasVisivel':aulasVisivel, 
+                                                        'contasVisivel':contasVisivel, 
+                                                        'caixaVisivel':caixaVisivel, 
+                                                        'estoqueVisivel':estoqueVisivel, 
+                                                        'controleVisivel':controleVisivel})
+    return render (request, 'site/login.html', {'title':'Login'})
+
 
 def instituicao(request):
     return render(request, 'site/instituicao.html', {'title': 'Instituicao'})
