@@ -51,6 +51,15 @@ COLOR PALETTE
 2. Body and some general stuff
 *********************************/
 
+.menuPrincipal{
+	display: inline-block;
+    text-align: center;
+	padding: 10px;
+}
+.textoCentro{
+	text-align: center;
+}
+
 *
 {
 	margin: 0;

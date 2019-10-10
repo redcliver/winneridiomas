@@ -2,6 +2,36 @@
 {% block body %}
 {% load static %}
 <main>
-    <h4>{{msgTelaInicial}}</h4>
+    <div class="row">
+        <div class="row">
+            <h4>{{msgTelaInicial}}</h4><br />
+        </div>
+        <div class="row menuPrincipal " style="text-align: center">
+            <div class="col item">
+                <a href="/alunos" class="caption">
+                <img  class="conhecaCallan" src="{% static '/img/estudante.png' %}"alt="">
+                Alunos</a>
+            </div>
+            <div class="col item">
+                <a href="/professores" class="caption">
+                <img  class="conhecaCallan" src="{% static '/img/professor.png' %}"alt="">
+                Professores</a>
+            </div>
+            <div class="col item">
+                <a href="/classes" class="caption">
+                <img  class="conhecaCallan" src="{% static '/img/classe.png' %}"alt="">
+                Classes</a>
+            </div>
+            <div class="col item">
+                <a href="/suporte" class="caption">
+                <img  class="conhecaCallan" src="{% static '/img/suporte.png' %}"alt="">
+                Suporte</a>
+            </div>
+            <div class="col item">
+                <a href="/logout" class="caption">
+                    <img  class="conhecaCallan" src="{% static '/img/sair.png' %}" href="/logout"><br/>
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}
