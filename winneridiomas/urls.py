@@ -18,11 +18,14 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.conf.urls import include, handler404, handler500
 from django.shortcuts import render
-import django.contrib.auth.views
 from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
+    #Login
+    url(r'^login', LoginView.as_view(template_name='site/login.html'), name="Login"),
+    url(r'^logout$', LogoutView.as_view(template_name='site/login.html'), name="login"),
+
     #Pagina Principal
     url(r'^', include('website.urls')),
     url(r'^login', LoginView.as_view(template_name='site/login.html'), name="login"),
