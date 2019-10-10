@@ -24,12 +24,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     #Login
     url(r'^login', LoginView.as_view(template_name='site/login.html'), name="Login"),
-    url(r'^logout$', LogoutView.as_view(template_name='site/login.html'), name="login"),
+    url(r'^logout', LogoutView.as_view(template_name='site/home.html'), name="Home"),
 
     #Pagina Principal
     url(r'^', include('website.urls')),
-    url(r'^login', LoginView.as_view(template_name='site/login.html'), name="login"),
-    url(r'^logout', LogoutView.as_view(template_name='site/login.html'), name="login"),
 
     # Controle Gerencia
     url(r'^gerencia/', include('gerencia.urls')),
