@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from website.models import contato, registro
 from django.core.mail import EmailMessage
+import datetime
 
 # Create your views here.
 def paginaPrincipal(request):
@@ -43,6 +44,16 @@ def entrar(request):
         caixaVisivel = False
         estoqueVisivel = False
         controleVisivel = False
+        now = datetime.datetime.now().strftime('%H')
+        now = int(now)
+        msgTelaInicial = ""
+        if now >= 4 and now <= 11:
+            msgTelaInicial = "Bom dia, " + request.user.get_short_name() +"."
+        elif now > 11 and now < 18:
+            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() +"."
+        elif now >= 18 and now < 4:
+            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() +"."
+            
         return render (request, 'gerencia/home.html', {'title':'Home', 
                                                         'alunoVisivel':alunoVisivel,
                                                         'colaboradorVisivel':colaboradorVisivel, 
@@ -51,7 +62,8 @@ def entrar(request):
                                                         'contasVisivel':contasVisivel, 
                                                         'caixaVisivel':caixaVisivel, 
                                                         'estoqueVisivel':estoqueVisivel, 
-                                                        'controleVisivel':controleVisivel})
+                                                        'controleVisivel':controleVisivel,
+                                                        'msgTelaInicial':msgTelaInicial})
     return render (request, 'site/login.html', {'title':'Login'})
 
 
