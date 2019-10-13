@@ -46,13 +46,13 @@ def entrar(request):
         controleVisivel = False
         now = datetime.datetime.now().strftime('%H')
         now = int(now)
-        msgTelaInicial = ""
+        msgTelaInicial = "Olá, " + request.user.get_short_name() 
         if now >= 4 and now <= 11:
-            msgTelaInicial = "Bom dia, " + request.user.get_short_name() +"."
+            msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
         elif now > 11 and now < 18:
-            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() +"."
+            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
         elif now >= 18 and now < 4:
-            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() +"."
+            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
             
         return render (request, 'gerencia/home.html', {'title':'Home', 
                                                         'alunoVisivel':alunoVisivel,

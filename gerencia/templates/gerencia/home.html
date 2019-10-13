@@ -3,27 +3,24 @@
 {% load static %}
 <main>
     <div class="row">
-        <div class="col-12">
-            <h4>{{msgTelaInicial}}</h4><br />
-        </div>
         <div class="col menuPrincipal row" style="text-align: center;">
             <div class="col item">
-                <a href="/alunos" class="caption">
+                <a href="/gerencia/aluno" class="caption">
                 <img  class="conhecaCallan " src="{% static '/img/estudante.png' %}"alt=""><br />
                 Alunos</a>
             </div>
             <div class="col item">
-                <a href="/professores" class="caption">
+                <a href="/gerencia/colaborador" class="caption">
                 <img  class="conhecaCallan " src="{% static '/img/professor.png' %}"alt=""><br />
-                Professores</a>
+                Colaboradores</a>
             </div>
             <div class="col item">
-                <a href="/classes" class="caption">
+                <a href="/gerencia/classe" class="caption">
                 <img  class="conhecaCallan " src="{% static '/img/classe.png' %}"alt=""><br />
                 Classes</a>
             </div>
             <div class="col item">
-                <a href="/suporte" class="caption">
+                <a href="/gerencia/suporte" class="caption">
                 <img  class="conhecaCallan " src="{% static '/img/suporte.png' %}"alt=""><br />
                 Suporte</a>
             </div>

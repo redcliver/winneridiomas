@@ -1,0 +1,31 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+
+<main>
+    <div class="row">
+        <div class="col menuPrincipal row" style="text-align: center;">
+            <div class="col item">
+                <a href="/gerencia/aluno/novo" class="caption">
+                <img  class="conhecaCallan " src="{% static '/img/add-user.png' %}"alt=""><br />
+                Novo Aluno</a>
+            </div>
+            <div class="col item">
+                <a href="/gerencia/aluno/editar" class="caption">
+                <img  class="conhecaCallan " src="{% static '/img/gear.png' %}"alt=""><br />
+                Editar Aluno</a>
+            </div>
+            <div class="col item">
+                <a href="/gerencia/aluno/buscar" class="caption">
+                <img  class="conhecaCallan " src="{% static '/img/search.png' %}"alt=""><br />
+                Buscar Aluno</a>
+            </div>
+            <div class="col item">
+                <a href="#" onclick="goBack()" class="caption">
+                <img  class="conhecaCallan " src="{% static '/img/reply.png' %}"alt=""><br />
+                Voltar</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -32,6 +32,10 @@ urlpatterns = [
     # Controle Gerencia
     url(r'^gerencia/', include('gerencia.urls')),
 
+    # Controle Aluno
+    url(r'^aluno/', include('aluno.urls')),
+
+
     #Admin
     url(r'^admin/', admin.site.urls),
     
