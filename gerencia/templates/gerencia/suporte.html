@@ -2,6 +2,20 @@
 {% block body %}
 {% load static %}
 <main>
-    <h2>Suporte</h2>
+    <div class="row">
+        <div class="col-12">
+            <h2>Bem vindo(a) ao SUPORTE.</h2><br />
+            <h4>Descreva um pouco mais sobre o problema que está acontecendo:</h4>
+        </div>
+        <form class="col-12">
+            <div >
+                <textarea class="form-control"></textarea><br />
+                <div>
+                    <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
+                    <button class="btn btn-primary float-right">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </main>
 {% endblock %}
