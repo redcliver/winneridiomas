@@ -1,0 +1,31 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+
+<main>
+    <div class="row">
+        <div class="col menuPrincipal row" style="text-align: center;">
+            <div class="col item">
+                <a href="#" class="caption">
+                <img  class="conhecaCallan " src="{% static '/icones/add_calendar.png' %}"alt=""><br />
+                Novo Evento</a>
+            </div>
+            <div class="col item">
+                <a href="#" class="caption">
+                <img  class="conhecaCallan " src="{% static '/icones/edit_calendar.png' %}"alt=""><br />
+                Editar Evento</a>
+            </div>
+            <div class="col item">
+                <a href="#" class="caption">
+                <img  class="conhecaCallan " src="{% static '/icones/search_calendar.png' %}"alt=""><br />
+                Buscar Evento</a>
+            </div>
+            <div class="col item">
+                <a href="#" onclick="goBack()" class="caption">
+                <img  class="conhecaCallan " src="{% static '/img/reply.png' %}"alt=""><br />
+                Voltar</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
