@@ -114,14 +114,13 @@ div.item {
     display: block;
     font-family: 'Quicksand', sans-serif; 
     color: #007bff; 
-    font-size: 24px; 
+    font-size: 22px; 
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .gerenciaImg{
     height: 150px;
-    width: 150px;
 }
 
 .responsive {

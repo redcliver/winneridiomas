@@ -110,6 +110,36 @@ div.item {
     text-transform: uppercase;
 }
 
+a:link, .gerenciaCaption {
+    display: block;
+    font-family: 'Quicksand', sans-serif; 
+    color: #FF0000; 
+    font-size: 24px; 
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+a:hover, .gerenciaCaption {
+    display: block;
+    font-family: 'Quicksand', sans-serif; 
+    color: #007bff; 
+    font-size: 24px; 
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.gerenciaImg{
+    height: 150px;
+    width: 150px;
+}
+
+.responsive {
+    width: 100px;
+    height: 100px;
+  }
+
+
+
 .captionSemCor {
     display: block;
     font-family: 'Quicksand', sans-serif; 
