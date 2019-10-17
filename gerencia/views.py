@@ -229,19 +229,3 @@ def classeEditar(request):
         return render (request, 'gerencia/classe/editar.html', {'title':'Editar Classe', 
                                                         'msgTelaInicial':msgTelaInicial})
     return render (request, 'site/login.html', {'title':'Login'})
-
-def eventoGeral(request):
-    if request.user.is_authenticated:
-        now = datetime.datetime.now().strftime('%H')
-        now = int(now)
-        msgTelaInicial = "Olá, " + request.user.get_short_name() 
-        if now >= 4 and now <= 11:
-            msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
-        elif now > 11 and now < 18:
-            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
-        elif now >= 18 and now < 4:
-            msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
-            
-        return render (request, 'gerencia/evento/home.html', {'title':'Eventos', 
-                                                        'msgTelaInicial':msgTelaInicial})
-    return render (request, 'site/login.html', {'title':'Login'})

@@ -1,0 +1,95 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <h1>Novo Evento</h1><br />
+    <form>
+        <div class="row">
+            <div class="col-md-8">
+                <span>Titulo pagina principal:</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Ex: Halloween WINNER</span>
+                    </div>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <span>Descrição pagina principal:</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Ex: Super evento</span>
+                    </div>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="col-md-4">
+                    <span>Data:</span>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">{{today}}</span>
+                        </div>
+                        <input type="date" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <span>Hora:</span>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">{{timeNow}}</span>
+                        </div>
+                        <input type="time" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+            </div>
+            <div class="col-md-12">
+                <span>Upload da imagem principal:</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">C:\users\image\someImage.jpg</span>
+                    </div>
+                    <input type="url" class="form-control" id="basic-url" aria-describedby="basic-addon3">  
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary " type="button">Selecionar imagem</button>
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                    <span>Descrição:</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <div class="col-md-12">
+                    <br />
+                    <br />
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary float-right">Visualizar</button>
+                    <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
+                </div>
+            </div>
+            <div class="col-md-12 invisible">
+                    <br />
+                    <br />
+                <div class="row d-flex flex-row align-items-end">
+
+                        <div class="col-lg-2 order-lg-1 order-2">
+                            <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                <div class="event_day">15</div>
+                                <div class="event_month">Agosto</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 order-lg-2 order-3">
+                            <div class="event_content">
+                                <div class="event_name"><a class="trans_200" href="">Evento dia 15/08</a></div>
+                                <div class="event_location">Winner Idiomas</div>
+                                <p>O evento acontecerá na sede da winner idiomas em Três Lagoas - MS</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 order-lg-3 order-1">
+                            <div class="event_image">
+                                <img src="{% static '/images/event_1.jpg' %}" alt="https://unsplash.com/@theunsteady5">
+                            </div>
+                        </div>
+
+                    </div>	
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}

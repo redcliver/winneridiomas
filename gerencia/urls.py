@@ -17,6 +17,5 @@ urlpatterns = [
     url(r'^classe/novo', views.classeNovo),
     url(r'^classe/buscar', views.classeBuscar),
     url(r'^classe/editar', views.classeEditar),
-    url(r'^evento/$', views.eventoGeral),
 ]
 

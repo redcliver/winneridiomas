@@ -35,6 +35,9 @@ urlpatterns = [
     # Controle Aluno
     url(r'^aluno/', include('aluno.urls')),
 
+    # Controle Evento
+    url(r'^evento/', include('evento.urls')),
+
 
     #Admin
     url(r'^admin/', admin.site.urls),

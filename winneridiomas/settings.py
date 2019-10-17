@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     #Aluno - Pagina Principal
     'aluno',
 
+    #Evento - Pagina Principal
+    'evento',
+
 
     #Padrão
     'django.contrib.admin',
