@@ -21,6 +21,7 @@ def eventoGeral(request):
 
 def eventoNovo(request):
     if request.user.is_authenticated:
+
         teste = request.user.pk
         today = datetime.datetime.now().strftime("%d/%m/%Y")
         now = datetime.datetime.now().strftime("%H")
@@ -33,11 +34,19 @@ def eventoNovo(request):
             msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
         elif now >= 18 and now < 4:
             msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
-            
         
-        return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 
+        if request.method == 'GET':     
+            return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 
                                                         'msgTelaInicial':msgTelaInicial,
                                                         'teste':teste,
                                                         'today':today,
                                                         'timeNow': timeNow})
+        if request.method == 'POST':
+            eventoObj = "aaaa"                   
+            return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'teste':teste,
+                                                            'today':today,
+                                                            'timeNow': timeNow,
+                                                            'eventoObj': eventoObj})
     return render (request, 'site/login.html', {'title':'Login'})

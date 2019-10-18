@@ -3,8 +3,9 @@
 {% load static %}
 <main>
     <h1>Novo Evento</h1><br />
-    <form>
-        <div class="row">
+    <form method="POST" action="/evento/novo">
+        {% csrf_token %}
+        <div class="row" >
             <div class="col-md-8">
                 <span>Titulo pagina principal:</span>
                 <div class="input-group mb-3">
@@ -57,14 +58,15 @@
                     <br />
                     <br />
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary float-right">Visualizar</button>
+                    <button type="submit" ac class="btn btn-primary float-right">Visualizar</button>
                     <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
                 </div>
             </div>
+            {% if eventoObj %}
             <div class="col-md-12 ">
                     <br />
                     <br />
-                <div class="row d-flex flex-row align-items-end">
+                <div class="row d-flex flex-row align-items-end " style="border-style: solid; border-radius: 15px; padding:15px; border-color: #007bff;">
 
                         <div class="col-lg-2 order-lg-1 order-2">
                             <div class="event_date d-flex flex-column align-items-center justify-content-center">
@@ -89,6 +91,7 @@
 
                     </div>	
             </div>
+            {% endif %}
         </div>
     </form>
 </main>

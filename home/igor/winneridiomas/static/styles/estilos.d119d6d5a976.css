@@ -176,6 +176,10 @@ div.item {
 	text-align: center;
 }
 
+.eventoBorda{
+    border-style: solid;
+    border-radius: 15px;
+}
 
 /* #0663FF */
 
