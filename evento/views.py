@@ -42,11 +42,24 @@ def eventoNovo(request):
                                                         'today':today,
                                                         'timeNow': timeNow})
         if request.method == 'POST':
-            eventoObj = "aaaa"                   
+            tituloEvento = request.POST.get('tituloEvento')    
+            descBreveEvento = request.POST.get('descBreveEvento')   
+            dataEvento = request.POST.get('dataEvento')
+            dataFormatadaEvento = datetime.datetime.strptime(dataEvento, "%Y-%m-%d").date()
+            horaEvento = request.POST.get('horaEvento')                 
+            descCompletaEvento = request.POST.get('descCompletaEvento')
+            diaEvento = dataFormatadaEvento.strftime("%d")
+            mesEvento = dataFormatadaEvento.strftime("%B")
+            eventoObj = "aaaa"
             return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'teste':teste,
                                                             'today':today,
                                                             'timeNow': timeNow,
-                                                            'eventoObj': eventoObj})
+                                                            'tituloEvento': tituloEvento,
+                                                            'descBreveEvento': descBreveEvento,
+                                                            'diaEvento': diaEvento,
+                                                            'mesEvento': mesEvento,
+                                                            'descCompletaEvento': descCompletaEvento,
+                                                            'eventoObj':eventoObj})
     return render (request, 'site/login.html', {'title':'Login'})
