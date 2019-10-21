@@ -25,17 +25,11 @@
             <div class="col-md-4">
                     <span>Data:</span>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon3">{{today}}</span>
-                        </div>
-                        <input type="date" name="dataEvento" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        <input type="date" name="dataEvento" value="{{todayFormatado}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                     </div>
                     <span>Hora:</span>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon3">{{timeNow}}</span>
-                        </div>
-                        <input type="time" name="horaEvento" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        <input type="time" name="horaEvento" value="{{hourFormatado}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                     </div>
             </div>
             <div class="col-md-12">

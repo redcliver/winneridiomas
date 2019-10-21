@@ -26,6 +26,8 @@ def eventoNovo(request):
         today = datetime.datetime.now().strftime("%d/%m/%Y")
         now = datetime.datetime.now().strftime("%H")
         timeNow = datetime.datetime.now().strftime('%H:%MM')
+        todayFormatado = datetime.datetime.now().strftime("%Y-%m-%d")
+        hourFormatado = datetime.datetime.now().strftime("%H:%M")
         now = int(now)
         msgTelaInicial = "Olá, " + request.user.get_short_name() 
         if now >= 4 and now <= 11:
@@ -40,7 +42,9 @@ def eventoNovo(request):
                                                         'msgTelaInicial':msgTelaInicial,
                                                         'teste':teste,
                                                         'today':today,
-                                                        'timeNow': timeNow})
+                                                        'timeNow': timeNow,
+                                                        'todayFormatado':todayFormatado,
+                                                        'hourFormatado':hourFormatado})
         if request.method == 'POST':
             tituloEvento = request.POST.get('tituloEvento')    
             descBreveEvento = request.POST.get('descBreveEvento')   
