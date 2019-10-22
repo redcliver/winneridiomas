@@ -3,7 +3,7 @@
 {% load static %}
 <main>
     <h1>Novo Evento</h1><br />
-    <form method="POST" action="/evento/novo">
+    <form enctype="multipart/form-data" method="POST" action="/evento/novo">
         {% csrf_token %}
         <div class="row" >
             <div class="col-md-8">
@@ -36,9 +36,9 @@
                 <span>Upload da imagem principal:</span><br />
                 <div class="input-group mb-3">
                     <input type="url" class="form-control" placeholder="Selecione a imagem..." name="urlImagen" id="basic-url" aria-describedby="basic-addon3">  
-                    <input type="file" style="display: none;" name="buttonImagen" class="form-control" id="file" id="basic-url" aria-describedby="basic-addon3">  
+                    <input type="file" style="display: none;" value="Upload" name="imageFile" class="form-control" id="file" id="basic-url" aria-describedby="basic-addon3">  
                     <div class="input-group-append">
-                        <button class="btn btn-secondary " onclick="$('#file').trigger('click');" type="button">Selecionar imagem</button>
+                        <button class="btn btn-secondary " style="z-index: 0;" onclick="$('#file').trigger('click');" type="button">Selecionar imagem</button>
                     </div>
                 </div>
             </div>
@@ -50,13 +50,10 @@
             <div class="col-md-12">
                 <span>Upload de imagens adicionais:</span>
                 <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon3">C:\users\image\someImage.jpg</span>
-                    </div>
                     <input type="url" class="form-control" id="basic-url" aria-describedby="basic-addon3">  
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary " type="button">Selecionar imagem</button>
-                        </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary " style="z-index: 0;" type="button">Selecionar imagem</button>
+                    </div>
                 </div>
             </div>
             {% if not eventoObj %}
@@ -64,7 +61,7 @@
                     <br />
                     <br />
                 <div class="form-group">
-                    <button type="submit" ac class="btn btn-primary float-right">Visualizar</button>
+                    <button type="submit" class="btn btn-primary float-right">Visualizar</button>
                     <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
                 </div>
             </div>
@@ -92,10 +89,10 @@
 
                         <div class="col-lg-4 order-lg-3 order-1">
                             <div class="event_image">
-                                <img src="{% static '/images/event_1.jpg' %}" alt="https://unsplash.com/@theunsteady5">
+                                <img src='{{ MEDIA_URL }}{{ imgFile }}'>
                             </div>
                         </div>
-
+                        <h4>{{buttonImagen}}</h4>
                     </div>	
             </div>
             <div class="col-md-12">
