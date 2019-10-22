@@ -19,6 +19,8 @@ from django.contrib import admin
 from django.conf.urls import include, handler404, handler500
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView, LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -39,10 +41,10 @@ urlpatterns = [
     url(r'^evento/', include('evento.urls')),
 
 
-    #Admin
+    # Sistema
     url(r'^admin/', admin.site.urls),
     
-]
+] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 handler404 = 'website.views.error_404'
 

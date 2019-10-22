@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import imageEvento
 import datetime
 
 # Create your views here.
@@ -49,12 +50,16 @@ def eventoNovo(request):
             tituloEvento = request.POST.get('tituloEvento')    
             descBreveEvento = request.POST.get('descBreveEvento')   
             dataEvento = request.POST.get('dataEvento')
+            imageFile = request.FILES['imageFile']
             dataFormatadaEvento = datetime.datetime.strptime(dataEvento, "%Y-%m-%d").date()
             horaEvento = request.POST.get('horaEvento')                 
             descCompletaEvento = request.POST.get('descCompletaEvento')
             diaEvento = dataFormatadaEvento.strftime("%d")
             mesEvento = dataFormatadaEvento.strftime("%B")
             eventoObj = "aaaa"
+            novaImg = imageEvento(name=tituloEvento, imagefile=imageFile)
+            novaImg.save()
+            imgFile= novaImg.imagefile
             return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'teste':teste,
@@ -65,5 +70,6 @@ def eventoNovo(request):
                                                             'diaEvento': diaEvento,
                                                             'mesEvento': mesEvento,
                                                             'descCompletaEvento': descCompletaEvento,
-                                                            'eventoObj':eventoObj})
+                                                            'eventoObj':eventoObj,
+                                                            'imgFile':imgFile})
     return render (request, 'site/login.html', {'title':'Login'})

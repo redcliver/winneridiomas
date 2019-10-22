@@ -3533,7 +3533,7 @@ tbody.collapse.show {
 .input-group-prepend .btn,
 .input-group-append .btn {
   position: relative;
-  z-index: 2;
+  z-index: 0;
 }
 
 .input-group-prepend .btn + .btn,
