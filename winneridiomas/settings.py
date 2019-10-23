@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import posixpath
-import dj_database_url
-import django_heroku
+#import dj_database_url
+#import django_heroku
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_winneridiomas.core',
 ]
 
 MIDDLEWARE = [
@@ -97,25 +99,25 @@ WSGI_APPLICATION = 'winneridiomas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'winneridiomas',
-#        'USER': 'postgres',
-#        'PASSWORD': '957855',
-#        'HOST': '127.0.0.1',
-#        'PORT': '', # 8000 is default
-#    }
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'winneridiomas',
+        'USER': 'postgres',
+        'PASSWORD': '957855',
+        'HOST': '127.0.0.1',
+        'PORT': '', # 8000 is default
     }
 }
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -135,6 +137,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+CLOUDINARY = {
+    'cloud_name' : ha58vuers,
+    'api_key' : '518121421239681',
+    'api_secret': 'AGBKVj8zTy3Opadmi95Ep1EJQG4'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -174,4 +182,4 @@ LOGIN_REDIRECT_URL = '/entrar'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+#django_heroku.settings(locals())

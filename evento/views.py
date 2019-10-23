@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import imageEvento
+from .models import eventoModel
 import datetime
 
 # Create your views here.
@@ -57,7 +57,7 @@ def eventoNovo(request):
             diaEvento = dataFormatadaEvento.strftime("%d")
             mesEvento = dataFormatadaEvento.strftime("%B")
             eventoObj = "aaaa"
-            novaImg = imageEvento(name=tituloEvento, imagefile=imageFile)
+            novaImg = imagem(name=tituloEvento, imagefile=imageFile)
             novaImg.save()
             imgFile= novaImg.imagefile
             return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 

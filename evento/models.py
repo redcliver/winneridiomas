@@ -1,9 +1,10 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
-class imageEvento(models.Model):
+class eventoModel(models.Model):
     name= models.CharField(max_length=500)
-    imagefile= models.FileField(upload_to='images/', null=True, verbose_name="")
+    imagem = CloudinaryField('imagem')
 
     def __str__(self):
-        return self.name + ": " + str(self.imagefile)
+        return self.name
