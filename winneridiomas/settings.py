@@ -138,9 +138,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CLOUDINARY = {
-    'cloud_name' : 'ha58vuers',
-    'api_key' : '518121421239681',
-    'api_secret': 'AGBKVj8zTy3Opadmi95Ep1EJQG4'
+    'cloud_name' : 'dslsetu2r',
+    'api_key' : '651931867659912',
+    'api_secret': 'ZVl8mVDZhHcoXvbasFGjHBVH5RI'
 }
 
 # Internationalization

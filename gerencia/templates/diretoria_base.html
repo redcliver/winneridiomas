@@ -3,7 +3,7 @@
 <head>
     <title>{{title}} - Winner Idiomas</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" >
     {% load staticfiles %}
     <!--===============================================================================================-->
     <link rel="icon" type="image/x-icon" href="{% static '/img/icons/favicon.ico' %}" />
@@ -317,6 +317,9 @@
     <script src="{% static '/vendor/countdowntime/countdowntime.js' %}"></script>
     <!--===============================================================================================-->
     <script src="{% static '/js/main.js' %}"></script>
+    {% load cloudinary %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    {% cloudinary_includes %}
     <script>
         function goBack() {
             window.history.back();
