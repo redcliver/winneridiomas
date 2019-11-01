@@ -6,21 +6,21 @@ from django import forms
 from django.http import HttpResponse
 
 from cloudinary.forms import cl_init_js_callbacks      
-from .models import Photo
-from .forms import PhotoForm
+from .models import eventoModel
+from .forms import eventoForm
 
 # Create your views here.
 
 def upload(request):
-  context = dict( backend_form = PhotoForm())
+    context = dict( backend_form = eventoForm())
 
-  if request.method == 'POST':
-    form = PhotoForm(request.POST, request.FILES)
-    context['posted'] = form.instance
-    if form.is_valid():
-        form.save()
-
-  return render(request, 'gerenciaEvento/buscar.html', context)
+    if request.method == 'POST':
+        form = eventoForm(request.POST, request.FILES)
+        context['posted/eventos'] = form.instance
+        if form.is_valid():
+            form.save()
+    eventoObj = eventoModel.objects.all().latest('id')
+    return render(request, 'gerenciaEvento/buscar.html',  {'eventoObj':eventoObj })
 
 def eventoGeral(request):
     if request.user.is_authenticated:

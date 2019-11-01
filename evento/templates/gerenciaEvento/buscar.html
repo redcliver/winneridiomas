@@ -1,17 +1,22 @@
 {% extends 'diretoria_base.html' %}
-{% load cloudinary %}
 {% block body %}
 {% load static %}
+{% load cloudinary %}
 <main>
     <div id='backend_upload'>
         <form action="/evento/busca" method="post"
               enctype="multipart/form-data">
           {% csrf_token %}
           {{ backend_form }}
-          <input type="submit" value="Upload">
+          <input type="submit" class="btn btn-primary float-left" value="Upload">
         </form>
       </div>  
-      {% cloudinary photo.image format="jpg" width=120 height=80 crop="fill" %}
+      <br />  
+      <br />  
+      <br />
+      {% cloudinary eventoObj.imagem %}
+      <br />
+      {% cloudinary eventoObj.imagem_capa %}
     <br />
     <div>
         <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>

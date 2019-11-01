@@ -1,7 +1,7 @@
 from django.forms import ModelForm      
-from .models import Photo
+from .models import eventoModel
 
-class PhotoForm(ModelForm):
+class eventoForm(ModelForm):
   class Meta:
-        model = Photo
+        model = eventoModel
         fields = "__all__" 

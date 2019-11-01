@@ -2,7 +2,7 @@
 
 {% block body %}
 {% load static %}
-
+{% load cloudinary %}
 <!-- Home -->
 
 	<div class="home">
@@ -237,6 +237,7 @@
 
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
+									{% cloudinary "teste.jpg" %}
 									<img src="{{ MEDIA_URL }}{{ imgFile }}" alt="https://unsplash.com/@theunsteady5">
 								</div>
 							</div>
