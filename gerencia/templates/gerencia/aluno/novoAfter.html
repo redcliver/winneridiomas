@@ -1,0 +1,13 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <h2>{{message}}</h2><br />
+    <h2>{{acessoUsuario}}</h2><br />
+    <h2>{{acessoSenha}}</h2>
+    <br />
+    <div>
+        <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
+    </div>
+</main>
+{% endblock %}

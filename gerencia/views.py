@@ -1,5 +1,8 @@
 from django.shortcuts import render
 import datetime
+from .models import alunoModel
+from django.contrib.auth.models import User
+from django.utils.crypto import get_random_string
 
 # Create your views here.
 
@@ -63,7 +66,54 @@ def alunoNovo(request):
             msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
         elif now >= 18 and now < 4:
             msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
-            
+        if request.method == 'POST' and request.POST.get('nome') != None:
+            nome = request.POST.get('nome')
+            sobrenome = request.POST.get('sobrenome')
+            cpf = request.POST.get('cpf')
+            rg = request.POST.get('rg')
+            dataNasc = request.POST.get('dataNasc')
+            email = request.POST.get('email')
+            celular = request.POST.get('celular')
+            telefone = request.POST.get('telefone')
+            classe = request.POST.get('classe')
+            cep = request.POST.get('cep')
+            endereco = request.POST.get('endereco')
+            numero = request.POST.get('numero')
+            bairro = request.POST.get('bairro')
+            cidade = request.POST.get('cidade')
+            estado = request.POST.get('estado')
+            sobrenomeList = sobrenome.split()
+            usuario = nome[0].lower() + sobrenomeList[-1].lower()
+            numAleatorio = get_random_string(length=4, allowed_chars='1234567890')
+            senha = nome.lower() + numAleatorio
+            tipo = "ALUNO"
+            novoUsuario = User.objects.create_user(username=usuario, password=senha ,first_name=nome, last_name=tipo, email=email)
+            novoUsuario.save()
+            novoAluno = alunoModel(user=novoUsuario,
+                                   nome=nome, 
+                                   sobrenome=sobrenome, 
+                                   cpf=cpf, 
+                                   rg=rg, 
+                                   data_nascimento=dataNasc, 
+                                   email=email, 
+                                   celular=celular, 
+                                   telefone=telefone, 
+                                   classe=classe, 
+                                   cep=cep,
+                                   endereco=endereco,
+                                   numero=numero,
+                                   bairro=bairro,
+                                   cidade=cidade,
+                                   estado=estado)
+            novoAluno.save()
+            message = "O aluno : " + nome + " "+ sobrenome +", foi adicionado com sucesso!"
+            acessoUsuario = "Usuário: " + usuario 
+            acessoSenha = "Senha : " + senha
+            return render (request, 'gerencia/aluno/novoAfter.html', {'title':'Novo Aluno', 
+                                                        'msgTelaInicial':msgTelaInicial,
+                                                        'message':message,
+                                                        'acessoUsuario':acessoUsuario,
+                                                        'acessoSenha':acessoSenha})
         return render (request, 'gerencia/aluno/novo.html', {'title':'Novo Aluno', 
                                                         'msgTelaInicial':msgTelaInicial,
                                                         'teste':teste})
