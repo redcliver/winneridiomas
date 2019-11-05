@@ -1,0 +1,90 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <form method="POST" action="/gerencia/aluno/editar">
+        {% csrf_token %} 
+        <input type="hidden" name="alunoID" class="form-control" value="{{alunoObj.user.id}}">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-2 col-2">
+                <label >ID</label>
+                <input type="number" name="alunoID" class="form-control" value="{{alunoObj.user.id}}" disabled>
+            </div>
+            <div class="col-sm-12 col-md-10 col-10">
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Nome</label>
+                <input type="text" name="nome" class="form-control" value="{{alunoObj.nome}}" placeholder="Nome" disabled>
+            </div>
+            <div class="col-sm-12 col-md-8 col-8">
+                <label>Sobrenome</label>
+                <input type="text" name="sobrenome" class="form-control" value="{{alunoObj.sobrenome}}" placeholder="Sobrenome" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >CPF</label>
+                <input type="text" name="cpf" class="form-control" value="{{alunoObj.cpf}}" placeholder="CPF" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >RG</label>
+                <input type="text" name="rg" class="form-control" value="{{alunoObj.rg}}" placeholder="RG" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Data de Nasc.</label>
+                <input type="text" name="dataNasc" class="form-control" value="{{alunoObj.data_nascimento}}" disabled>
+            </div>
+            <div class="col-sm-12 col-md-8 col-8">
+                <label >E-mail</label>
+                <input type="email" name="email" class="form-control" value="{{alunoObj.email}}" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Celular</label>
+                <input type="number" name="celular" class="form-control" value="{{alunoObj.celular}}" placeholder="9999" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Telefone</label>
+                <input type="number" name="telefone" class="form-control" value="{{alunoObj.telefone}}" placeholder="9999" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Classe</label>
+                <input type="text" name="classe" class="form-control" value="{{alunoObj.classe}}" placeholder="Classe" disabled>
+            </div>
+            <div class="col-sm-12 col-md-1 col-1">
+            </div>
+            <div class="col-sm-12 col-md-3 col-3">
+                <label >CEP</label>
+                <input type="number" name="cep" class="form-control" value="{{alunoObj.cep}}" placeholder="9999" disabled>
+            </div>
+            <div class="col-sm-12 col-md-10 col-10">
+                <label >Endereço</label>
+                <input type="text" name="endereco" class="form-control" value="{{alunoObj.endereco}}" placeholder="Endereço" disabled>
+            </div>
+            <div class="col-sm-12 col-md-2 col-2">
+                <label >Número</label>
+                <input type="number" name="numero" class="form-control" value="{{alunoObj.numero}}" placeholder="9999" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Bairro</label>
+                <input type="text" name="bairro" class="form-control" value="{{alunoObj.bairro}}" placeholder="Bairro" disabled>
+            </div>
+            <div class="col-sm-12 col-md-1 col-1">
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Cidade</label>
+                <input type="text" name="cidade" class="form-control" value="{{alunoObj.cidade}}" placeholder="Cidade" disabled>
+            </div>
+            <div class="col-sm-12 col-md-3 col-3">
+                <label >Estado</label>
+                <input type="text" name="estado" class="form-control" value="{{alunoObj.estado}}" placeholder="Estado" disabled>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >Usuario</label>
+                <input type="text" name="usuario" class="form-control" value="{{alunoObj.user.username}}" placeholder="Usuario" disabled>
+            </div>
+        </div>
+        <br />
+        <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>        
+        <button type="submit" class="btn btn-primary float-right">Editar</button>
+    </form>
+</main>
+{% endblock %}

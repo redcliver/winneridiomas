@@ -10,7 +10,7 @@ class alunoModel(models.Model):
         ('3', 'Inativo'),
     )
     user = models.OneToOneField(User, on_delete="models.CASCADE")
-    liberacao = models.CharField(max_length=1, choices=ES)
+    liberacao = models.CharField(max_length=1, choices=ES, default=1)
     nome = models.CharField(max_length=300, null=True, blank=True)
     sobrenome = models.CharField(max_length=400, null=True, blank=True)
     email = models.CharField(max_length=300, null=True, blank=True)
@@ -25,7 +25,7 @@ class alunoModel(models.Model):
     classe = models.CharField(max_length=200, null=True, blank=True)
     telefone = models.CharField(max_length=14, null=True, blank=True)
     celular = models.CharField(max_length=14, null=True, blank=True)
-    data_nascimento = models.DateTimeField(default=timezone.now())
+    dataNasc = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return self.nome
