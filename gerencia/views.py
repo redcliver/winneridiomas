@@ -101,7 +101,7 @@ def alunoNovo(request):
                                     sobrenome=sobrenome, 
                                     cpf=cpf, 
                                     rg=rg, 
-                                    data_nascimento=dataNasc, 
+                                    dataNasc=dataNasc, 
                                     email=email, 
                                     celular=celular, 
                                     telefone=telefone, 
