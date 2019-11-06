@@ -1,0 +1,16 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <h2>{{message}}</h2><br />
+    <h2>{{acessoUsuario}}</h2><br />
+    <h2>{{acessoSenha}}</h2>
+    <br />
+    <form>
+        <div>
+            <button type="submit" formaction="/gerencia/colaborador/novo" class="btn btn-primary float-left">Cadastrar outro</button>        
+            <button type="submit" formaction="/gerencia" class="btn btn-primary float-right">Finalizar</button>
+        </div>
+    </form>
+</main>
+{% endblock %}
