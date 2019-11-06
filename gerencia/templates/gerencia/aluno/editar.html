@@ -2,10 +2,25 @@
 {% block body %}
 {% load static %}
 <main>
-    <h2>Editar</h2>
+    <h2>Selecionar Aluno</h2>
     <br />
-    <div>
-        <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
-    </div>
+    <form method="POST" action="/gerencia/aluno/editar">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12">
+                <select name="alunoID" class="custom-select form-control">
+                    <option selected disabled>-- Alunos --</option>
+                    {% for alunoModel in alunoAll %}
+                        <option value="{{alunoModel.user.id}}">{{alunoModel.nome}} {{alunoModel.sobrenome}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-12"><br /></div>
+            <div class="col-12">
+                <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
+                <button type="submit" class="btn btn-primary float-right">Editar</button>
+            </div>
+        </div>
+    </form>
 </main>
 {% endblock %}
