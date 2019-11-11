@@ -62,7 +62,7 @@ class classeModel(models.Model):
         ('2', 'Bloqueada'),
         ('3', 'Inativa'),
     )
-    user = models.OneToOneField(User, on_delete="models.CASCADE")
+    id = models.AutoField(primary_key=True)
     liberacao = models.CharField(max_length=1, choices=ES, default=1)
     nome = models.CharField(max_length=300, null=True, blank=True)
     localizacao = models.CharField(max_length=300, null=True, blank=True)
