@@ -4,86 +4,85 @@
 <main>
     <form method="POST" action="/gerencia/aluno/salvar">
         {% csrf_token %} 
-        <div class="row">
-            <input type="number" name="alunoID" class="form-control" value="{{alunoObj.user.id}}">
-            <div class="col-sm-12 col-md-2 col-2">
-                <label >ID</label>
-                <input type="number" name="alunoID" class="form-control" value="{{alunoObj.user.id}}" disabled>
-            </div>
-            <div class="col-sm-12 col-md-10 col-10">
-            </div>
+        <div class="row">                
+            <input type="hidden" name="alunoID" class="form-control" value="{{alunoObj.user.id}}">
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Nome</label>
-                <input type="text" name="nome" class="form-control" value="{{alunoObj.nome}}" placeholder="Nome">
+                <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-8 col-8">
                 <label>Sobrenome</label>
-                <input type="text" name="sobrenome" class="form-control" value="{{alunoObj.sobrenome}}" placeholder="Sobrenome">
+                <input type="text" name="sobrenome" class="form-control" maxlength="400" placeholder="Sobrenome" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >CPF</label>
-                <input type="text" name="cpf" class="form-control" value="{{alunoObj.cpf}}" placeholder="CPF">
+                <input type="text" class="form-control" name="cpf" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >RG</label>
-                <input type="text" name="rg" class="form-control" value="{{alunoObj.rg}}" placeholder="RG">
+                <input type="text" class="form-control" name="rg" maxlength="13" onkeydown="javascript: fMasc( this, mRG );" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Data de Nasc.</label>
-                <input type="date" name="dataNasc" class="form-control" value="{{alunoObj.data_nascimento}}">
+                <input type="date" name="dataNasc" value="{{today}}" class="form-control">
             </div>
             <div class="col-sm-12 col-md-8 col-8">
                 <label >E-mail</label>
-                <input type="email" name="email" class="form-control" value="{{alunoObj.email}}">
+                <input type="email" name="email" maxlength="300" class="form-control" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Celular</label>
-                <input type="number" name="celular" class="form-control" value="{{alunoObj.celular}}" placeholder="9999">
+                <input type="text" class="form-control" name="celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Telefone</label>
-                <input type="number" name="telefone" class="form-control" value="{{alunoObj.telefone}}" placeholder="9999">
+                <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Classe</label>
-                <input type="text" name="classe" class="form-control" value="{{alunoObj.classe}}" placeholder="Classe">
+                <input type="text" name="classe" class="form-control" maxlength="200" placeholder="Classe" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-1 col-1">
             </div>
             <div class="col-sm-12 col-md-3 col-3">
                 <label >CEP</label>
-                <input type="number" name="cep" class="form-control" value="{{alunoObj.cep}}" placeholder="9999">
+                <input type="text" class="form-control" name="cep" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <label >Endereço</label>
-                <input type="text" name="endereco" class="form-control" value="{{alunoObj.endereco}}" placeholder="Endereço">
+                <input type="text" name="endereco" class="form-control" maxlength="400" placeholder="Endereço" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-2 col-2">
                 <label >Número</label>
-                <input type="number" name="numero" class="form-control" value="{{alunoObj.numero}}" placeholder="9999">
+                <input type="number" name="numero" class="form-control" maxlength="4" placeholder="9999" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Bairro</label>
-                <input type="text" name="bairro" class="form-control" value="{{alunoObj.bairro}}" placeholder="Bairro">
+                <input type="text" name="bairro" class="form-control" maxlength="200" placeholder="Bairro" value="{{alunoObj.nome}}">
             </div>
             <div class="col-sm-12 col-md-1 col-1">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Cidade</label>
-                <input type="text" name="cidade" class="form-control" value="{{alunoObj.cidade}}" placeholder="Cidade">
+                {% if alunoObj.cidade == '1' %}
+                    <select name="cidade" class="custom-select form-control">
+                            <option selected value="tresLagoas">Três Lagoas</option>
+                            <option value="aguaClara">Água Clara</option>
+                            <option value="ribasRioPardo">Ribas do Rio Pardo</option>
+                            <option value="campoGrade">Campo Grande</option>
+                    </select>
+                {% endif %}
             </div>
             <div class="col-sm-12 col-md-3 col-3">
                 <label >Estado</label>
-                <input type="text" name="estado" class="form-control" value="{{alunoObj.estado}}" placeholder="Estado">
-            </div>
-            <div class="col-sm-12 col-md-4 col-4">
-                <label >Usuario</label>
-                <input type="text" name="usuario" class="form-control" value="{{alunoObj.user.username}}" placeholder="Usuario">
+                <select name="cidade" class="custom-select form-control">
+                        <option selected value="treslagoas">MS</option>
+                </select>
             </div>
         </div>
         <br />
         <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>        
-        <button type="submit" class="btn btn-primary float-right">Salvar alteração</button>
+        <button type="submit" class="btn btn-primary float-right">Salvar</button>
     </form>
 </main>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import datetime
-from .models import alunoModel
+from .models import alunoModel, colaboradorModel, classeModel, cidadeModel
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
@@ -66,7 +66,9 @@ def alunoNovo(request):
             teste = request.user.pk
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
+            today = datetime.datetime.now().strftime('%Y-%m-%d')
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            cidades = cidadeModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -123,7 +125,9 @@ def alunoNovo(request):
                                                             'acessoSenha':acessoSenha})
             return render (request, 'gerencia/aluno/novo.html', {'title':'Novo Aluno', 
                                                             'msgTelaInicial':msgTelaInicial,
-                                                            'teste':teste})
+                                                            'teste':teste,
+                                                            'today':today,
+                                                            'cidades':cidades})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -139,7 +143,7 @@ def alunoVisualizar(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
             elif now >= 18 and now < 4:
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
-            alunoAll = alunoModel.objects.filter(user__last_name="ALUNO").order_by('nome')
+            alunos = alunoModel.objects.filter(user__last_name="ALUNO", liberacao=1).order_by('-nome')
             if request.method == 'POST' and request.POST.get('alunoID') != None:
                 alunoID = request.POST.get('alunoID')
                 alunoObj = alunoModel.objects.filter(user__id=alunoID).get()
@@ -149,7 +153,7 @@ def alunoVisualizar(request):
                                                             'alunoObj':alunoObj})
             return render (request, 'gerencia/aluno/buscar.html', {'title':'Buscar Aluno', 
                                                             'msgTelaInicial':msgTelaInicial,
-                                                            'alunoAll':alunoAll})
+                                                            'alunos':alunos})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -165,16 +169,18 @@ def alunoEditar(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
             elif now >= 18 and now < 4:
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
-            alunoAll = alunoModel.objects.filter(user__last_name="ALUNO").order_by('nome')
+            alunos = alunoModel.objects.filter(user__last_name="ALUNO", liberacao=1).order_by('-nome')
             if request.method == 'POST' and request.POST.get('alunoID') != None:
                 alunoID = request.POST.get('alunoID')
                 alunoObj = alunoModel.objects.filter(user__id=alunoID).get()
+                alunoDataNasc = alunoObj.dataNasc.strftime('%Y-%m-%d')
                 return render (request, 'gerencia/aluno/editarForm.html', {'title':'Editar Aluno', 
                                                             'msgTelaInicial':msgTelaInicial,
-                                                            'alunoObj':alunoObj})
+                                                            'alunoObj':alunoObj,
+                                                            'alunoDataNasc':alunoDataNasc})
             return render (request, 'gerencia/aluno/editar.html', {'title':'Selecionar Aluno', 
                                                             'msgTelaInicial':msgTelaInicial,
-                                                            'alunoAll':alunoAll})
+                                                            'alunos':alunos})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -260,6 +266,7 @@ def colaboradorNovo(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            cidades = cidadeModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -268,7 +275,8 @@ def colaboradorNovo(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
             return render (request, 'gerencia/colaborador/novo.html', {'title':'Novo Colaborador', 
-                                                            'msgTelaInicial':msgTelaInicial})
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'cidades':cidades})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -278,6 +286,7 @@ def colaboradorBuscar(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            colaboradores = colaboradorModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -286,7 +295,8 @@ def colaboradorBuscar(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
             return render (request, 'gerencia/colaborador/buscar.html', {'title':'Buscar Colaborador', 
-                                                            'msgTelaInicial':msgTelaInicial})
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'colaboradores':colaboradores})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -296,6 +306,7 @@ def colaboradorEditar(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            colaboradores = colaboradorModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -304,7 +315,8 @@ def colaboradorEditar(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
             return render (request, 'gerencia/colaborador/editar.html', {'title':'Editar Colaborador', 
-                                                            'msgTelaInicial':msgTelaInicial})
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'colaboradores':colaboradores})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -332,6 +344,7 @@ def classeNovo(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            cidades = cidadeModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -340,7 +353,8 @@ def classeNovo(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
             return render (request, 'gerencia/classe/novo.html', {'title':'Nova Classe', 
-                                                            'msgTelaInicial':msgTelaInicial})
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'cidades':cidades})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -350,6 +364,7 @@ def classeBuscar(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            classes = classeModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -358,7 +373,8 @@ def classeBuscar(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
             return render (request, 'gerencia/classe/buscar.html', {'title':'Buscar Classe', 
-                                                            'msgTelaInicial':msgTelaInicial})
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'classes':classes})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -368,6 +384,7 @@ def classeEditar(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            classes = classeModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -376,6 +393,7 @@ def classeEditar(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
             return render (request, 'gerencia/classe/editar.html', {'title':'Editar Classe', 
-                                                            'msgTelaInicial':msgTelaInicial})
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'classes':classes})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
