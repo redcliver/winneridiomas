@@ -2,10 +2,25 @@
 {% block body %}
 {% load static %}
 <main>
-    <h2>Busca</h2>
+    <h2>Selecionar Classe</h2>
     <br />
-    <div>
-        <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
-    </div>
+    <form method="POST" action="/gerencia/classe/visualizar">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12">
+                <select name="colaboradorID" class="custom-select form-control">
+                    <option selected disabled>-- Classes --</option>
+                    {% for classeModel in classes %}
+                        <option value="{{classeModel.id}}">{{classeModel.nome}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-12"><br /></div>
+            <div class="col-12">
+                <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
+                <button type="submit" class="btn btn-primary float-right">Editar</button>
+            </div>
+        </div>
+    </form>
 </main>
 {% endblock %}

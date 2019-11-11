@@ -2,10 +2,44 @@
 {% block body %}
 {% load static %}
 <main>
-    <h2>Novo</h2>
-    <br />
-    <div>
-        <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
-    </div>
+    <form method="POST" action="/gerencia/colaborador/novo">
+        {% csrf_token %} 
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-10">
+                <label >Nome</label>
+                <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome">
+            </div>
+            <div class="col-sm-12 col-md-2 col-2">
+                <label>Capacidade</label>
+                <input type="number" name="capacidade" maxlength="3" class="form-control">
+            </div>
+            <div class="col-sm-12 col-md-12 col-12">
+                <label >E-mail</label>
+                <input type="email" name="email" class="form-control" maxlength="300" placeholder="E-mail">
+            </div>
+            <div class="col-sm-12 col-md-4 col-4">
+                <label >CEP</label>
+                <input type="text" class="form-control" name="cep" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );">
+            </div>
+            <div class="col-sm-12 col-md-6 col-6">
+                <label >Cidade</label>
+                <select name="cidade" class="custom-select form-control">
+                    <option selected disabled>-- Cidades --</option>
+                    {% for cidadeModel in cidades %}
+                        <option value="{{cidadeModel.id}}">{{cidadeModel.nome}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-12 col-md-2 col-2">
+                <label >Estado</label>
+                <select name="cidade" class="custom-select form-control">
+                        <option selected value="12">MS</option>
+                </select>
+            </div>
+        </div>
+        <br />
+        <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>        
+        <button type="submit" class="btn btn-primary float-right">Salvar</button>
+    </form>
 </main>
 {% endblock %}

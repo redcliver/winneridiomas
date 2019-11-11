@@ -10,7 +10,7 @@
             <div class="col-12">
                 <select name="colaboradorID" class="custom-select form-control">
                     <option selected disabled>-- Colaboradores --</option>
-                    {% for colaboradorModel in colaboradorAll %}
+                    {% for colaboradorModel in alunos %}
                         <option value="{{colaboradorModel.user.id}}">{{colaboradorModel.nome}} {{colaboradorModel.sobrenome}}</option>
                     {% endfor %}
                 </select>
