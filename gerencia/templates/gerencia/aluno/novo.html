@@ -39,17 +39,21 @@
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Classe</label>
-                <input type="text" name="classe" class="form-control" maxlength="200" placeholder="Classe">
-            </div>
+                <select name="classeID" class="custom-select form-control">
+                    <option selected disabled>-- Classes --</option>
+                    {% for classeModel in classes %}
+                        <option value="{{classeModel.id}}">{{classeModel.nome}}</option>
+                    {% endfor %}
+                </select>            </div>
             <div class="col-sm-12 col-md-1 col-1">
             </div>
             <div class="col-sm-12 col-md-3 col-3">
                 <label >CEP</label>
-                <input type="text" class="form-control" name="cep" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );">
+                <input type="text" class="form-control"  id="cep" name="cep" maxlength="9" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <label >Endereço</label>
-                <input type="text" name="endereco" class="form-control" maxlength="400" placeholder="Endereço">
+                <input type="text" name="endereco" id="rua" class="form-control" maxlength="400" placeholder="Endereço">
             </div>
             <div class="col-sm-12 col-md-2 col-2">
                 <label >Número</label>
@@ -57,23 +61,24 @@
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Bairro</label>
-                <input type="text" name="bairro" class="form-control" maxlength="200" placeholder="Bairro">
+                <input type="text" name="bairro"  id="bairro" class="form-control" maxlength="200" placeholder="Bairro">
             </div>
             <div class="col-sm-12 col-md-1 col-1">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >Cidade</label>
-                <select name="cidade" class="custom-select form-control">
+                <select name="cidade" id="city" class="custom-select form-control">
                     <option selected disabled>-- Cidades --</option>
                     {% for cidadeModel in cidades %}
-                        <option value="{{cidadeModel.id}}">{{cidadeModel.nome}}</option>
+                        <option value="{{cidadeModel.nome}}">{{cidadeModel.nome}}</option>
                     {% endfor %}
                 </select>
+                <input type="text" name="cidade" id="cidade" class="form-control" maxlength="200" placeholder="Cidade">
             </div>
             <div class="col-sm-12 col-md-3 col-3">
                 <label >Estado</label>
-                <select name="cidade" class="custom-select form-control">
-                        <option selected value="12">MS</option>
+                <select name="estado" id="estate" class="custom-select form-control">
+                    <option selected value="12">MS</option>
                 </select>
             </div>
         </div>

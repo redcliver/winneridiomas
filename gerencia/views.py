@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import datetime
-from .models import alunoModel, colaboradorModel, classeModel, cidadeModel
+from .models import alunoModel, colaboradorModel, salaModel, cidadeModel
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
@@ -69,6 +69,7 @@ def alunoNovo(request):
             today = datetime.datetime.now().strftime('%Y-%m-%d')
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
             cidades = cidadeModel.objects.filter(liberacao=1).order_by('-nome')
+            classes = salaModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -84,13 +85,12 @@ def alunoNovo(request):
                 email = request.POST.get('email')
                 celular = request.POST.get('celular')
                 telefone = request.POST.get('telefone')
-                classe = request.POST.get('classe')
+                classeID = request.POST.get('classeID')
                 cep = request.POST.get('cep')
                 endereco = request.POST.get('endereco')
                 numero = request.POST.get('numero')
                 bairro = request.POST.get('bairro')
-                cidade = request.POST.get('cidade')
-                estado = request.POST.get('estado')
+                cidadeID = request.POST.get('cidadeID')
                 sobrenomeList = sobrenome.split()
                 usuario = nome[0].lower() + sobrenomeList[-1].lower()
                 numAleatorio = get_random_string(length=4, allowed_chars='1234567890')
@@ -98,6 +98,8 @@ def alunoNovo(request):
                 tipo = "ALUNO"
                 novoUsuario = User.objects.create_user(username=usuario, password=senha ,first_name=nome, last_name=tipo, email=email)
                 novoUsuario.save()
+                cidadeObj = cidadeModel.objects.filter(id=cidadeID).get()
+                classeObj = salaModel.objects.filter(id=classeID).get()
                 novoAluno = alunoModel(user=novoUsuario,
                                     nome=nome, 
                                     sobrenome=sobrenome, 
@@ -107,13 +109,12 @@ def alunoNovo(request):
                                     email=email, 
                                     celular=celular, 
                                     telefone=telefone, 
-                                    classe=classe, 
+                                    classe=classeObj, 
                                     cep=cep,
                                     endereco=endereco,
                                     numero=numero,
                                     bairro=bairro,
-                                    cidade=cidade,
-                                    estado=estado)
+                                    cidadeEstado=cidadeObj)
                 novoAluno.save()
                 message = "O aluno : " + nome + " "+ sobrenome +", foi adicionado com sucesso!"
                 acessoUsuario = "Usuário: " + usuario 
@@ -127,7 +128,8 @@ def alunoNovo(request):
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'teste':teste,
                                                             'today':today,
-                                                            'cidades':cidades})
+                                                            'cidades':cidades,
+                                                            'classes':classes})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -364,7 +366,7 @@ def classeBuscar(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
-            classes = classeModel.objects.filter(liberacao=1).order_by('-nome')
+            classes = salaModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
@@ -384,7 +386,7 @@ def classeEditar(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
-            classes = classeModel.objects.filter(liberacao=1).order_by('-nome')
+            classes = salaModel.objects.filter(liberacao=1).order_by('-nome')
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
             elif now > 11 and now < 18:
