@@ -19,11 +19,11 @@
             </div>
             <div class="col-sm-12 col-md-4 col-4">
                 <label >CEP</label>
-                <input type="text" class="form-control" name="cep" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );">
+                <input type="text" class="form-control"  id="cep" name="cep" maxlength="9" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);">
             </div>
             <div class="col-sm-12 col-md-6 col-6">
                 <label >Cidade</label>
-                <select name="cidade" class="custom-select form-control">
+                <select name="cidade" id="city" class="custom-select form-control">
                     <option selected disabled>-- Cidades --</option>
                     {% for cidadeModel in cidades %}
                         <option value="{{cidadeModel.id}}">{{cidadeModel.nome}}</option>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-sm-12 col-md-2 col-2">
                 <label >Estado</label>
-                <select name="cidade" class="custom-select form-control">
+                <select name="estado" id="estate" class="custom-select form-control">
                         <option selected value="12">MS</option>
                 </select>
             </div>
