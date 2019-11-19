@@ -61,21 +61,29 @@
             </div>
             <div class="col-sm-12 col-md-1 col-1">
             </div>
-            <div class="col-sm-12 col-md-4 col-4">
-                <label >Cidade</label>
-                <select name="cidade" class="custom-select form-control">
-                    <option selected disabled>-- Cidades --</option>
-                    {% for cidadeModel in cidades %}
-                        <option value="{{cidadeModel.id}}">{{cidadeModel.nome}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-sm-12 col-md-3 col-3">
-                <label >Estado</label>
-                <select name="cidade" class="custom-select form-control">
-                        <option selected value="12">MS</option>
-                </select>
-            </div>
+            {% if cidades %}
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Cidade</label>
+                    <select name="cidade" class="custom-select form-control">
+                        <option selected disabled>-- Cidades --</option>
+                        {% for cidadeModel in cidades %}
+                            <option value="{{cidadeModel.id}}">{{cidadeModel.nome}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-3 col-3">
+                    <label >Estado</label>
+                    <select name="cidade" class="custom-select form-control">
+                            <option selected value="12">MS</option>
+                    </select>
+                </div>
+            {% else %}
+                <div class="col-sm-12 col-md-4 col-4">
+                </div>
+                <div class="col-sm-12 col-md-3 col-3">
+                </div>
+            {% endif %}
+            
         </div>
         <br />
         <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>        
