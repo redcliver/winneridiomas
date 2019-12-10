@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from website.models import contato, registro
+from website.models import contato, registro, indicacao
 from django.core.mail import EmailMessage
 import datetime
 
@@ -9,9 +9,42 @@ def paginaPrincipal(request):
 
 def cursos(request):
     return render(request, 'site/cursos.html', {'title': 'Cursos'})
+def kids(request):
+    return render(request, 'site/cursos/kids.html', {'title': 'Kids'})
+def adult(request):
+    return render(request, 'site/cursos/adult.html', {'title': 'Adult'})
+def business(request):
+    return render(request, 'site/cursos/business.html', {'title': 'Business'})
+def inCompany(request):
+    return render(request, 'site/cursos/inCompany.html', {'title': 'In Company'})
+def testPreparation(request):
+    return render(request, 'site/cursos/testPreparation.html', {'title': 'Test Preparation'})
+def vip(request):
+    return render(request, 'site/cursos/vip.html', {'title': 'VIP'})
 
-def unidades(request):
-    return render(request, 'site/unidades.html', {'title': 'Unidades'})
+def tresLagoas(request):
+    return render(request, 'site/tresLagoas.html', {'title': 'Três Lagoas'})
+def aguaClara(request):
+    return render(request, 'site/aguaClara.html', {'title': 'Água Clara'})
+def ribasRioPardo(request):
+    return render(request, 'site/ribasRioPardo.html', {'title': 'Ribas do Rio Pardo'})
+
+def parceiros(request):
+    return render(request, 'site/parceiros.html', {'title': 'Parceiros'})
+
+def indiqueParceiro(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        sobrenome = request.POST.get('sobrenome')
+        empresa = request.POST.get('empresa')
+        email = request.POST.get('email')
+        telefone = request.POST.get('telefone')
+        mensagem = request.POST.get('mensagem')
+        novaIndicacao = indicacao(nome=nome, empresa=empresa, sobrenome=sobrenome, email=email, telefone=telefone, mensagem=mensagem)
+        novaIndicacao.save()
+        msgConfirmação = "Indicação enviada com sucesso!"
+        return render(request, 'site/home.html', {'title': 'Home', 'msgConfirmação':msgConfirmação})
+    return render(request, 'site/indiqueParceiro.html', {'title': 'Indique Parceiros'})
 
 def nivelamento(request):
     return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})

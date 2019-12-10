@@ -178,6 +178,14 @@ div.item {
 	text-align: center;
 }
 
+.logo div {
+    height: 60px !important;
+}
+
+.parceiros{
+    height: 250px;
+    width: auto;
+}
 
 /* #0663FF */
 

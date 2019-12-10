@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<div class="main-container">
+	<div class="jumbotron container" style="background: #ffffff">
+        <p><img src="{% static '/icones/contato.svg' %}" class="svg cabecalho" alt="">  <h3 class="cabecalho-text">Indique um parceiro</h3></p>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-7 ">
+                <h4 class="text-justify">&nbsp; Deixe o contato do responsável da empresa para que possamos entrar em contato.</h4>
+            </div>
+            <div class="col-5 ">
+                <form method="POST" action="/indiqueParceiro">
+                {% csrf_token %}
+                    <div class="col">
+                        <span>Nome<span class="requerido">*</span></span>
+                        <input type="text" maxlength="200" class="form-control" placeholder="Nome" name="nome" required>
+                    </div><br>
+                    <div class="col">
+                        <span>Sobrenome</span>
+                        <input type="text" maxlength="200" class="form-control" placeholder="Sobrenome" name="sobrenome">
+                    </div><br>
+                    <div class="col">
+                        <span>Empresa<span class="requerido">*</span></span>
+                        <input type="text" maxlength="200" class="form-control" placeholder="Empresa" name="empresa" required>
+                    </div><br>
+                    <div class="col">
+                        <span>E-mail</span>
+                        <input type="text" maxlength="200" class="form-control" placeholder="E-mail" name="email" >
+                    </div><br>
+                    <div class="col">
+                        <span>Telefone</span>
+                        <input type="text" maxlength="14" class="form-control" placeholder="Telefone" name="telefone">
+                    </div><br>
+                    <div class="col">
+                        <span>Mensagem</span>
+                        <textarea maxlength="500" class="form-control" rows="5" placeholder="Digite aqui..." name="mensagem" ></textarea>
+                    </div><br>
+                    <div class="col float-right">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

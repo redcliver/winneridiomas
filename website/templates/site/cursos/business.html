@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<div class="main-container">
+	<div class="jumbotron container" style="background: #ffffff">
+	    <p><img src="{% static '/icones/cabecalho.svg' %}" class="svg cabecalho" alt=""><h3 class="cabecalho-text">Cursos</h3></p>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col">
+                <h3 class="curso-head">Business</h3>
+                <h5 class="cursos">Nosso curso de inglês para negócios destina-se a pessoas que precisam falar inglês com confiança em um ambiente de trabalho. Callan for Business foi cuidadosamente desenvolvido, compreende por volta de 700 palavras de vocabulário relacionadas a negócios, expressões mais utilizadas, treinamento de criação de relatórios, memorandos, cartas entre outros.</h5>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

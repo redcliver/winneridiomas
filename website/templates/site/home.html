@@ -4,7 +4,9 @@
 {% load static %}
 {% load cloudinary %}
 <!-- Home -->
-
+	{% if msgConfirmação %}
+		<script>alert('{{msgConfirmação}}')</script>
+	{% endif %}
 	<div class="home">
 
 		<!-- Hero Slider -->

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<div class="main-container">
+	<div class="jumbotron container" style="background: #ffffff">
+	    <p><img src="{% static '/icones/cabecalho.svg' %}" class="svg cabecalho" alt=""><h3 class="cabecalho-text">Cursos</h3></p>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col">
+                <h3 class="curso-head">In Company</h3>
+                <h5 class="curso">O formato foi elaborado para atender de forma eficaz às necessidades de tempo e espaço das empresas, permitindo que o colaborador aprenda um novo idioma e enfrente de forma competitiva as situações do dia a dia profissional.</h5>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

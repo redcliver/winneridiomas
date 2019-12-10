@@ -25,6 +25,11 @@
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<style>
+	.logo-winner{
+		height: 60px;
+		width: auto;
+	}
+
 	.whatsapp {
 		color: white;
 		padding: 10px;
@@ -82,6 +87,49 @@
 		z-index: 10;
 	}
 
+	.dropbtn-winner {
+		background-color: transparent;
+		border: none;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 14px;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: #3a3a3a;
+		-webkit-transition: all 200ms ease;
+		-moz-transition: all 200ms ease;
+		-ms-transition: all 200ms ease;
+		-o-transition: all 200ms ease;
+		transition: all 200ms ease;
+	}
+
+	.dropdown-winner {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown-content-winner {
+		display: none;
+		position: absolute;
+		background-color: #f1f1f1;
+		min-width: 160px;
+		border-radius: 10px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
+
+	.dropdown-content-winner a {
+		color: #3a3a3a;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown-content-winner a:hover {background-color: #ddd; border-radius: 10px;}
+
+	.dropdown-winner:hover .dropdown-content-winner {display: block;}
+
+	.dropdown-winner:hover .dropbtn-winner {background-color: transparent; color: #2e61fa;}
+
 	@media (max-width: 768px) {
 		#whatsapp-toggle-mobile{
 			display: inline-block;
@@ -120,7 +168,7 @@
 			<!-- Logo -->
 			<div class="logo_container">
 				<div class="logo">
-					<a href="/"><img src="{% static '/images/winner_logo2.png' %}" alt="Winner Idiomas."></a>
+					<a href="/"><img class="logo-winner" src="{% static '/images/winner_logo2.png' %}" alt="Winner Idiomas."></a>
                     
 				</div>
 			</div>
@@ -129,10 +177,40 @@
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="/cursos">cursos</a></li>
-						<li class="main_nav_item"><a href="/unidades">unidades</a></li>
+						<li class="main_nav_item">
+							<div class="dropdown-winner">
+								<button class="dropbtn-winner">cursos</button>
+								<div class="dropdown-content-winner">
+									<a href="/kids">Kids</a>
+									<a href="/adult">Adults</a>
+									<a href="/business">Business</a>
+									<a href="/inCompany">In Company</a>
+									<a href="/testPreparation">Tests Preparation</a>
+									<a href="/vip">VIP</a>
+								</div>
+							</div>
+						</li>
+						<li class="main_nav_item">
+							<div class="dropdown-winner">
+								<button class="dropbtn-winner">unidades</button>
+								<div class="dropdown-content-winner">
+									<a href="/tresLagoas">Três Lagoas</a>
+									<a href="/aguaClara">Água Clara</a>
+									<a href="/ribasRioPardo">Ribas do Rio Pardo</a>
+								</div>
+							</div>
+						</li>
 						<li class="main_nav_item"><a href="/nivelamento">teste de nivelamento</a></li>
 						<li class="main_nav_item"><a href="/contato">contato</a></li>
+						<li class="main_nav_item">
+							<div class="dropdown-winner">
+								<button class="dropbtn-winner">parceiros</button>
+								<div class="dropdown-content-winner">
+									<a href=/parceiros>Nossos Parceiros</a>
+									<a href="/indiqueParceiro">Indique um parceiro</a>
+								</div>
+							</div>
+						</li>
 						<li class="main_nav_item"><a href="/entrar">entrar</a></li>
 					</ul>
 				</div>
