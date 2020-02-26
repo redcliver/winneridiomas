@@ -8,29 +8,51 @@ import datetime
 def paginaPrincipal(request):
     now = datetime.datetime.now().strftime('%H')
     now = int(now)
-
-    eventoObj1 = eventoModel.objects.latest('id')
-    tituloEvento1 = eventoObj1.titulo
-    descBreveEvento1 = eventoObj1.descricao
-    dataEvento1 = eventoObj1.data_evento
-    diaEvento1 = dataEvento1.strftime("%d")
-    mesEvento1 = dataEvento1.strftime("%B")
-    evento2 = int(eventoObj1.id) - 1
+    try:
+        eventoObj1 = eventoModel.objects.latest('id')
+        tituloEvento1 = eventoObj1.titulo
+        descBreveEvento1 = eventoObj1.descricao
+        dataEvento1 = eventoObj1.data_evento
+        diaEvento1 = dataEvento1.strftime("%d")
+        mesEvento1 = dataEvento1.strftime("%B")
+        evento2 = int(eventoObj1.id) - 1
+    except:
+        eventoObj1 = None
+        tituloEvento1 = None
+        descBreveEvento1 = None
+        diaEvento1 = None
+        mesEvento1 = None
+        evento2 = None
     
-    eventoObj2 = eventoModel.objects.get(id=evento2)
-    tituloEvento2 = eventoObj2.titulo
-    descBreveEvento2 = eventoObj2.descricao
-    dataEvento2 = eventoObj2.data_evento
-    diaEvento2 = dataEvento2.strftime("%d")
-    mesEvento2 = dataEvento2.strftime("%B")
-    evento3 = int(eventoObj2.id) - 1
+    try:
+        eventoObj2 = eventoModel.objects.get(id=evento2)
+        tituloEvento2 = eventoObj2.titulo
+        descBreveEvento2 = eventoObj2.descricao
+        dataEvento2 = eventoObj2.data_evento
+        diaEvento2 = dataEvento2.strftime("%d")
+        mesEvento2 = dataEvento2.strftime("%B")
+        evento3 = int(eventoObj2.id) - 1
+    except:
+        eventoObj2 = None
+        tituloEvento2 = None
+        descBreveEvento2 = None
+        diaEvento2 = None
+        mesEvento2 = None
+        evento3 = None
     
-    eventoObj3 = eventoModel.objects.get(id=evento2)
-    tituloEvento3 = eventoObj3.titulo
-    descBreveEvento3 = eventoObj3.descricao
-    dataEvento3 = eventoObj3.data_evento
-    diaEvento3 = dataEvento3.strftime("%d")
-    mesEvento3 = dataEvento3.strftime("%B")
+    try:
+        eventoObj3 = eventoModel.objects.get(id=evento2)
+        tituloEvento3 = eventoObj3.titulo
+        descBreveEvento3 = eventoObj3.descricao
+        dataEvento3 = eventoObj3.data_evento
+        diaEvento3 = dataEvento3.strftime("%d")
+        mesEvento3 = dataEvento3.strftime("%B")
+    except:
+        eventoObj3 = None
+        tituloEvento3 = None
+        descBreveEvento3 = None
+        diaEvento3 = None
+        mesEvento3 = None
     return render(request, 'site/home.html', {'title': 'Home',
                                                 'tituloEvento1': tituloEvento1,
                                                 'descBreveEvento1': descBreveEvento1,
