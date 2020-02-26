@@ -1,6 +1,7 @@
 {% extends 'diretoria_base.html' %}
 {% block body %}
 {% load static %}
+{% load cloudinary %}
 <main>
     <h1>Novo Evento</h1><br />
     <form enctype="multipart/form-data" method="POST" action="/evento/novo">
@@ -89,7 +90,7 @@
 
                         <div class="col-lg-4 order-lg-3 order-1">
                             <div class="event_image">
-                                <img src='{{ MEDIA_URL }}{{ imgFile }}'>
+                                {% cloudinary imgFile.imagem_capa widht=80 crop="pad" %}
                             </div>
                         </div>
                         <h4>{{buttonImagen}}</h4>

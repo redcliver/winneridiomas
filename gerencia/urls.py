@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -18,5 +20,7 @@ urlpatterns = [
     url(r'^classe/novo', views.classeNovo),
     url(r'^classe/buscar', views.classeBuscar),
     url(r'^classe/editar', views.classeEditar),
+    url(r'^evento/$', views.eventoGeral),
 ]
 
+urlpatterns += static(settings.MEDIA_URL, documento_root=settings.MEDIA_ROOT)

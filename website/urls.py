@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^registro', views.viewRegistro),
     url(r'^parceiros', views.parceiros),
     url(r'^indiqueParceiro', views.indiqueParceiro),
+    url(r'^unidades', views.unidades),
     url(r'^tresLagoas', views.tresLagoas),
     url(r'^aguaClara', views.aguaClara),
     url(r'^ribasRioPardo', views.ribasRioPardo),

@@ -75,9 +75,9 @@ def eventoNovo(request):
             diaEvento = dataFormatadaEvento.strftime("%d")
             mesEvento = dataFormatadaEvento.strftime("%B")
             eventoObj = "aaaa"
-            novaImg = imagem(name=tituloEvento, imagefile=imageFile)
+            novaImg = eventoModel(titulo=tituloEvento, descricao=descBreveEvento, conteudo=descCompletaEvento, imagem_capa=imageFile)
             novaImg.save()
-            imgFile= novaImg.imagefile
+            imgFile= novaImg
             return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'teste':teste,

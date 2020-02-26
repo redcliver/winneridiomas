@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import posixpath
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import dj_database_url
 import django_heroku
 
@@ -136,12 +139,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-CLOUDINARY = {
-    'cloud_name' : 'dslsetu2r',
-    'api_key' : '651931867659912',
-    'api_secret': 'ZVl8mVDZhHcoXvbasFGjHBVH5RI'
-}
+cloudinary.config( 
+  cloud_name = "dslsetu2r", 
+  api_key = "651931867659912", 
+  api_secret = "ZVl8mVDZhHcoXvbasFGjHBVH5RI" 
+)
+#CLOUDINARY = {
+#    'cloud_name' : 'dslsetu2r',
+#    'api_key' : '651931867659912',
+#    'api_secret': 'ZVl8mVDZhHcoXvbasFGjHBVH5RI'
+#}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -172,7 +179,7 @@ STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL= "/media/"
 

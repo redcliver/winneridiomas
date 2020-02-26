@@ -114,3 +114,20 @@ class alunoModel(models.Model):
 
     def __str__(self):
         return self.nome
+
+class eventoModel(models.Model):
+    ES = (
+        ('1', 'Ativo'),
+        ('2', 'Bloqueado'),
+        ('3', 'Inativo'),
+    )
+    user = models.OneToOneField(User, on_delete="models.CASCADE")
+    liberacao = models.CharField(max_length=1, choices=ES, default=1)
+    titulo = models.CharField(max_length=300, null=True, blank=True)
+    descricao = models.CharField(max_length=1000, null=True, blank=True)
+    imageCapa = models.ImageField(default='default.png', blank=True)
+    dataEvento = models.DateTimeField(default=timezone.now)
+    dataCadastro = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.nome

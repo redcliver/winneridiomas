@@ -19,14 +19,14 @@
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="d-block w-100" src="{% static '/images/slider_background.jpg' %}" alt="First slide">
-                </div>
-                <!--<div class="carousel-item">
-                  <img class="d-block w-100" src="{% static '/images/slider_background.jpg' %}" alt="Second slide">
+                  <img class="d-block w-100" src="{% static '/images/slider_background_1.jpg' %}" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                  <img class="d-block w-100" src="{% static '/images/slider_background.jpg' %}" alt="Third slide">
-                </div>-->
+                  <img class="d-block w-100" src="{% static '/images/slider_background_2.jpg' %}" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="{% static '/images/slider_background_3.jpg' %}" alt="Third slide">
+                </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -82,7 +82,7 @@
 	</div>
 
 
-	<div class="services page_section">
+	<div class="services page_section" style="padding-top: 150px;">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -157,7 +157,7 @@
 	</div>
 
 	<!-- Register -->
-
+<!--
 	<div class="register">
 
 		<div class="container-fluid">
@@ -165,7 +165,7 @@
 			<div class="row row-eq-height">
 				<div class="col-lg-6 nopadding">
 					
-					<!-- Register -->
+					#Register
 
 					<div class="register_section d-flex flex-column align-items-center justify-content-center">
 						<div class="register_content text-center">
@@ -179,7 +179,7 @@
 
 				<div class="col-lg-6 nopadding">
 					
-					<!-- Search -->
+					Search 
 
 					<div class="search_section d-flex flex-column align-items-center justify-content-center">
 						<div class="search_background" style="background-image:url(../static/images/search_background.jpg);"></div>
@@ -197,14 +197,13 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</div>-->
 
 
 	
 	<!-- Events -->
 
-	<div class="events page_section">
+	<div class="events page_section" style="padding-top: 50px;">
 		<div class="container">
 			
 			<div class="row">
@@ -216,97 +215,97 @@
 			</div>
 			
 			<div class="event_items">
-
+				{% if eventoObj1 %}
 				<!-- Event Item -->
 				<div class="row event_item">
 					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
+						<div class="row d-flex flex-row align-items-end ">
 
 							<div class="col-lg-2 order-lg-1 order-2">
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">15</div>
-									<div class="event_month">Agosto</div>
+									<div class="event_day">{{diaEvento1}}</div>
+									<div class="event_month">{{mesEvento1}}</div>
 								</div>
 							</div>
-
+	
 							<div class="col-lg-6 order-lg-2 order-3">
 								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Evento dia 15/08</a></div>
-									<div class="event_location">Winner Idiomas</div>
-									<p>O evento acontecerá na sede da winner idiomas em Três Lagoas - MS</p>
+									<div class="event_name"><a class="trans_200" href="">{{tituloEvento1}}</a></div>
+									<div class="event_location">{{localEvento1}}</div>
+									<p>{{descBreveEvento1}}</p>
 								</div>
 							</div>
-
+	
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
-									{% cloudinary "teste.jpg" %}
-									<img src="{{ MEDIA_URL }}{{ imgFile }}" alt="https://unsplash.com/@theunsteady5">
+									{% cloudinary eventoObj1.imagem_capa widht=80 crop="pad" %}
 								</div>
 							</div>
-
-						</div>	
+						</div>
 					</div>
 				</div>
-
+				{% endif %}
+				{% if eventoObj2 %}
 				<!-- Event Item -->
 				<div class="row event_item">
 					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
+						<div class="row d-flex flex-row align-items-end ">
 
 							<div class="col-lg-2 order-lg-1 order-2">
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">10</div>
-									<div class="event_month">Agosto</div>
+									<div class="event_day">{{diaEvento2}}</div>
+									<div class="event_month">{{mesEvento2}}</div>
 								</div>
 							</div>
-
+	
 							<div class="col-lg-6 order-lg-2 order-3">
 								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Evento dia 10/08</a></div>
-									<div class="event_location">Winner Idiomas</div>
-									<p>O evento acontecerá na sede da winner idiomas em Três Lagoas - MS</p>
+									<div class="event_name"><a class="trans_200" href="">{{tituloEvento2}}</a></div>
+									<div class="event_location">{{localEvento2}}</div>
+									<p>{{descBreveEvento2}}</p>
 								</div>
 							</div>
-
+	
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
-									<img src="{{ MEDIA_URL }}{{ imgFile }}" alt="https://unsplash.com/@theunsteady5">
+									{% cloudinary eventoObj2.imagem_capa widht=80 crop="pad" %}
 								</div>
 							</div>
-
-						</div>	
+						</div>
 					</div>
 				</div>
-
+				{% endif %}
+				{% if eventoObj3 %}
 				<!-- Event Item -->
 				<div class="row event_item">
 					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
+						<div class="row d-flex flex-row align-items-end ">
 
 							<div class="col-lg-2 order-lg-1 order-2">
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">07</div>
-									<div class="event_month">Agosto</div>
+									<div class="event_day">{{diaEvento3}}</div>
+									<div class="event_month">{{mesEvento3}}</div>
 								</div>
 							</div>
-
+	
 							<div class="col-lg-6 order-lg-2 order-3">
 								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Evento dia 07/08</a></div>
-									<div class="event_location">Winner Idiomas</div>
-									<p>O evento acontecerá na sede da winner idiomas em Três Lagoas - MS</p>
+									<div class="event_name"><a class="trans_200" href="">{{tituloEvento1}}</a></div>
+									<div class="event_location">{{localEvento3}}</div>
+									<p>{{descBreveEvento3}}</p>
 								</div>
 							</div>
-
+	
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
-									<img src="{{ MEDIA_URL }}{{ imgFile }}" alt="https://unsplash.com/@theunsteady5">
+									{% cloudinary eventoObj3.imagem_capa widht=80 crop="pad" %}
 								</div>
 							</div>
-
-						</div>	
+						</div>
 					</div>
 				</div>
+				{% endif %}
+
 
 			</div>
 				

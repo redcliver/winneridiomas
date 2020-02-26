@@ -1,11 +1,52 @@
 from django.shortcuts import render
 from website.models import contato, registro, indicacao
+from evento.models import eventoModel
 from django.core.mail import EmailMessage
 import datetime
 
 # Create your views here.
 def paginaPrincipal(request):
-    return render(request, 'site/home.html', {'title': 'Home'})
+    now = datetime.datetime.now().strftime('%H')
+    now = int(now)
+
+    eventoObj1 = eventoModel.objects.latest('id')
+    tituloEvento1 = eventoObj1.titulo
+    descBreveEvento1 = eventoObj1.descricao
+    dataEvento1 = eventoObj1.data_evento
+    diaEvento1 = dataEvento1.strftime("%d")
+    mesEvento1 = dataEvento1.strftime("%B")
+    evento2 = int(eventoObj1.id) - 1
+    
+    eventoObj2 = eventoModel.objects.get(id=evento2)
+    tituloEvento2 = eventoObj2.titulo
+    descBreveEvento2 = eventoObj2.descricao
+    dataEvento2 = eventoObj2.data_evento
+    diaEvento2 = dataEvento2.strftime("%d")
+    mesEvento2 = dataEvento2.strftime("%B")
+    evento3 = int(eventoObj2.id) - 1
+    
+    eventoObj3 = eventoModel.objects.get(id=evento2)
+    tituloEvento3 = eventoObj3.titulo
+    descBreveEvento3 = eventoObj3.descricao
+    dataEvento3 = eventoObj3.data_evento
+    diaEvento3 = dataEvento3.strftime("%d")
+    mesEvento3 = dataEvento3.strftime("%B")
+    return render(request, 'site/home.html', {'title': 'Home',
+                                                'tituloEvento1': tituloEvento1,
+                                                'descBreveEvento1': descBreveEvento1,
+                                                'diaEvento1': diaEvento1,
+                                                'mesEvento1': mesEvento1,
+                                                'eventoObj1':eventoObj1,
+                                                'tituloEvento2': tituloEvento2,
+                                                'descBreveEvento2': descBreveEvento2,
+                                                'diaEvento2': diaEvento2,
+                                                'mesEvento2': mesEvento2,
+                                                'eventoObj2':eventoObj2,
+                                                'tituloEvento3': tituloEvento3,
+                                                'descBreveEvento3': descBreveEvento3,
+                                                'diaEvento3': diaEvento3,
+                                                'mesEvento3': mesEvento3,
+                                                'eventoObj3':eventoObj3})
 
 def cursos(request):
     return render(request, 'site/cursos.html', {'title': 'Cursos'})
@@ -22,6 +63,8 @@ def testPreparation(request):
 def vip(request):
     return render(request, 'site/cursos/vip.html', {'title': 'VIP'})
 
+def unidades(request):
+    return render(request, 'site/unidades.html', {'title': 'Unidades'})
 def tresLagoas(request):
     return render(request, 'site/tresLagoas.html', {'title': 'Três Lagoas'})
 def aguaClara(request):

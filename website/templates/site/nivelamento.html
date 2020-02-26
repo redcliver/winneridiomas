@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-
 {% block body %}
 {% load static %}
-<div class="container">
-    <img class="d-block w-100" style="padding-top: 150px;" src="{% static '/images/404Error.jpg' %}" alt="First slide">
+<div class="main-container">
+	<div class="jumbotron container" style="background: #ffffff">
+        <p><img src="{% static '/icones/exam.svg' %}" class="svg cabecalho" alt="">  <h3 class="cabecalho-text">Teste de nivelamento</h3></p>
+    </div>
 </div>
 {% endblock %}
