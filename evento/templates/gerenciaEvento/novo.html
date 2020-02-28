@@ -7,6 +7,7 @@
     <form enctype="multipart/form-data" method="POST" action="/evento/novo">
         {% csrf_token %}
         <div class="row" >
+            {% if not eventoObj %}
             <div class="col-md-8">
                 <span>Titulo do evento:</span>
                 <div class="input-group mb-3">
@@ -34,40 +35,89 @@
                     </div>
             </div>
             <div class="col-md-12">
+                <span>Endereço do evento:</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Ex: Rua Bruno Ga...</span>
+                    </div>
+                    <input type="text" name="localEvento" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="col-md-12">
                 <span>Upload da imagem principal:</span><br />
                 <div class="input-group mb-3">
                     <input type="url" class="form-control" placeholder="Selecione a imagem..." name="urlImagen" id="basic-url" aria-describedby="basic-addon3">  
-                    <input type="file" style="display: none;" value="Upload" name="imageFile" class="form-control" id="file" id="basic-url" aria-describedby="basic-addon3">  
+                    <input type="file" style="display: none;" value="Upload" name="imagemCapa" class="form-control" id="file" id="basic-url" aria-describedby="basic-addon3">  
                     <div class="input-group-append">
                         <button class="btn btn-secondary " style="z-index: 0;" onclick="$('#file').trigger('click');" type="button">Selecionar imagem</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
-                    <span>Descrição detalhada do evento:</span>
-                    <textarea name="descCompletaEvento" class="form-control" aria-label="With textarea"></textarea>
-                    <br />
+                <span>Descrição detalhada do evento:</span>
+                <textarea name="descCompletaEvento" class="form-control" aria-label="With textarea"></textarea>
+                <br />
             </div>
-            <div class="col-md-12">
-                <span>Upload de imagens adicionais:</span>
-                <div class="input-group mb-3">
-                    <input type="url" class="form-control" id="basic-url" aria-describedby="basic-addon3">  
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary " style="z-index: 0;" type="button">Selecionar imagem</button>
-                    </div>
-                </div>
-            </div>
-            {% if not eventoObj %}
             <div class="col-md-12">
                     <br />
                     <br />
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary float-right">Visualizar</button>
-                    <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>
+                    <button type="submit" class="btn btn-primary float-right">Salvar</button>
+                    <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Voltar</button>
                 </div>
             </div>
             {% endif %}
             {% if eventoObj %}
+            <div class="col-md-8">
+                <span>Titulo do evento:</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Ex: Halloween WINNER</span>
+                    </div>
+                    <input type="text" name="tituloEvento" value="{{eventoObj.titulo}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <span>Descrição breve do evento:</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Ex: Super evento</span>
+                    </div>
+                    <input type="text" name="descBreveEvento" value="{{eventoObj.titulo}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="col-md-4">
+                    <span>Data:</span>
+                    <div class="input-group mb-3">
+                        <input type="date" name="dataEvento" value="{{eventoObj.data_evento}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <span>Hora:</span>
+                    <div class="input-group mb-3">
+                        <input type="time" name="horaEvento" value="{{eventoObj.hora_evento}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+            </div>
+            <div class="col-md-12">
+                <span>Endereço do evento:</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Ex: Rua Bruno Ga...</span>
+                    </div>
+                    <input type="text" name="localEvento" value="{{eventoObj.titulo}}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <span>Upload de imagens adicionais:</span>
+                <div class="input-group mb-3">
+                    <input type="url" class="form-control" placeholder="Selecione a imagem..." name="urlImagen" id="basic-url" aria-describedby="basic-addon3">  
+                    <input type="file" style="display: none;" value="Upload" name="imagemAdicional" class="form-control" id="file" id="basic-url" aria-describedby="basic-addon3">  
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary " style="z-index: 0;" onclick="$('#file').trigger('click');" type="button">Selecionar imagem</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <span>Descrição detalhada do evento:</span>
+                <textarea name="descCompletaEvento" class="form-control" aria-label="With textarea">{{eventoObj.conteudo}}</textarea>
+                <br />
+            </div>
             <div class="col-md-12 ">
                     <br />
                     <br />
@@ -82,26 +132,25 @@
 
                         <div class="col-lg-6 order-lg-2 order-3">
                             <div class="event_content">
-                                <div class="event_name"><a class="trans_200" href="">{{tituloEvento}}</a></div>
-                                <div class="event_location">{{localEvento}}</div>
-                                <p>{{descBreveEvento}}</p>
+                                <div class="event_name"><a class="trans_200" href="">{{eventoObj.titulo}}</a></div>
+                                <div class="event_location">{{eventoObj.loval_evento}}</div>
+                                <p>{{eventoObj.descricao}}</p>
                             </div>
                         </div>
 
                         <div class="col-lg-4 order-lg-3 order-1">
                             <div class="event_image">
-                                {% cloudinary imgFile.imagem_capa widht=80 crop="pad" %}
+                                {% cloudinary eventoObj.imagem_capa widht=80 crop="pad" %}
                             </div>
                         </div>
-                        <h4>{{buttonImagen}}</h4>
                     </div>	
             </div>
             <div class="col-md-12">
                     <br />
                     <br />
                 <div class="form-group">
-                    <button type="submit" ac class="btn btn-primary float-right">Salvar</button>
-                    <button type="button" onclick="goBack()" class="btn btn-primary float-left">Cancelar</button>
+                    <button type="submit" ac class="btn btn-primary float-right">Publicar</button>
+                    <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Cancelar</button>
                 </div>
             </div>
             {% endif %}
