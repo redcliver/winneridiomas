@@ -1502,8 +1502,8 @@ input:last-of-type {
 *********************************/
 
 .footer_content {
-    padding-top: 80px;
-    padding-bottom: 83px;
+    padding-top: 0px;
+    padding-bottom: 15px;
     border-bottom: solid 2px #4d4e4e;
 }
 
