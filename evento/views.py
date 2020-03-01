@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import eventoModel
+from .models import eventoModel, imagensModel
 import datetime
 
 from django import forms
@@ -66,6 +66,7 @@ def eventoNovo(request):
             tituloEvento = request.POST.get('tituloEvento')    
             descBreveEvento = request.POST.get('descBreveEvento')   
             dataEvento = request.POST.get('dataEvento')
+            horaEvento = request.POST.get('horaEvento')
             localEvento = request.POST.get('localEvento')
             imagemCapa = request.FILES['imagemCapa']
             descCompletaEvento = request.POST.get('descCompletaEvento')
@@ -74,11 +75,12 @@ def eventoNovo(request):
                                     local_evento=localEvento, 
                                     conteudo=descCompletaEvento, 
                                     imagem_capa=imagemCapa,
-                                    data_evento=dataEvento)
+                                    data_evento=dataEvento,
+                                    hora_evento=horaEvento)
             eventoObj.save()
-            dataEvento = dataEvento.strftime('%Y-%m-%d %H:%M:%S.%f')
-            diaEvento = datetime.datetime.strptime(dataEvento, '%Y-%m-%d %H:%M:%S.%f').strftime("%d")
-            mesEvento = datetime.datetime.strptime(dataEvento, '%Y-%m-%d %H:%M:%S.%f').strftime("%B")
+            dataEvento = datetime.datetime.strptime(dataEvento, '%Y-%m-%d')
+            diaEvento = dataEvento.strftime("%d")
+            mesEvento = dataEvento.strftime("%B")
             return render (request, 'gerenciaEvento/novo.html', {'title':'Novo Evento', 
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'teste':teste,
@@ -192,6 +194,25 @@ def eventoDetalhes(request):
             descBreveEvento = None
             diaEvento = None
             mesEvento = None
+
+        if request.method == 'POST' and request.POST.get('eventoID') != None:
+            eventoID = request.POST.get('eventoID')
+            imagemAdicional = request.FILES['imagemAdicional']
+            eventoObj = eventoModel.objects.get(id=eventoID)
+            if imagemAdicional != None:
+                novaImgAdicional = imagensModel(image=imagemAdicional)
+                novaImgAdicional.save()
+                eventoObj.imagem_adicional.add(novaImgAdicional)
+                eventoObj.save()
+
+            diaEvento = eventoObj.data_evento.strftime("%d")
+            mesEvento = eventoObj.data_evento.strftime("%B")
+            return render (request, 'gerenciaEvento/visualizarDetalhes.html', {'title':'Visualizar Eventos', 
+                                                                            'msgTelaInicial':msgTelaInicial,
+                                                                            'diaEvento': diaEvento,
+                                                                            'mesEvento': mesEvento,
+                                                                            'eventoObj':eventoObj})
+        
         return render (request, 'gerenciaEvento/visualizarDetalhes.html', {'title':'Visualizar Eventos', 
                                                                             'msgTelaInicial':msgTelaInicial,
                                                                             'tituloEvento': tituloEvento,

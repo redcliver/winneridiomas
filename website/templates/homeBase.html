@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>{{title}} - Winner Idiomas</title>
+    {% load staticfiles %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}" />
+    <meta name="description" content="Course Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/bootstrap4/bootstrap.min.css' %}">
+    <link href="{% static '/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static '/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/main_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/estilos.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>	
+	body {
+		background: url("../../static/images/opcoesFundo_1.jpg") no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+    .jumbotron {
+      color: #242424;
+      top: 5%;
+      background: -moz-linear-gradient(top,
+          rgba(255, 255, 255, 0.7) 0%,
+          rgba(255, 255, 255, 1) 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top,
+          rgba(255, 255, 255, 0.7) 0%,
+          rgba(255, 255, 255, 1) 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.7) 0%,
+          rgba(255, 255, 255, 1) 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+      /* IE6-9 */
+    }
+	
+	.logo-winner{
+		height: 60px;
+		width: auto;
+	}
+
+	.whatsapp {
+		color: white;
+		padding: 10px;
+		border-radius: 10px;
+		background-color: #28a745;
+		border-color: #28a745;
+	}
+	.whatsapp:hover{
+		color: white;
+		background-color: #1d8b37;
+		border-color: #1d8b37;
+	}
+	#whatsapp-toggle-mobile{
+		display: none;
+	}
+	
+	#whatsapp-toggle-desktop {
+		position: fixed;
+		bottom: 10px;
+		left: 10px;
+		z-index: 10;
+	}
+
+	#side-banner {
+		width: 100%;
+		padding: 50px 0;
+		text-align: center;
+		background-color: lightblue;
+		margin-top: 20px;
+	}
+
+	.side {
+		color: white;
+		padding: 5px;
+		border-radius: 10px 0px 0px 10px;
+		background-color: #0c48ff;
+		border-color: #0c48ff;
+	}
+	.side:hover{
+		background-color: #05268a;
+		border-color: #05268a;
+		color:white;
+	}
+	
+	#side-toggle {
+		position: fixed;
+		top: 300px;
+		right: 0px;
+		z-index: 11;
+	}
+	#teste {
+		position: fixed;
+		top: 300px;
+		right: 0px;
+		z-index: 10;
+	}
+
+	.dropbtn-winner {
+		background-color: transparent;
+		border: none;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 14px;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: #3a3a3a;
+		-webkit-transition: all 200ms ease;
+		-moz-transition: all 200ms ease;
+		-ms-transition: all 200ms ease;
+		-o-transition: all 200ms ease;
+		transition: all 200ms ease;
+	}
+
+	.dropdown-winner {
+		position: relative;
+		display: inline-block;
+	}
+
+	.dropdown-content-winner {
+		display: none;
+		position: absolute;
+		background-color: #f1f1f1;
+		min-width: 160px;
+		border-radius: 10px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
+
+	.dropdown-content-winner a {
+		color: #3a3a3a;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+	
+	.service_item {
+		padding: 30px;
+	}
+	.novoCurso {
+		padding-top: 50px;
+	}
+
+	.dropdown-content-winner a:hover {background-color: #ddd; border-radius: 10px;}
+
+	.dropdown-winner:hover .dropdown-content-winner {display: block;}
+
+	.dropdown-winner:hover .dropbtn-winner {background-color: transparent; color: #2e61fa;}
+
+	@media (max-width: 768px) {
+		.logo-winner{
+			height: auto;
+			width: 190px !important;
+		}
+		.header_side{
+			width: 60px !important;
+		}
+		.header_side span{
+			display: none;
+		}
+		.home{
+			width: 100%;
+    		height: 30vh;
+		}
+		.arrow {
+			height: 25px;
+			margin-top: 25px;
+			margin-left: 3px;
+			margin-right: 3px;
+		}
+		.conteudo {
+			font-family: 'Nanum Myeongjo', serif;
+			color: #505050;
+			text-align: justify;
+			text-justify: inter-word;
+			font-size: 12px;
+		}
+		.caption {
+			display: block;
+			font-family: 'Quicksand', sans-serif;
+			color: #007bff;
+			font-size: 12px;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+		.conhecaCallan {
+			width: auto;
+			height: 100%;
+			max-height: 75px;
+			top: 250px;
+		}
+		
+		.novoCurso {
+			padding-top: 0px;
+		}
+		.logo img {
+			width: 170px !important;
+		}
+		div.item {
+			vertical-align: top;
+			display: inline-block;
+			text-align: center;
+			max-width: 90px;
+		}
+		.section_title h1 {
+			font-size: 32px;
+		}
+		.page_section {
+    		padding-top: 30px;
+		}
+		.service_item {
+			margin-bottom: 0px;
+			padding: 10px;
+		}
+		#whatsapp-toggle-mobile{
+			display: inline-block;
+			position: fixed;
+			bottom: 10px;
+			left: 10px;
+			z-index: 10;	
+		}
+		.whatsapp {
+			color: white;
+			padding: 10px;
+			border-radius: 30px;
+		}
+	
+		#whatsapp-toggle-desktop {
+			display: none;
+		}
+
+	}
+	</style>
+</head>
+<body>
+	<div id="whatsapp-toggle-mobile">
+		<a class="btn whatsapp" href="https://wa.me/556784715146"><span><img src="{% static '/icones/whatsapp-logo-bottom.svg' %}" alt=""></span></a>
+	</div>
+	<div id="whatsapp-toggle-desktop">
+		<a class="btn whatsapp" href="https://wa.me/556784715146"><span><img src="{% static '/icones/whatsapp-logo-bottom.svg' %}" alt="">
+			+55 67 8471-5146</span></a>
+	</div>
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="nav-radius-main header d-flex flex-row">
+		<div class="header_content d-flex flex-row align-items-center">
+			<!-- Logo -->
+			<div class="logo_container">
+				<div class="logo">
+					<a href="/"><img class="logo-winner" src="{% static '/images/winner_logo2.png' %}" alt="Winner Idiomas."></a>
+                    
+				</div>
+			</div>
+
+			<!-- Main Navigation -->
+			<nav class="main_nav_container">
+				<div class="main_nav">
+					<ul class="main_nav_list">
+						<li class="main_nav_item">
+							<div class="dropdown-winner">
+								<button class="dropbtn-winner">cursos</button>
+								<div class="dropdown-content-winner">
+									<a href="/kids">Kids</a>
+									<a href="/adult">Adults</a>
+									<a href="/business">Business</a>
+									<a href="/inCompany">In Company</a>
+									<a href="/testPreparation">Tests Preparation</a>
+									<a href="/vip">VIP</a>
+								</div>
+							</div>
+						</li>
+						<li class="main_nav_item">
+							<div class="dropdown-winner">
+								<button class="dropbtn-winner">unidades</button>
+								<div class="dropdown-content-winner">
+									<a href="/tresLagoas">Três Lagoas</a>
+									<a href="/aguaClara">Água Clara</a>
+									<a href="/ribasRioPardo">Ribas do Rio Pardo</a>
+								</div>
+							</div>
+						</li>
+						<li class="main_nav_item"><a href="/nivelamento">teste de nivelamento</a></li>
+						<li class="main_nav_item"><a href="/contato">contato</a></li>
+						<li class="main_nav_item">
+							<div class="dropdown-winner">
+								<button class="dropbtn-winner">parceiros</button>
+								<div class="dropdown-content-winner">
+									<a href=/parceiros>Nossos Parceiros</a>
+									<a href="/indiqueParceiro">Indique um parceiro</a>
+								</div>
+							</div>
+						</li>
+						<li class="main_nav_item"><a href="http://winneralunos.web76109.kinghost.net/dkweb/">Área do aluno</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="nav-radius-tel header_side d-flex flex-row justify-content-center align-items-center">
+			<div style="display: inline">
+				<span><img src="{% static '/images/phone-call.svg' %}" alt="">
+				+55 67 3522-9642</span>
+				
+			</div>
+		</div>
+
+		<!-- Hamburger -->
+		<div class="hamburger_container">
+			<i class="fas fa-bars trans_200"></i>
+		</div>
+
+	</header>
+	
+	<!-- Menu -->
+	<div class="menu_container menu_mm">
+
+		<!-- Menu Close Button -->
+		<div class="menu_close_container">
+			<div class="menu_close"></div>
+		</div>
+
+		<!-- Menu Items -->
+		<div class="menu_inner menu_mm">
+			<div class="menu menu_mm">
+				<ul class="menu_list menu_mm">
+					<li class="menu_item menu_mm"><a href="/">Home</a></li>
+					<li class="menu_item menu_mm"><a href="/instituicao">Nossa Instituição</a></li>
+					<li class="menu_item menu_mm"><a href="/metodo">Nosso Método</a></li>
+					<li class="menu_item menu_mm"><a href="/parceiros">Nossos Parceiros</a></li>
+					<li class="menu_item menu_mm"><a href="/contato">Contato</a></li>
+					<li class="menu_item menu_mm"><a href="http://winneralunos.web76109.kinghost.net/dkweb/">Área do aluno</a></li>
+				</ul>
+
+				<!-- Menu Social -->
+				
+				<div class="menu_social_container menu_mm">
+					<ul class="menu_social menu_mm">
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	
+	{% block body %}
+    {% endblock %}
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			
+			<!-- Newsletter -->
+
+			
+
+			<!-- Footer Content -->
+
+			<div class="footer_content">
+				<div class="row">
+
+					<!-- Footer Column - About -->
+					<div class="col-lg-3 footer_col">
+
+						<!-- Logo -->
+						<div class="logo_container">
+							<div class="logo">
+								<img src="{% static '/images/winner_logo1.png' %}" alt="Winner Idiomas">
+							</div>
+						</div>
+
+						<p class="footer_about_text">Ensinar com máxima eficiência e dedicação, afim de permanecer na memória de todos os alunos não só como um degrau para o alcance de seus sonhos , mas também como um momento de muita diversão e amizade.</p>
+
+					</div>
+
+					<!-- Footer Column - Menu -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_column_title">Menu</div>
+						<div class="footer_column_content">
+							<ul>
+								<li class="footer_list_item"><a href="/cursos">Cursos</a></li>
+								<li class="footer_list_item"><a href="/unidades">Unidades</a></li>
+								<li class="footer_list_item"><a href="/nivelamento">Teste de Nivelamento</a></li>
+								<li class="footer_list_item"><a href="/contato">Contato</a></li>
+								<li class="footer_list_item"><a href="http://winneralunos.web76109.kinghost.net/dkweb/">Área do aluno</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Footer Column - Usefull Links -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_column_title">Links Úteis</div>
+						<div class="footer_column_content">
+							<ul>
+								<li class="footer_list_item"><a href="#">Relatos</a></li>
+								<li class="footer_list_item"><a href="/unidades">Fotos das Unidades</a></li>
+								<li class="footer_list_item"><a href="#">Bate Papo</a></li>
+								<li class="footer_list_item"><a href="#">Fórum</a></li>
+								<li class="footer_list_item"><a href="/contato">Fale Conosco</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Footer Column - Contact -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_column_title">Contato</div>
+						<div class="footer_column_content">
+							<ul>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img  src="{% static '/icones/localizacao.png' %}" alt="Endereço.">
+									</div>
+									<a href="https://goo.gl/maps/h3L7RnrqPLEWTtbq8" target="_blank" style="font-size: 14px; font-weight: 400; color: #a5a5a5;">R. Bruno García, 1455 - Colinos, Três Lagoas - MS, 79640-310</a>
+								</li>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img  src="{% static '/icones/telefone.png' %}" alt="Telefone.">
+									</div>
+									+55 67 3522-9642
+								</li>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img  src="{% static '/icones/whatsapp.svg' %}" alt="WhatsApp.">
+									</div>
+									+55 67 8471-5146
+								</li>
+								<li class="footer_contact_item">
+									<div class="footer_contact_icon">
+										<img src="{% static '/icones/email.svg' %}" alt="E-mail.">
+									</div>
+									<a href="mailto:winnercallan@uol.com.br" style="font-size: 14px; font-weight: 400; color: #a5a5a5;">winnercallan@uol.com.br</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Footer Copyright -->
+
+			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center" style="padding-bottom: 5rgb(0, 0, 0, 0.5)0px;">
+				<div class="footerHeadTec footer_copyright">
+					<span style="color: aliceblue"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    HeadTec Desenvolvimento de Sistemas | <script>document.write(new Date().getFullYear());</script>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+				</div>
+				<div class="footer_social ml-sm-auto">
+					<ul class="menu_social">
+						<li class="menu_social_item"><a href="https://pt.linkedin.com/company/winner-escola-de-idiomas"><i class="fab fa-linkedin-in"></i></a></li>
+						<li class="menu_social_item"><a href="https://www.instagram.com/escola_winner/"><i class="fab fa-instagram"></i></a></li>
+						<li class="menu_social_item"><a href="https://www.facebook.com/Winner-Idiomas-949947255016813/"><i class="fab fa-facebook-f"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+
+</div>
+<script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static '/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static '/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static '/plugins/greensock/TweenMax.min.js' %}"></script>
+<script src="{% static '/plugins/greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static '/plugins/scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static '/plugins/greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static '/plugins/greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static '/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static '/plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static '/plugins/easing/easing.js' %}"></script>
+<script src="{% static '/js/custom.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+	function sideAd() {
+		var x = document.getElementById("sideBanner");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+	</script>
+</body>
+</html>
