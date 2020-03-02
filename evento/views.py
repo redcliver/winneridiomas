@@ -108,8 +108,6 @@ def eventoVisualizar(request):
             msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
         try:
             eventoObj1 = eventoModel.objects.latest('id')
-            tituloEvento1 = eventoObj1.titulo
-            descBreveEvento1 = eventoObj1.descricao
             dataEvento1 = eventoObj1.data_evento
             diaEvento1 = dataEvento1.strftime("%d")
             mesEvento1 = dataEvento1.strftime("%B")
@@ -124,8 +122,6 @@ def eventoVisualizar(request):
         
         try:
             eventoObj2 = eventoModel.objects.get(id=evento2)
-            tituloEvento2 = eventoObj2.titulo
-            descBreveEvento2 = eventoObj2.descricao
             dataEvento2 = eventoObj2.data_evento
             diaEvento2 = dataEvento2.strftime("%d")
             mesEvento2 = dataEvento2.strftime("%B")
@@ -139,9 +135,7 @@ def eventoVisualizar(request):
             evento3 = None
         
         try:
-            eventoObj3 = eventoModel.objects.get(id=evento2)
-            tituloEvento3 = eventoObj3.titulo
-            descBreveEvento3 = eventoObj3.descricao
+            eventoObj3 = eventoModel.objects.get(id=evento3)
             dataEvento3 = eventoObj3.data_evento
             diaEvento3 = dataEvento3.strftime("%d")
             mesEvento3 = dataEvento3.strftime("%B")
@@ -153,18 +147,12 @@ def eventoVisualizar(request):
             mesEvento3 = None
         return render (request, 'gerenciaEvento/visualizar.html', {'title':'Visualizar Eventos', 
                                                         'msgTelaInicial':msgTelaInicial,
-                                                        'tituloEvento1': tituloEvento1,
-                                                        'descBreveEvento1': descBreveEvento1,
                                                         'diaEvento1': diaEvento1,
                                                         'mesEvento1': mesEvento1,
                                                         'eventoObj1':eventoObj1,
-                                                        'tituloEvento2': tituloEvento2,
-                                                        'descBreveEvento2': descBreveEvento2,
                                                         'diaEvento2': diaEvento2,
                                                         'mesEvento2': mesEvento2,
                                                         'eventoObj2':eventoObj2,
-                                                        'tituloEvento3': tituloEvento3,
-                                                        'descBreveEvento3': descBreveEvento3,
                                                         'diaEvento3': diaEvento3,
                                                         'mesEvento3': mesEvento3,
                                                         'eventoObj3':eventoObj3})
@@ -188,6 +176,7 @@ def eventoDetalhes(request):
             dataEvento = eventoObj.data_evento
             diaEvento = dataEvento.strftime("%d")
             mesEvento = dataEvento.strftime("%B")
+            imagensAdicionais = eventoObj.imagem_adicional.all()
         except:
             eventoObj = None
             tituloEvento = None
@@ -207,11 +196,13 @@ def eventoDetalhes(request):
 
             diaEvento = eventoObj.data_evento.strftime("%d")
             mesEvento = eventoObj.data_evento.strftime("%B")
+            imagensAdicionais = eventoObj.imagem_adicional.all()
             return render (request, 'gerenciaEvento/visualizarDetalhes.html', {'title':'Visualizar Eventos', 
                                                                             'msgTelaInicial':msgTelaInicial,
                                                                             'diaEvento': diaEvento,
                                                                             'mesEvento': mesEvento,
-                                                                            'eventoObj':eventoObj})
+                                                                            'eventoObj':eventoObj,
+                                                                            'imagensAdicionais':imagensAdicionais})
         
         return render (request, 'gerenciaEvento/visualizarDetalhes.html', {'title':'Visualizar Eventos', 
                                                                             'msgTelaInicial':msgTelaInicial,
@@ -219,5 +210,6 @@ def eventoDetalhes(request):
                                                                             'descBreveEvento': descBreveEvento,
                                                                             'diaEvento': diaEvento,
                                                                             'mesEvento': mesEvento,
-                                                                            'eventoObj':eventoObj})
+                                                                            'eventoObj':eventoObj,
+                                                                            'imagensAdicionais':imagensAdicionais})
     return render (request, 'site/login.html', {'title':'Login'})

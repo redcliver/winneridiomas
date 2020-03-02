@@ -1,0 +1,26 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+
+<main>
+    <div class="row">
+        <div class="col menuPrincipal row" style="text-align: center;">
+            <div class="col item">
+                <a href="/gerencia/testeNovo" class="gerenciaCaption">
+                <img class=" responsive gerenciaImg" src="{% static '/icones/add_geral.svg' %}"alt=""><br />
+                Nova Pergunta</a>
+            </div>
+            <div class="col item">
+                <a href="/evento/eventoVisualizar" class="gerenciaCaption">
+                <img  class=" responsive gerenciaImg" src="{% static '/img/search.png' %}"alt=""><br />
+                Visualizar Perguntas</a>
+            </div>
+            <div class="col item">
+                <a href="#" onclick="goBack()" class="gerenciaCaption">
+                <img class=" responsive gerenciaImg" src="{% static '/img/reply.png' %}"alt=""><br />
+                Voltar</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

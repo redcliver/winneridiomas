@@ -111,7 +111,7 @@ def indiqueParceiro(request):
         return render(request, 'site/home.html', {'title': 'Home', 'msgConfirmação':msgConfirmação})
     return render(request, 'site/indiqueParceiro.html', {'title': 'Indique Parceiros'})
 
-def nivelamento(request):
+def testeNivelamento(request):
     return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})
 
 def viewContato(request):
@@ -163,7 +163,6 @@ def entrar(request):
                                                         'controleVisivel':controleVisivel,
                                                         'msgTelaInicial':msgTelaInicial})
     return render (request, 'site/login.html', {'title':'Login'})
-
 
 def instituicao(request):
     return render(request, 'site/instituicao.html', {'title': 'Instituicao'})

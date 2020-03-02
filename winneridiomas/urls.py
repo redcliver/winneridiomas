@@ -40,6 +40,9 @@ urlpatterns = [
     # Controle Evento
     url(r'^evento/', include('evento.urls')),
 
+    # Nivelamento
+    url(r'^nivelamento/', include('evento.urls')),
+
 
     # Sistema
     url(r'^admin/', admin.site.urls),

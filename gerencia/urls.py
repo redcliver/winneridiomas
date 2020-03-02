@@ -20,7 +20,8 @@ urlpatterns = [
     url(r'^classe/novo', views.classeNovo),
     url(r'^classe/buscar', views.classeBuscar),
     url(r'^classe/editar', views.classeEditar),
-    url(r'^evento/$', views.eventoGeral),
+    url(r'^teste/$', views.testeGeral),
+    url(r'^testeNovo/$', views.testeNovo),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, documento_root=settings.MEDIA_ROOT)

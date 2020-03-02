@@ -244,7 +244,6 @@ def alunoSalvar(request):
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
-
 def colaboradorGeral(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
@@ -401,7 +400,7 @@ def classeEditar(request):
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
-def eventoGeral(request):
+def testeGeral(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
             now = datetime.datetime.now().strftime('%H')
@@ -414,7 +413,25 @@ def eventoGeral(request):
             elif now >= 18 and now < 4:
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
-            return render (request, 'gerencia/eventos/home.html', {'title':'Eventos', 
+            return render (request, 'gerencia/nivelamento/home.html', {'title':'Nivelamento', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def testeNovo(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+                
+            return render (request, 'gerencia/nivelamento/novo.html', {'title':'Nova Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})

@@ -311,23 +311,23 @@ section {
 *********************************/
 
 .header {
+    
+    top: 0px;
+    transform: none;
+    border-radius: 0px;
+    left: 0;
+    right: 0;
+    width: auto;
+
     position: fixed;
-    top: 45px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    width: 1318px;
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: auto;
     height: 104px;
     background: #FFFFFF;
     z-index: 10;
-    -webkit-transition: all 200ms ease;
-    -moz-transition: all 200ms ease;
-    -ms-transition: all 200ms ease;
-    -o-transition: all 200ms ease;
-    transition: all 200ms ease;
+    transform: none;
 }
 
 .header.scrolled {
@@ -337,9 +337,11 @@ section {
     left: 0;
     right: 0;
     width: auto;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 .header.scrolled .nav-radius-tel {
-    border-radius: 0px;
+    border-bottom-right-radius: 14px;
 }
 
 .header_content {

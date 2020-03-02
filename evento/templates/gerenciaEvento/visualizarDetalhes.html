@@ -4,6 +4,7 @@
 {% load cloudinary %}
 <main>
     <form enctype="multipart/form-data" method="POST" action="/evento/eventoDetalhes">
+        <input type="hidden" name="eventoID" value="{{eventoObj.id}}">
         {% csrf_token %}
         <div class="row" >
             <img src="{% static '/icones/event.svg' %}" class="svg cabecalho" alt="">
@@ -48,6 +49,13 @@
             </div>
             <div class="col-md-12">
                 <p class="estiloEvento">&nbsp;&nbsp;&nbsp; {{eventoObj.conteudo}}</p>
+            </div>
+            <div class="col-md-12">
+                <div class="styleImagens">
+                    {% for imagem_adicional in imagensAdicionais %}
+                        {% cloudinary imagem_adicional.image width=100 height=100 crop="fill" %}
+                    {% endfor %}
+                </div>
             </div>
             <div class="col-md-12">
                 <br />

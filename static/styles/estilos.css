@@ -1,8 +1,4 @@
 @charset "utf-8";
-.nav-radius-tel {
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
-}
 
 .nav-radius-main {
     box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.7), inset 0px 1px 60px rgba(42, 20, 236, 0.2);
