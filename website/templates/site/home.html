@@ -4,159 +4,164 @@
 {% load static %}
 {% load cloudinary %}
 <!-- Home -->
-	{% if msgConfirmação %}
-		<script>alert('{{msgConfirmação}}')</script>
-	{% endif %}
-	<div class="home">
+{% if msgConfirmação %}
+<script>alert('{{msgConfirmação}}')</script>
+{% endif %}
+<div class="home">
 
-		<!-- Hero Slider -->
-		<div class="hero_slider_container">
-			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-100" src="{% static '/images/slider_background_1.jpg' %}" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="{% static '/images/slider_background_2.jpg' %}" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="{% static '/images/slider_background_3.jpg' %}" alt="Third slide">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-		</div>
-
-	</div>
-
-	<div class="hero_boxes">
-		<div class="hero_boxes_inner">
-			<div class="container">
-				<div class="row">
-
-					<div class="col-lg-4 hero_box_col">
-						<div class="box-style hero_box d-flex flex-row align-items-center justify-content-start">
-							<img src="{% static '/images/school.png' %}" class="" alt="">
-							<div class="box-color hero_box_content">
-								<a class="box-link fonte box-color hero_box_title" href="/instituicao">Nossa Instituição</a><br />
-								<a href="/instituicao" class="fonte box-color hero_box_link">Saiba mais...</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 hero_box_col">
-						<div class="box-style hero_box d-flex flex-row align-items-center justify-content-start">
-							<img src="{% static '/images/method.png' %}" class="" alt="">
-							<div class="box-color hero_box_content">
-								<a class="box-link fonte box-color hero_box_title" href="/metodo">Nosso Método</a><br />
-								<a href="/metodo" class="fonte box-color hero_box_link">Saiba mais...</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 hero_box_col">
-						<div class="box-style hero_box d-flex flex-row align-items-center justify-content-start">
-							<img src="{% static '/images/crew.png' %}" class="" alt="">
-							<div class="box-color hero_box_content">
-								<h2 class="box-link box-color hero_box_title">Colaboradores</h2>
-								<a href="/colaboradores" class="box-color hero_box_link">Saiba mais...</a>
-							</div>
-						</div>
-					</div>
-
+	<!-- Hero Slider -->
+	<div class="hero_slider_container">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" src="{% static '/images/slider_background_1.jpg' %}" alt="First slide">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="{% static '/images/slider_background_2.jpg' %}" alt="Second slide">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="{% static '/images/slider_background_3.jpg' %}" alt="Third slide">
 				</div>
 			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
 		</div>
 	</div>
 
+</div>
 
-	<div class="services page_section" style="padding-top: 20px;">
+<div class="hero_boxes">
+	<div class="hero_boxes_inner">
 		<div class="container">
 			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h1>Conheça o <span style="font-family: 'Chilanka', cursive; color: #007bff;"> Callan Method</span></h1>
+
+				<div class="col-lg-4 hero_box_col">
+					<div class="box-style hero_box d-flex flex-row align-items-center justify-content-start">
+						<img src="{% static '/images/school.png' %}" class="" alt="">
+						<div class="box-color hero_box_content">
+							<a class="box-link fonte box-color hero_box_title" href="/instituicao">Nossa Instituição</a><br />
+							<a href="/instituicao" class="fonte box-color hero_box_link">Saiba mais...</a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row justify-content-md-center conhecaCallan-padding">
-				<div class="item">
-					<img class="conhecaCallan" src="{% static '/images/graduation.png' %}" alt="">
-					<span class="caption" >Aprenda inglês em 1/4 do tempo</span>
-					<span class="conteudo">O Método Callan pode ensinar inglês e espanhol em 25% do tempo de qualquer outro método do mercado.</span>
-				</div>
-				<img class="arrow" src="{% static '/icones/arrowCallan.png' %}" alt="">
-				<div class="item">
-					<img class="conhecaCallan" src="{% static '/images/brain.png' %}" alt="">
-					<span class="caption">Desenvolva o seu máximo</span>
-					<span class="conteudo">Com o Método Callan, você trabalha todas as habilidades que te auxiliam no aprendizado como ouvir, falar, entender, ler e escrever.</span>
-				</div>
-				<img class="arrow" src="{% static '/icones/arrowCallan.png' %}" alt="">
-				<div class="item">
-					<img class="conhecaCallan" src="{% static '/images/blackboard.png' %}" alt="">
-					<span class="caption" >Aulas totalmente interativas</span>
-					<span class="conteudo">Aprenda inglês e espanhol naturalmente com o curso e o horário que mais se adapta a você.</span>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<!-- Nossos cursos -->
-
-    <div class="novoCurso">
-		
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h1>Conheça a <span style="font-family: 'Chilanka', cursive; color: #007bff;">Winner Idiomas</span></h1>
+				<div class="col-lg-4 hero_box_col">
+					<div class="box-style hero_box d-flex flex-row align-items-center justify-content-start">
+						<img src="{% static '/images/method.png' %}" class="" alt="">
+						<div class="box-color hero_box_content">
+							<a class="box-link fonte box-color hero_box_title" href="/metodo">Nosso Método</a><br />
+							<a href="/metodo" class="fonte box-color hero_box_link">Saiba mais...</a>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="row services_row" style="margin-top: 0px;">
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start" >
-					<div class="d-flex flex-column justify-content-end">
-						<img src="{% static '/images/teacher.png' %}" style="padding: 10px;" alt="">
+				<div class="col-lg-4 hero_box_col">
+					<div class="box-style hero_box d-flex flex-row align-items-center justify-content-start">
+						<img src="{% static '/images/crew.png' %}" class="" alt="">
+						<div class="box-color hero_box_content">
+							<h2 class="box-link box-color hero_box_title">Colaboradores</h2>
+							<a href="/colaboradores" class="box-color hero_box_link">Saiba mais...</a>
+						</div>
 					</div>
-					<span class="captionSemCor">Nossos Professores</span>
-					<span class="conteudo">Os professores são altamente qualificados e acompanham os estudantes em todas as estapas do curso.</span>
-				</div>
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start" >
-					<div class="d-flex flex-column justify-content-end">
-						<img src="{% static '/images/certificado.png' %}" style="padding: 10px;" alt="">
-					</div>
-					<span class="captionSemCor">Certificados</span>
-					<span class="conteudo">TOEFL, TOEIC, IELTS, Cambridge English Exams entre outros.</span>
-				</div>
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start" >
-					<div class="d-flex flex-column justify-content-end">
-						<img src="{% static '/images/book.png' %}" style="padding: 10px;" alt="">
-					</div>
-					<span class="captionSemCor">Calan Method</span>
-					<span class="conteudo">O Método Callan é um método de ensino criado especificamente para aprimorar o seu inglês em um ambiente intensivo.</span>
 				</div>
 
 			</div>
 		</div>
 	</div>
+</div>
 
-	<!-- Register -->
+
+<div class="services page_section" style="padding-top: 120px;">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="section_title text-center">
+					<h1>Conheça o <span style="font-family: 'Chilanka', cursive; color: #007bff;"> Callan Method</span></h1>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-md-center conhecaCallan-padding">
+			<div class="item">
+				<img class="conhecaCallan" src="{% static '/images/graduation.png' %}" alt="">
+				<span class="caption">Aprenda inglês em 1/4 do tempo</span>
+				<span class="conteudo">O Método Callan pode ensinar inglês e espanhol em 25% do tempo de qualquer outro método
+					do mercado.</span>
+			</div>
+			<img class="arrow" src="{% static '/icones/arrowCallan.png' %}" alt="">
+			<div class="item">
+				<img class="conhecaCallan" src="{% static '/images/brain.png' %}" alt="">
+				<span class="caption">Desenvolva o seu máximo</span>
+				<span class="conteudo">Com o Método Callan, você trabalha todas as habilidades que te auxiliam no aprendizado
+					como ouvir, falar, entender, ler e escrever.</span>
+			</div>
+			<img class="arrow" src="{% static '/icones/arrowCallan.png' %}" alt="">
+			<div class="item">
+				<img class="conhecaCallan" src="{% static '/images/blackboard.png' %}" alt="">
+				<span class="caption">Aulas totalmente interativas</span>
+				<span class="conteudo">Aprenda inglês e espanhol naturalmente com o curso e o horário que mais se adapta a
+					você.</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Nossos cursos -->
+
+<div class="novoCurso">
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="section_title text-center">
+					<h1>Conheça a <span style="font-family: 'Chilanka', cursive; color: #007bff;">Winner Idiomas</span></h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="row services_row" style="margin-top: 0px;">
+
+			<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+				<div class="d-flex flex-column justify-content-end">
+					<img src="{% static '/images/teacher.png' %}" style="padding: 10px;" alt="">
+				</div>
+				<span class="captionSemCor">Nossos Professores</span>
+				<span class="conteudo">Os professores são altamente qualificados e acompanham os estudantes em todas as estapas
+					do curso.</span>
+			</div>
+
+			<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+				<div class="d-flex flex-column justify-content-end">
+					<img src="{% static '/images/certificado.png' %}" style="padding: 10px;" alt="">
+				</div>
+				<span class="captionSemCor">Certificados</span>
+				<span class="conteudo">TOEFL, TOEIC, IELTS, Cambridge English Exams entre outros.</span>
+			</div>
+
+			<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
+				<div class="d-flex flex-column justify-content-end">
+					<img src="{% static '/images/book.png' %}" style="padding: 10px;" alt="">
+				</div>
+				<span class="captionSemCor">Calan Method</span>
+				<span class="conteudo">O Método Callan é um método de ensino criado especificamente para aprimorar o seu inglês
+					em um ambiente intensivo.</span>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Register -->
 <!--
 	<div class="register">
 
@@ -200,144 +205,147 @@
 	</div>-->
 
 
-	
-	<!-- Events -->
 
-	<div class="events page_section" style="padding-top: 50px;">
-		<div class="container">
-			
+<!-- Events -->
+
+<div class="events page_section" style="padding-top: 50px;">
+	<div class="container">
+
+		<div class="row">
+			<div class="col">
+				<div class="section_title text-center">
+					<h1>Próximos Eventos</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="event_items">
+			{% if eventoObj1 %}
+			<!-- Event Item -->
+			<div class="row event_item">
+				<div class="col">
+					<div class="row d-flex flex-row align-items-end ">
+
+						<div class="col-lg-2 order-lg-1 order-2">
+							<div class="event_date d-flex flex-column align-items-center justify-content-center">
+								<div class="event_day">{{diaEvento1}}</div>
+								<div class="event_month">{{mesEvento1}}</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 order-lg-2 order-3">
+							<div class="event_content">
+								<div class="event_name"><a class="trans_200" href="">{{tituloEvento1}}</a></div>
+								<div class="event_location">{{localEvento1}}</div>
+								<p>{{descBreveEvento1}}</p>
+							</div>
+						</div>
+
+						<div class="col-lg-4 order-lg-3 order-1">
+							<div class="event_image">
+								{% cloudinary eventoObj1.imagem_capa widht=80 crop="pad" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% if eventoObj2 %}
+			<!-- Event Item -->
+			<div class="row event_item">
+				<div class="col">
+					<div class="row d-flex flex-row align-items-end ">
+
+						<div class="col-lg-2 order-lg-1 order-2">
+							<div class="event_date d-flex flex-column align-items-center justify-content-center">
+								<div class="event_day">{{diaEvento2}}</div>
+								<div class="event_month">{{mesEvento2}}</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 order-lg-2 order-3">
+							<div class="event_content">
+								<div class="event_name"><a class="trans_200" href="">{{tituloEvento2}}</a></div>
+								<div class="event_location">{{localEvento2}}</div>
+								<p>{{descBreveEvento2}}</p>
+							</div>
+						</div>
+
+						<div class="col-lg-4 order-lg-3 order-1">
+							<div class="event_image">
+								{% cloudinary eventoObj2.imagem_capa widht=80 crop="pad" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% if eventoObj3 %}
+			<!-- Event Item -->
+			<div class="row event_item">
+				<div class="col">
+					<div class="row d-flex flex-row align-items-end ">
+
+						<div class="col-lg-2 order-lg-1 order-2">
+							<div class="event_date d-flex flex-column align-items-center justify-content-center">
+								<div class="event_day">{{diaEvento3}}</div>
+								<div class="event_month">{{mesEvento3}}</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 order-lg-2 order-3">
+							<div class="event_content">
+								<div class="event_name"><a class="trans_200" href="">{{tituloEvento1}}</a></div>
+								<div class="event_location">{{localEvento3}}</div>
+								<p>{{descBreveEvento3}}</p>
+							</div>
+						</div>
+
+						<div class="col-lg-4 order-lg-3 order-1">
+							<div class="event_image">
+								{% cloudinary eventoObj3.imagem_capa widht=80 crop="pad" %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+
+
+		</div>
+
+	</div>
+</div>
+
+<footer class="footer">
+	<div class="container">
+		<div class="newsletter">
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h1>Próximos Eventos</h1>
+						<h1>Cadastre-se para ficar por dentro das novidades.</h1>
 					</div>
 				</div>
 			</div>
-			
-			<div class="event_items">
-				{% if eventoObj1 %}
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end ">
 
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">{{diaEvento1}}</div>
-									<div class="event_month">{{mesEvento1}}</div>
-								</div>
+			<div class="row">
+				<div class="col text-center">
+					<div class="newsletter_form_container mx-auto">
+						<form method="post" action="/registro">
+							{% csrf_token %}
+							<div
+								class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+								<input id="newsletter_email" class="newsletter_email" name="emailRegistro" type="email"
+									placeholder="Endereço de e-mail" required="required" data-error="Digite um e-mail valido.">
+								<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300"
+									value="Submit">Cadastrar</button>
 							</div>
-	
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="">{{tituloEvento1}}</a></div>
-									<div class="event_location">{{localEvento1}}</div>
-									<p>{{descBreveEvento1}}</p>
-								</div>
-							</div>
-	
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									{% cloudinary eventoObj1.imagem_capa widht=80 crop="pad" %}
-								</div>
-							</div>
-						</div>
+						</form>
 					</div>
 				</div>
-				{% endif %}
-				{% if eventoObj2 %}
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end ">
-
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">{{diaEvento2}}</div>
-									<div class="event_month">{{mesEvento2}}</div>
-								</div>
-							</div>
-	
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="">{{tituloEvento2}}</a></div>
-									<div class="event_location">{{localEvento2}}</div>
-									<p>{{descBreveEvento2}}</p>
-								</div>
-							</div>
-	
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									{% cloudinary eventoObj2.imagem_capa widht=80 crop="pad" %}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{% endif %}
-				{% if eventoObj3 %}
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end ">
-
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">{{diaEvento3}}</div>
-									<div class="event_month">{{mesEvento3}}</div>
-								</div>
-							</div>
-	
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="">{{tituloEvento1}}</a></div>
-									<div class="event_location">{{localEvento3}}</div>
-									<p>{{descBreveEvento3}}</p>
-								</div>
-							</div>
-	
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									{% cloudinary eventoObj3.imagem_capa widht=80 crop="pad" %}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{% endif %}
-
-
 			</div>
-				
+
 		</div>
 	</div>
-
-	<footer class="footer">
-		<div class="container">
-			<div class="newsletter">
-				<div class="row">
-					<div class="col">
-						<div class="section_title text-center">
-							<h1>Cadastre-se para ficar por dentro das novidades.</h1>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col text-center">
-						<div class="newsletter_form_container mx-auto">
-							<form method="post" action="/registro">
-								{% csrf_token %} 
-								<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-									<input id="newsletter_email" class="newsletter_email" name="emailRegistro" type="email" placeholder="Endereço de e-mail" required="required" data-error="Digite um e-mail valido.">
-									<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Cadastrar</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</footer>
+</footer>
 {% endblock %}

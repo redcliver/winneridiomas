@@ -1,46 +1,56 @@
 {% extends 'diretoria_base.html' %}
 {% block body %}
 {% load static %}
+{% if msgConfirmacao %}
+<script>alert('{{msgConfirmacao}}')</script>
+{% endif %}
 <main>
-    <form method="POST" action="/gerencia/colaborador/novo">
-        {% csrf_token %} 
+    <form method="POST" action="/gerencia/teste/novo">
+        {% csrf_token %}
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12">
-                <p><img src="{% static '/icones/question.svg' %}" class="svg cabecalho" alt=""><h3 class="cabecalho-text">Pergunta</h3></p>
+                <p><img src="{% static '/icones/question.svg' %}" class="svg cabecalho" alt="">
+                    <h3 class="cabecalho-text">Pergunta</h3>
+                </p>
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
-                <label >Pergunta</label>
-                <input type="text" name="nome" class="form-control" maxlength="1000" placeholder="Pergunta...">
+                <label>Pergunta</label>
+                <input type="text" name="pergunta" class="form-control" maxlength="1000" placeholder="Pergunta...">
             </div>
             <div class="col-sm-12 col-md-2 col-2">
                 <br>
-                <label>Pontuação</label> 
-                <input type="number" name="pontuacao" value="1" maxlength="2" rows="4" min="0" max="10" class="form-control">
+                <label>Pontuação</label>
+                <input type="number" name="pontuacao" value="1" maxlength="2" rows="4" min="0" max="10"
+                    class="form-control">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
-                <label style="color: #4EBF46;" >Resposta Correta</label>
-                <input type="text" name="respostaCorreta" class="form-control" maxlength="1000" placeholder="Resposta Correta...">
+                <label style="color: #4EBF46;">Resposta Correta</label>
+                <input type="text" name="respostaCorreta" class="form-control" maxlength="1000"
+                    placeholder="Resposta Correta...">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
-                <label style="color: #BF4646;" >Resposta Alternativa 1</label>
-                <input type="text" name="respostaAlternativa1" class="form-control" maxlength="1000" placeholder="Resposta alternativa 1...">
+                <label style="color: #BF4646;">Resposta Alternativa 1</label>
+                <input type="text" name="respostaAlternativa1" class="form-control" maxlength="1000"
+                    placeholder="Resposta alternativa 1...">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label style="color: #BF4646;">Resposta Alternativa 2</label>
-                <input type="text" name="respostaAlternativa2" class="form-control" maxlength="1000" placeholder="Resposta alternativa 2...">
+                <input type="text" name="respostaAlternativa2" class="form-control" maxlength="1000"
+                    placeholder="Resposta alternativa 2...">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label style="color: #BF4646;">Resposta Alternativa 3</label>
-                <input type="text" name="respostaAlternativa3s" class="form-control" maxlength="1000" placeholder="Resposta alternativa 3...">
+                <input type="text" name="respostaAlternativa3s" class="form-control" maxlength="1000"
+                    placeholder="Resposta alternativa 3...">
             </div>
         </div>
         <br />
-        <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Voltar</button>        
+        <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Voltar</button>
         <button type="submit" class="btn btn-primary float-right">Salvar</button>
     </form>
 </main>

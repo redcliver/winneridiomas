@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^classe/buscar', views.classeBuscar),
     url(r'^classe/editar', views.classeEditar),
     url(r'^teste/$', views.testeGeral),
-    url(r'^testeNovo/$', views.testeNovo),
+    url(r'^teste/novo', views.testeNovo),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, documento_root=settings.MEDIA_ROOT)

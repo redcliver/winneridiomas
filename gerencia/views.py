@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import datetime
 from evento.models import eventoModel
-from .models import alunoModel, colaboradorModel, salaModel, cidadeModel
+from .models import alunoModel, colaboradorModel, salaModel, cidadeModel, perguntaModel, respostaModel
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
@@ -430,6 +430,37 @@ def testeNovo(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
             elif now >= 18 and now < 4:
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get('pergunta') != None:
+                pergunta = request.POST.get('pergunta')
+                pontuacao = request.POST.get('pontuacao')
+                respostaCorreta = request.POST.get('respostaCorreta')
+                respostaAlternativa1 = request.POST.get('respostaAlternativa1')
+                respostaAlternativa2 = request.POST.get('respostaAlternativa2')
+                respostaAlternativa3 = request.POST.get('respostaAlternativa3')
+                novaPergunta = perguntaModel(pergunta=pergunta, valor=pontuacao)
+                novaPergunta.save()
+                if respostaAlternativa1 != None:
+                    novaResposta = respostaModel(resposta=respostaAlternativa1)
+                    novaResposta.save()
+                    novaPergunta.respostas.add(novaResposta)
+                    novaPergunta.save()
+                
+                if respostaAlternativa2 != None:
+                    novaResposta2 = respostaModel(resposta=respostaAlternativa2)
+                    novaResposta2.save()
+                    novaPergunta.respostas.add(novaResposta2)
+                    novaPergunta.save()
+                
+                if respostaAlternativa3 != None:
+                    novaResposta3 = respostaModel(resposta=respostaAlternativa3)
+                    novaResposta3.save()
+                    novaPergunta.respostas.add(novaResposta3)
+                    novaPergunta.save()
+
+                msgConfirmacao = "Nova pergunta cadastrada com sucesso!"
+                return render (request, 'gerencia/nivelamento/novo.html', {'title':'Nova Pergunta', 
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'msgConfirmacao':msgConfirmacao})
                 
             return render (request, 'gerencia/nivelamento/novo.html', {'title':'Nova Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial})
