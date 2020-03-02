@@ -305,7 +305,7 @@ section
 }
 .header.scrolled
 {	
-	top: 15px;
+	top: 0px;
 }
 .header.scrolled .header_content::before
 {

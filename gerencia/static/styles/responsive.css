@@ -80,7 +80,7 @@
 {
 	.header
 	{
-		width: 90%;
+		width: 100%;
 	}
 	.header_content
 	{
@@ -453,7 +453,7 @@
 	.header
 	{
 		height: 60px;
-		top: 15px;
+		top: 0px;
 	}
 	.hero_slide_content h1
 	{
