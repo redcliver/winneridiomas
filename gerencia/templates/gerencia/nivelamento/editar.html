@@ -5,8 +5,9 @@
 <script>alert('{{msgConfirmacao}}')</script>
 {% endif %}
 <main>
-    <form method="POST" action="/gerencia/teste/novo">
+    <form method="POST" action="/gerencia/teste/editar">
         {% csrf_token %}
+        <input type="hidden" name="perguntaID" value="{{perguntaObj.id}}" />
         <div class="row">
             <div class="col-sm-12 col-md-12 col-12">
                 <p><img src="{% static '/icones/question.svg' %}" class="svg cabecalho" alt="">
@@ -16,41 +17,42 @@
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label>Pergunta</label>
-                <input type="text" name="pergunta" class="form-control" maxlength="1000" placeholder="Pergunta...">
+                <input type="text" name="pergunta" class="form-control" maxlength="1000" placeholder="Pergunta..."
+                    value="{{perguntaObj.pergunta}}">
             </div>
             <div class="col-sm-12 col-md-2 col-2">
                 <br>
                 <label>Pontuação</label>
                 <input type="number" name="pontuacao" value="1" maxlength="2" rows="4" min="0" max="10"
-                    class="form-control">
+                    class="form-control" value="{{perguntaObj.valor}}">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label style="color: #4EBF46;">Resposta Correta</label>
                 <input type="text" name="respostaCorreta" class="form-control" maxlength="1000"
-                    placeholder="Resposta Correta...">
+                    placeholder="Resposta Correta..." value="{{perguntaObj.respostaCorreta}}">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label style="color: #BF4646;">Resposta Alternativa 1</label>
                 <input type="text" name="respostaAlternativa1" class="form-control" maxlength="1000"
-                    placeholder="Resposta alternativa 1...">
+                    placeholder="Resposta alternativa 1..." value="{{perguntaObj.respostaAlternativa1}}">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label style="color: #BF4646;">Resposta Alternativa 2</label>
                 <input type="text" name="respostaAlternativa2" class="form-control" maxlength="1000"
-                    placeholder="Resposta alternativa 2...">
+                    placeholder="Resposta alternativa 2..." value="{{perguntaObj.respostaAlternativa2}}">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label style="color: #BF4646;">Resposta Alternativa 3</label>
                 <input type="text" name="respostaAlternativa3" class="form-control" maxlength="1000"
-                    placeholder="Resposta alternativa 3...">
+                    placeholder="Resposta alternativa 3..." value="{{perguntaObj.respostaAlternativa3}}">
             </div>
         </div>
         <br />
-        <button type="submit" class="btn btn-secondary float-left" formaction="/gerencia/teste">Voltar</button>
+        <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Voltar</button>
         <button type="submit" class="btn btn-primary float-right">Salvar</button>
     </form>
 </main>

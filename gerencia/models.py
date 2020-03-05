@@ -131,13 +131,6 @@ class eventoModel(models.Model):
     def __str__(self):
         return self.nome
 
-class respostaModel(models.Model):
-    id = models.AutoField(primary_key=True)
-    resposta = models.CharField(max_length=1000, null=True, blank=True)
-    dataCadastro = models.DateTimeField(default=timezone.now())
-    def __str__(self):
-        return self.resposta
-
 class perguntaModel(models.Model):
     ES = (
         ('1', 'Ativa'),
@@ -147,8 +140,11 @@ class perguntaModel(models.Model):
     id = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=1, choices=ES, default=1)
     pergunta = models.CharField(max_length=2000, null=True, blank=True)
-    respostas = models.ManyToManyField(respostaModel, null=True, blank=True)
-    valor = models.CharField(max_length=2, null=True, blank=True)
+    respostaCorreta = models.CharField(max_length=1000, null=True, blank=True)
+    respostaAlternativa1 = models.CharField(max_length=1000, null=True, blank=True)
+    respostaAlternativa2 = models.CharField(max_length=1000, null=True, blank=True)
+    respostaAlternativa3 = models.CharField(max_length=1000, null=True, blank=True)
+    pontuacao = models.CharField(max_length=2, null=True, blank=True)
     dataCadastro = models.DateTimeField(default=timezone.now())
 
     def __str__(self):

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import datetime
 from evento.models import eventoModel
-from .models import alunoModel, colaboradorModel, salaModel, cidadeModel, perguntaModel, respostaModel
+from .models import alunoModel, colaboradorModel, salaModel, cidadeModel, perguntaModel
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
@@ -437,25 +437,8 @@ def testeNovo(request):
                 respostaAlternativa1 = request.POST.get('respostaAlternativa1')
                 respostaAlternativa2 = request.POST.get('respostaAlternativa2')
                 respostaAlternativa3 = request.POST.get('respostaAlternativa3')
-                novaPergunta = perguntaModel(pergunta=pergunta, valor=pontuacao)
+                novaPergunta = perguntaModel(pergunta=pergunta, respostaCorreta=respostaCorreta, respostaAlternativa1=respostaAlternativa1, respostaAlternativa2=respostaAlternativa2, respostaAlternativa3=respostaAlternativa3, valor=pontuacao)
                 novaPergunta.save()
-                if respostaAlternativa1 != None:
-                    novaResposta = respostaModel(resposta=respostaAlternativa1)
-                    novaResposta.save()
-                    novaPergunta.respostas.add(novaResposta)
-                    novaPergunta.save()
-                
-                if respostaAlternativa2 != None:
-                    novaResposta2 = respostaModel(resposta=respostaAlternativa2)
-                    novaResposta2.save()
-                    novaPergunta.respostas.add(novaResposta2)
-                    novaPergunta.save()
-                
-                if respostaAlternativa3 != None:
-                    novaResposta3 = respostaModel(resposta=respostaAlternativa3)
-                    novaResposta3.save()
-                    novaPergunta.respostas.add(novaResposta3)
-                    novaPergunta.save()
 
                 msgConfirmacao = "Nova pergunta cadastrada com sucesso!"
                 return render (request, 'gerencia/nivelamento/novo.html', {'title':'Nova Pergunta', 
@@ -464,5 +447,80 @@ def testeNovo(request):
                 
             return render (request, 'gerencia/nivelamento/novo.html', {'title':'Nova Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def testeBusca(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            
+            perguntas = perguntaModel.objects.filter(estado=1).all().order_by('id')
+            if request.method == "POST" and request.POST.get('perguntaID') != None:
+                perguntaID = request.POST.get('perguntaID')
+                perguntaObj = perguntaModel.objects.get(id=perguntaID)
+                return render (request, 'gerencia/nivelamento/visualizar.html', {'title':'Visualizar Pergunta', 
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'perguntaObj':perguntaObj})
+                
+            return render (request, 'gerencia/nivelamento/buscar.html', {'title':'Visualizar Pergunta', 
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'perguntas':perguntas})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def testeEdita(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            try:
+                perguntaIDGet = request.GET.get('perguntaID')
+                perguntaObjGet = perguntaModel.objects.get(id=perguntaIDGet)
+            except:
+                perguntaObjGet = None
+            if request.method == "POST" and request.POST.get('perguntaID') != None:
+                perguntaID = request.POST.get('perguntaID')
+                perguntaObj = perguntaModel.objects.get(id=perguntaID)
+                pergunta = request.POST.get('pergunta')
+                pontuacao = request.POST.get('pontuacao')
+                respostaCorreta = request.POST.get('respostaCorreta')
+                respostaAlternativa1 = request.POST.get('respostaAlternativa1')
+                respostaAlternativa2 = request.POST.get('respostaAlternativa2')
+                respostaAlternativa3 = request.POST.get('respostaAlternativa3')
+
+                perguntaObj.pergunta = pergunta
+                perguntaObj.pontuacao = pontuacao
+                perguntaObj.pergurespostaCorretanta = respostaCorreta
+                perguntaObj.respostaAlternativa1 = respostaAlternativa1
+                perguntaObj.respostaAlternativa2 = respostaAlternativa2
+                perguntaObj.respostaAlternativa3 = respostaAlternativa3
+
+                perguntaObj.save()
+            
+                msgConfirmacao = "Pergunta editada com sucesso!"
+                return render (request, 'gerencia/nivelamento/visualizar.html', {'title':'Visualizar Pergunta', 
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'msgConfirmacao':msgConfirmacao,
+                                                            'perguntaObj':perguntaObj})
+                
+            return render (request, 'gerencia/nivelamento/editar.html', {'title':'Editar Pergunta', 
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'perguntaObj':perguntaObjGet})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})

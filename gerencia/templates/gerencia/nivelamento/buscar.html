@@ -1,0 +1,26 @@
+{% extends 'diretoria_base.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <h2>Selecionar Pergunta</h2>
+    <br />
+    <form method="POST" action="/gerencia/teste/buscar">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12">
+                <select name="perguntaID" class="custom-select form-control">
+                    <option selected disabled>-- Perguntas --</option>
+                    {% for perguntaModel in perguntas %}
+                    <option value="{{perguntaModel.id}}">{{perguntaModel.id}} - {{perguntaModel.pergunta}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-12"><br /></div>
+            <div class="col-12">
+                <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Voltar</button>
+                <button type="submit" class="btn btn-primary float-right">Visuzalizar</button>
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}
