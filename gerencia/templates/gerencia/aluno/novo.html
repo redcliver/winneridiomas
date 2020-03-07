@@ -3,10 +3,10 @@
 {% load static %}
 <main>
     <form method="POST" action="/gerencia/aluno/novo">
-        {% csrf_token %} 
+        {% csrf_token %}
         <div class="row">
             <div class="col-sm-12 col-md-4 col-4">
-                <label >Nome</label>
+                <label>Nome</label>
                 <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome">
             </div>
             <div class="col-sm-12 col-md-8 col-8">
@@ -14,76 +14,81 @@
                 <input type="text" name="sobrenome" class="form-control" maxlength="400" placeholder="Sobrenome">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >CPF</label>
-                <input type="text" class="form-control" name="cpf" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );">
+                <label>CPF</label>
+                <input type="text" class="form-control" name="cpf" maxlength="14"
+                    onkeydown="javascript: fMasc( this, mCPF );">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >RG</label>
-                <input type="text" class="form-control" name="rg" maxlength="13" onkeydown="javascript: fMasc( this, mRG );">
+                <label>RG</label>
+                <input type="text" class="form-control" name="rg" maxlength="13"
+                    onkeydown="javascript: fMasc( this, mRG );">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >Data de Nasc.</label>
+                <label>Data de Nasc.</label>
                 <input type="date" name="dataNasc" value="{{today}}" class="form-control">
             </div>
             <div class="col-sm-12 col-md-8 col-8">
-                <label >E-mail</label>
+                <label>E-mail</label>
                 <input type="email" name="email" maxlength="300" class="form-control">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >Celular</label>
-                <input type="text" class="form-control" name="celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                <label>Celular</label>
+                <input type="text" class="form-control" name="celular" maxlength="14"
+                    onkeydown="javascript: fMasc( this, mTel );">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >Telefone</label>
-                <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                <label>Telefone</label>
+                <input type="text" class="form-control" name="telefone" maxlength="14"
+                    onkeydown="javascript: fMasc( this, mTel );">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >Classe</label>
+                <label>Classe</label>
                 <select name="classeID" class="custom-select form-control">
                     <option selected disabled>-- Classes --</option>
                     {% for classeModel in classes %}
-                        <option value="{{classeModel.id}}">{{classeModel.nome}}</option>
+                    <option value="{{classeModel.id}}">{{classeModel.nome}}</option>
                     {% endfor %}
-                </select>            </div>
+                </select> </div>
             <div class="col-sm-12 col-md-1 col-1">
             </div>
             <div class="col-sm-12 col-md-3 col-3">
-                <label >CEP</label>
-                <input type="text" class="form-control"  id="cep" name="cep" maxlength="9" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);">
+                <label>CEP</label>
+                <input type="text" class="form-control" id="cep" name="cep" maxlength="9"
+                    onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);">
             </div>
             <div class="col-sm-12 col-md-10 col-10">
-                <label >Endereço</label>
+                <label>Endereço</label>
                 <input type="text" name="endereco" id="rua" class="form-control" maxlength="400" placeholder="Endereço">
             </div>
             <div class="col-sm-12 col-md-2 col-2">
-                <label >Número</label>
+                <label>Número</label>
                 <input type="number" name="numero" class="form-control" maxlength="4" placeholder="9999">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >Bairro</label>
-                <input type="text" name="bairro"  id="bairro" class="form-control" maxlength="200" placeholder="Bairro">
+                <label>Bairro</label>
+                <input type="text" name="bairro" id="bairro" class="form-control" maxlength="200" placeholder="Bairro">
             </div>
             <div class="col-sm-12 col-md-1 col-1">
             </div>
             <div class="col-sm-12 col-md-4 col-4">
-                <label >Cidade</label>
+                <label>Cidade</label>
                 <select name="cidade" id="city" class="custom-select form-control">
                     <option selected disabled>-- Cidades --</option>
                     {% for cidadeModel in cidades %}
-                        <option value="{{cidadeModel.nome}}">{{cidadeModel.nome}}</option>
+                    <option value="{{cidadeModel.nome}}">{{cidadeModel.nome}}</option>
                     {% endfor %}
                 </select>
                 <input type="text" name="cidade" id="cidade" class="form-control" maxlength="200" placeholder="Cidade">
             </div>
             <div class="col-sm-12 col-md-3 col-3">
-                <label >Estado</label>
+                <label>Estado</label>
                 <select name="estado" id="estate" class="custom-select form-control">
                     <option selected value="12">MS</option>
                 </select>
             </div>
         </div>
         <br />
-        <button type="button" onclick="goBack()" class="btn btn-primary float-left">Voltar</button>        
+        <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Voltar</button>
         <button type="submit" class="btn btn-primary float-right">Salvar</button>
     </form>
 </main>

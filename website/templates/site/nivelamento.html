@@ -7,16 +7,42 @@
             <h3 class="cabecalho-text">Teste de nivelamento</h3>
         </p>
         <br />
-        <div class="row">
-            <div class="col-12">
-                <h5 class="cursos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Olá nós da Winner Idiomas queremos saber um pouquinho mais sobre você antes de
-                    começarmos o teste de nivelamento.</h5>
+        <br />
+        <br />
+        <form method="POST" action="/testeNivelamento">
+            {% csrf_token %}
+            <div class="row">
+                <div class="animacaoText">
+                    <div class="col-12">
+                        <h5 class="cursos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Olá nós da Winner Idiomas queremos saber um
+                            pouco
+                            mais sobre você antes de
+                            começarmos o teste de nivelamento.</h5>
+                    </div>
+                    <div class="col-8" style="padding: 15px 30px 0px 30px;">
+                        <label>Nome :</label>
+                        <input type="text" name="nome" class="form-control" maxlength="1000" placeholder="Nome"
+                            required>
+                    </div>
+                    <div class="col-8" style="padding: 15px 30px 0px 30px;">
+                        <label>E-mail :</label>
+                        <input type="email" name="email" class="form-control" maxlength="1000" placeholder="E-mail"
+                            required>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4" style="padding: 15px 30px 0px 30px;">
+                        <label>Telefone :</label>
+                        <input type="text" class="form-control" name="telefone" placeholder="Telefone" maxlength="14"
+                            onkeydown="javascript: fMasc( this, mTel );" required>
+                    </div>
+                    <div class="col-12" style="padding: 15px 30px 15px 30px;">
+                        <button type="button" href="#" onclick="goBack()"
+                            class="btn btn-secondary float-left">Voltar</button>
+                        <button type="submit" class="btn btn-primary float-right">Começar</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-12" style="padding: 15px 30px 0px 30px;">
-                <label>Nome:</label>
-                <input type="text" name="nome" class="form-control" maxlength="1000" placeholder="Nome">
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 {% endblock %}

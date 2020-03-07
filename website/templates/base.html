@@ -11,7 +11,8 @@
 	<meta name="description" content="Course Project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{% static '/styles/bootstrap4/bootstrap.min.css' %}">
-	<link href="{% static '/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static '/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css' %}" rel="stylesheet"
+		type="text/css">
 	<link rel="stylesheet" type="text/css" href="{% static '/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/plugins/OwlCarousel2-2.2.1/animate.css' %}">
@@ -26,7 +27,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
 	<style>
 		body {
 			background: url("../../static/images/opcoesFundo.jpg") no-repeat center center fixed;
@@ -36,9 +38,75 @@
 			background-size: cover;
 		}
 
+		.animacaoText {
+			-webkit-animation: fadein 2s;
+			/* Safari, Chrome and Opera > 12.1 */
+			-moz-animation: fadein 2s;
+			/* Firefox < 16 */
+			-ms-animation: fadein 2s;
+			/* Internet Explorer */
+			-o-animation: fadein 2s;
+			/* Opera < 12.1 */
+			animation: fadein 2s;
+		}
+
+		@keyframes fadein {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		/* Firefox < 16 */
+		@-moz-keyframes fadein {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		/* Safari, Chrome and Opera > 12.1 */
+		@-webkit-keyframes fadein {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		/* Internet Explorer */
+		@-ms-keyframes fadein {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		/* Opera < 12.1 */
+		@-o-keyframes fadein {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
 		.jumbotron {
 			color: #242424;
-			padding: 10px;    
+			padding: 10px;
 			margin-top: 5vh;
 			min-height: 383px;
 			background: -moz-linear-gradient(top,
@@ -301,7 +369,8 @@
 				<!-- Logo -->
 				<div class="logo_container">
 					<div class="logo">
-						<a href="/"><img class="logo-winner" src="{% static '/images/winner_logo2.png' %}"
+						<a href="/"><img class="logo-winner"
+								src="{% static '/images/winner_logo2.png' %}"
 								alt="Winner Idiomas."></a>
 
 					</div>
@@ -319,7 +388,8 @@
 										<a href="/adult">Adults</a>
 										<a href="/business">Business</a>
 										<a href="/inCompany">In Company</a>
-										<a href="/testPreparation">Tests Preparation</a>
+										<a href="/testPreparation">Tests
+											Preparation</a>
 										<a href="/vip">VIP</a>
 									</div>
 								</div>
@@ -330,28 +400,35 @@
 									<div class="dropdown-content-winner">
 										<a href="/tresLagoas">Três Lagoas</a>
 										<a href="/aguaClara">Água Clara</a>
-										<a href="/ribasRioPardo">Ribas do Rio Pardo</a>
+										<a href="/ribasRioPardo">Ribas do Rio
+											Pardo</a>
 									</div>
 								</div>
 							</li>
-							<li class="main_nav_item"><a href="/testeNivelamento">teste de nivelamento</a></li>
+							<li class="main_nav_item"><a href="/testeNivelamento">teste de
+									nivelamento</a></li>
 							<li class="main_nav_item"><a href="/contato">contato</a></li>
 							<li class="main_nav_item">
 								<div class="dropdown-winner">
-									<button class="dropbtn-winner">parceiros</button>
+									<button
+										class="dropbtn-winner">parceiros</button>
 									<div class="dropdown-content-winner">
 										<a href=/parceiros>Nossos Parceiros</a>
-										<a href="/indiqueParceiro">Indique um parceiro</a>
+										<a href="/indiqueParceiro">Indique um
+											parceiro</a>
 									</div>
 								</div>
 							</li>
-							<li class="main_nav_item"><a href="http://winneralunos.web76109.kinghost.net/dkweb/">Área do aluno</a>
+							<li class="main_nav_item"><a
+									href="http://winneralunos.web76109.kinghost.net/dkweb/">Área
+									do aluno</a>
 							</li>
 						</ul>
 					</div>
 				</nav>
 			</div>
-			<div class="nav-radius-tel header_side d-flex flex-row justify-content-center align-items-center">
+			<div
+				class="nav-radius-tel header_side d-flex flex-row justify-content-center align-items-center">
 				<div style="display: inline">
 					<span><img src="{% static '/images/phone-call.svg' %}" alt="">
 						+55 67 3522-9642</span>
@@ -379,11 +456,15 @@
 				<div class="menu menu_mm">
 					<ul class="menu_list menu_mm">
 						<li class="menu_item menu_mm"><a href="/">Home</a></li>
-						<li class="menu_item menu_mm"><a href="/instituicao">Nossa Instituição</a></li>
+						<li class="menu_item menu_mm"><a href="/instituicao">Nossa
+								Instituição</a></li>
 						<li class="menu_item menu_mm"><a href="/metodo">Nosso Método</a></li>
-						<li class="menu_item menu_mm"><a href="/parceiros">Nossos Parceiros</a></li>
+						<li class="menu_item menu_mm"><a href="/parceiros">Nossos Parceiros</a>
+						</li>
 						<li class="menu_item menu_mm"><a href="/contato">Contato</a></li>
-						<li class="menu_item menu_mm"><a href="http://winneralunos.web76109.kinghost.net/dkweb/">Área do aluno</a>
+						<li class="menu_item menu_mm"><a
+								href="http://winneralunos.web76109.kinghost.net/dkweb/">Área
+								do aluno</a>
 						</li>
 					</ul>
 
@@ -391,10 +472,14 @@
 
 					<div class="menu_social_container menu_mm">
 						<ul class="menu_social menu_mm">
-							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
-							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i
+										class="fab fa-linkedin-in"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i
+										class="fab fa-instagram"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i
+										class="fab fa-facebook-f"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i
+										class="fab fa-twitter"></i></a></li>
 						</ul>
 					</div>
 
@@ -427,12 +512,15 @@
 							<!-- Logo -->
 							<div class="logo_container">
 								<div class="logo">
-									<img src="{% static '/images/winner_logo1.png' %}" alt="Winner Idiomas">
+									<img src="{% static '/images/winner_logo1.png' %}"
+										alt="Winner Idiomas">
 								</div>
 							</div>
 
-							<p class="footer_about_text">Ensinar com máxima eficiência e dedicação, afim de permanecer na memória de
-								todos os alunos não só como um degrau para o alcance de seus sonhos , mas também como um momento de
+							<p class="footer_about_text">Ensinar com máxima eficiência e
+								dedicação, afim de permanecer na memória de
+								todos os alunos não só como um degrau para o alcance de
+								seus sonhos , mas também como um momento de
 								muita diversão e amizade.</p>
 
 						</div>
@@ -443,11 +531,19 @@
 							<div class="footer_column_title">Menu</div>
 							<div class="footer_column_content">
 								<ul>
-									<li class="footer_list_item"><a href="/cursos">Cursos</a></li>
-									<li class="footer_list_item"><a href="/unidades">Unidades</a></li>
-									<li class="footer_list_item"><a href="/nivelamento">Teste de Nivelamento</a></li>
-									<li class="footer_list_item"><a href="/contato">Contato</a></li>
-									<li class="footer_list_item"><a href="http://winneralunos.web76109.kinghost.net/dkweb/">Área do
+									<li class="footer_list_item"><a
+											href="/cursos">Cursos</a></li>
+									<li class="footer_list_item"><a
+											href="/unidades">Unidades</a>
+									</li>
+									<li class="footer_list_item"><a
+											href="/nivelamento">Teste de
+											Nivelamento</a></li>
+									<li class="footer_list_item"><a
+											href="/contato">Contato</a></li>
+									<li class="footer_list_item"><a
+											href="http://winneralunos.web76109.kinghost.net/dkweb/">Área
+											do
 											aluno</a></li>
 								</ul>
 							</div>
@@ -459,11 +555,18 @@
 							<div class="footer_column_title">Links Úteis</div>
 							<div class="footer_column_content">
 								<ul>
-									<li class="footer_list_item"><a href="#">Relatos</a></li>
-									<li class="footer_list_item"><a href="/unidades">Fotos das Unidades</a></li>
-									<li class="footer_list_item"><a href="#">Bate Papo</a></li>
-									<li class="footer_list_item"><a href="#">Fórum</a></li>
-									<li class="footer_list_item"><a href="/contato">Fale Conosco</a></li>
+									<li class="footer_list_item"><a
+											href="#">Relatos</a></li>
+									<li class="footer_list_item"><a
+											href="/unidades">Fotos das
+											Unidades</a></li>
+									<li class="footer_list_item"><a href="#">Bate
+											Papo</a></li>
+									<li class="footer_list_item"><a
+											href="#">Fórum</a></li>
+									<li class="footer_list_item"><a
+											href="/contato">Fale Conosco</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -476,27 +579,34 @@
 								<ul>
 									<li class="footer_contact_item">
 										<div class="footer_contact_icon">
-											<img src="{% static '/icones/localizacao.png' %}" alt="Endereço.">
+											<img src="{% static '/icones/localizacao.png' %}"
+												alt="Endereço.">
 										</div>
-										<a href="https://goo.gl/maps/h3L7RnrqPLEWTtbq8" target="_blank"
-											style="font-size: 14px; font-weight: 400; color: #a5a5a5;">R. Bruno García, 1455 - Colinos, Três
+										<a href="https://goo.gl/maps/h3L7RnrqPLEWTtbq8"
+											target="_blank"
+											style="font-size: 14px; font-weight: 400; color: #a5a5a5;">R.
+											Bruno García, 1455 - Colinos,
+											Três
 											Lagoas - MS, 79640-310</a>
 									</li>
 									<li class="footer_contact_item">
 										<div class="footer_contact_icon">
-											<img src="{% static '/icones/telefone.png' %}" alt="Telefone.">
+											<img src="{% static '/icones/telefone.png' %}"
+												alt="Telefone.">
 										</div>
 										+55 67 3522-9642
 									</li>
 									<li class="footer_contact_item">
 										<div class="footer_contact_icon">
-											<img src="{% static '/icones/whatsapp.svg' %}" alt="WhatsApp.">
+											<img src="{% static '/icones/whatsapp.svg' %}"
+												alt="WhatsApp.">
 										</div>
 										+55 67 8471-5146
 									</li>
 									<li class="footer_contact_item">
 										<div class="footer_contact_icon">
-											<img src="{% static '/icones/email.svg' %}" alt="E-mail.">
+											<img src="{% static '/icones/email.svg' %}"
+												alt="E-mail.">
 										</div>
 										<a href="mailto:winnercallan@uol.com.br"
 											style="font-size: 14px; font-weight: 400; color: #a5a5a5;">winnercallan@uol.com.br</a>
@@ -521,11 +631,14 @@
 					</div>
 					<div class="footer_social ml-sm-auto">
 						<ul class="menu_social">
-							<li class="menu_social_item"><a href="https://pt.linkedin.com/company/winner-escola-de-idiomas"><i
+							<li class="menu_social_item"><a
+									href="https://pt.linkedin.com/company/winner-escola-de-idiomas"><i
 										class="fab fa-linkedin-in"></i></a></li>
-							<li class="menu_social_item"><a href="https://www.instagram.com/escola_winner/"><i
+							<li class="menu_social_item"><a
+									href="https://www.instagram.com/escola_winner/"><i
 										class="fab fa-instagram"></i></a></li>
-							<li class="menu_social_item"><a href="https://www.facebook.com/Winner-Idiomas-949947255016813/"><i
+							<li class="menu_social_item"><a
+									href="https://www.facebook.com/Winner-Idiomas-949947255016813/"><i
 										class="fab fa-facebook-f"></i></a></li>
 						</ul>
 					</div>
@@ -564,6 +677,31 @@
 			} else {
 				x.style.display = "none";
 			}
+		}
+	</script>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+	<script>
+
+		function mTel(tel) {
+			tel = tel.replace(/\D/g, "")
+			tel = tel.replace(/^(\d)/, "($1")
+			tel = tel.replace(/(.{3})(\d)/, "$1)$2")
+			if (tel.length == 9) {
+				tel = tel.replace(/(.{1})$/, "-$1")
+			} else if (tel.length == 10) {
+				tel = tel.replace(/(.{2})$/, "-$1")
+			} else if (tel.length == 11) {
+				tel = tel.replace(/(.{3})$/, "-$1")
+			} else if (tel.length == 12) {
+				tel = tel.replace(/(.{4})$/, "-$1")
+			} else if (tel.length > 12) {
+				tel = tel.replace(/(.{4})$/, "-$1")
+			}
+			return tel;
 		}
 	</script>
 </body>
