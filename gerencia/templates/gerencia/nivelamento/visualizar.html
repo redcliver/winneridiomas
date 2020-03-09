@@ -25,30 +25,27 @@
                 <input type="number" name="pontuacao" value="1" maxlength="2" rows="4" min="0" max="10"
                     class="form-control" value="{{perguntaObj.pontuacao}}" disabled>
             </div>
+            {% if respostasObj %}
+            {% for respostaModel in respostasObj %}
+            {% if respostaModel.tipo == '1' %}
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
                 <label style="color: #4EBF46;">Resposta Correta</label>
                 <input type="text" name="respostaCorreta" class="form-control" maxlength="1000"
-                    placeholder="Resposta Correta..." value="{{perguntaObj.respostaCorreta}}" disabled>
+                    placeholder="Resposta Correta..." value="{{respostaModel.resposta}}" disabled>
             </div>
+            {% endif %}
+
+            {% if respostaModel.tipo == '2' %}
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
-                <label style="color: #BF4646;">Resposta Alternativa 1</label>
-                <input type="text" name="respostaAlternativa1" class="form-control" maxlength="1000"
-                    placeholder="Resposta alternativa 1..." value="{{perguntaObj.respostaAlternativa1}}" disabled>
+                <label style="color: #BF4646;">Resposta Alternativa </label>
+                <input type="text" name="respostaAlternativa" class="form-control" maxlength="1000"
+                    placeholder="Resposta alternativa ..." value="{{respostaModel.resposta}}" disabled>
             </div>
-            <div class="col-sm-12 col-md-10 col-10">
-                <br>
-                <label style="color: #BF4646;">Resposta Alternativa 2</label>
-                <input type="text" name="respostaAlternativa2" class="form-control" maxlength="1000"
-                    placeholder="Resposta alternativa 2..." value="{{perguntaObj.respostaAlternativa2}}" disabled>
-            </div>
-            <div class="col-sm-12 col-md-10 col-10">
-                <br>
-                <label style="color: #BF4646;">Resposta Alternativa 3</label>
-                <input type="text" name="respostaAlternativa3" class="form-control" maxlength="1000"
-                    placeholder="Resposta alternativa 3..." value="{{perguntaObj.respostaAlternativa3}}" disabled>
-            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
         </div>
         <br />
         <button type="submit" class="btn btn-secondary float-left" formaction="/gerencia/teste/buscar">Voltar</button>

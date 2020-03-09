@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import datetime
 from evento.models import eventoModel
-from .models import alunoModel, colaboradorModel, salaModel, cidadeModel, perguntaModel
+from .models import alunoModel, colaboradorModel, salaModel, cidadeModel, perguntaModel, respostaModel
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
@@ -437,8 +437,28 @@ def testeNovo(request):
                 respostaAlternativa1 = request.POST.get('respostaAlternativa1')
                 respostaAlternativa2 = request.POST.get('respostaAlternativa2')
                 respostaAlternativa3 = request.POST.get('respostaAlternativa3')
-                novaPergunta = perguntaModel(pergunta=pergunta, respostaCorreta=respostaCorreta, respostaAlternativa1=respostaAlternativa1, respostaAlternativa2=respostaAlternativa2, respostaAlternativa3=respostaAlternativa3, valor=pontuacao)
+                novaPergunta = perguntaModel(pergunta=pergunta, pontuacao=pontuacao)
                 novaPergunta.save()
+                if respostaCorreta != None:
+                    novaResposta = respostaModel(resposta= respostaCorreta, tipo=1)
+                    novaResposta.save()
+                    novaPergunta.respostas.add(novaResposta)
+                    novaPergunta.save()
+                if respostaAlternativa1 != None:
+                    novaResposta = respostaModel(resposta= respostaAlternativa1)
+                    novaResposta.save()
+                    novaPergunta.respostas.add(novaResposta)
+                    novaPergunta.save()
+                if respostaAlternativa2 != None:
+                    novaResposta = respostaModel(resposta= respostaAlternativa2)
+                    novaResposta.save()
+                    novaPergunta.respostas.add(novaResposta)
+                    novaPergunta.save()
+                if respostaAlternativa3 != None:
+                    novaResposta = respostaModel(resposta= respostaAlternativa3)
+                    novaResposta.save()
+                    novaPergunta.respostas.add(novaResposta)
+                    novaPergunta.save()
 
                 msgConfirmacao = "Nova pergunta cadastrada com sucesso!"
                 return render (request, 'gerencia/nivelamento/novo.html', {'title':'Nova Pergunta', 
@@ -467,9 +487,11 @@ def testeBusca(request):
             if request.method == "POST" and request.POST.get('perguntaID') != None:
                 perguntaID = request.POST.get('perguntaID')
                 perguntaObj = perguntaModel.objects.get(id=perguntaID)
+                respostasObj = perguntaObj.respostas.all()
                 return render (request, 'gerencia/nivelamento/visualizar.html', {'title':'Visualizar Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial,
-                                                            'perguntaObj':perguntaObj})
+                                                            'perguntaObj':perguntaObj,
+                                                            'respostasObj':respostasObj})
                 
             return render (request, 'gerencia/nivelamento/buscar.html', {'title':'Visualizar Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial,
@@ -492,24 +514,37 @@ def testeEdita(request):
             try:
                 perguntaIDGet = request.GET.get('perguntaID')
                 perguntaObjGet = perguntaModel.objects.get(id=perguntaIDGet)
+                respostasObjGet = perguntaObjGet.respostas.all()
+                contador = 1
+                for r in perguntaObjGet.respostas.all():
+                    respNome = "respostaAlternativa"+str(contador)
+                    respValue = r.resposta
+                    respTeste = {respNome:respValue}
+                    respGeral.add(respTeste)
             except:
-                perguntaObjGet = None
+                respostasObjGet = None
+
             if request.method == "POST" and request.POST.get('perguntaID') != None:
                 perguntaID = request.POST.get('perguntaID')
                 perguntaObj = perguntaModel.objects.get(id=perguntaID)
                 pergunta = request.POST.get('pergunta')
                 pontuacao = request.POST.get('pontuacao')
-                respostaCorreta = request.POST.get('respostaCorreta')
-                respostaAlternativa1 = request.POST.get('respostaAlternativa1')
-                respostaAlternativa2 = request.POST.get('respostaAlternativa2')
-                respostaAlternativa3 = request.POST.get('respostaAlternativa3')
+                
+                respostaCorretaID = request.POST.get('respostaCorretaID')
+                respostaCorretaText = request.POST.get('respostaCorretaText')
+                respostaCorretaObj = respostaModel.objects.get(id=respostaCorretaID)
+                respostaCorretaObj.resposta = respostaCorretaText
+                respostaCorretaObj.save()
+
+
+                respostaAlternativaID = request.POST.get('respostaAlternativaID')
+                respostaAlternativaText = request.POST.get('respostaAlternativaText')
+                respostaAlternativaObj = respostaModel.objects.get(id=respostaAlternativaID)
+                respostaAlternativaObj.resposta = respostaAlternativaText
+                respostaAlternativaObj.save()
 
                 perguntaObj.pergunta = pergunta
-                perguntaObj.pontuacao = pontuacao
-                perguntaObj.pergurespostaCorretanta = respostaCorreta
-                perguntaObj.respostaAlternativa1 = respostaAlternativa1
-                perguntaObj.respostaAlternativa2 = respostaAlternativa2
-                perguntaObj.respostaAlternativa3 = respostaAlternativa3
+                perguntaObj.pontuacao = pontuacao              
 
                 perguntaObj.save()
             
@@ -521,6 +556,7 @@ def testeEdita(request):
                 
             return render (request, 'gerencia/nivelamento/editar.html', {'title':'Editar Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial,
-                                                            'perguntaObj':perguntaObjGet})
+                                                            'perguntaObj':perguntaObjGet,
+                                                            'respostasObj':respostasObjGet})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
