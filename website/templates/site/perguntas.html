@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
+{% if perguntasExecList %}
+<script>alert('{{perguntasExecList}}')</script>
+{% endif %}
 <div class="main-container">
     <div class="jumbotron container">
-        <form method="POST" action="/testePerguntas">
+        <form method="POST" action="/PerguntasNivelamento">
             {% csrf_token %}
             <div class="row">
                 <input type="hidden" name="contador" value="{{contador}}" />
+                <input type="hidden" name="testeNivelamentoID" value="{{testeNivelamentoObj.id}}" />
+                <input type="hidden" name="perguntaID" value="{{perguntaObj.id}}" />
                 <div class="col-sm-12 col-md-10 col-10" style="padding: 15px 30px 0px 30px;">
                     <div class="animacaoText">
                         <h5 class="cursos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{contador}} - {{perguntaObj.pergunta}}</h5>
@@ -17,8 +22,8 @@
                         <label>Resposta:</label>
                         <br />
                         {% for respostaModel in respostasList %}
-                        <input type="radio" id="resposta" name="resposta" value="{{respostaModel.id}}">
-                        <label for="resposta">{{respostaModel.resposta}}</label><br>
+                        <input type="radio" id="{{respostaModel.id}}" name="respostaID" value="{{respostaModel.id}}">
+                        <label for="{{respostaModel.id}}">{{respostaModel.resposta}}</label><br>
                         {% endfor %}
                     </div>
                 </div>

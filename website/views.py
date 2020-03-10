@@ -1,13 +1,16 @@
 from django.shortcuts import render
-from website.models import contato, registro, indicacao, testeNivelamento
+from website.models import contato, registro, indicacao, testeNivelamento, respostaNivelamento, perguntasExecutadas
 from evento.models import eventoModel
-from gerencia.models import perguntaModel
+from gerencia.models import perguntaModel, respostaModel
 from django.core.mail import EmailMessage
 import random
 from random import shuffle
 import datetime
+import os
+from twilio.rest import Client
 
 # Create your views here.
+
 def paginaPrincipal(request):
     now = datetime.datetime.now().strftime('%H')
     now = int(now)
@@ -120,6 +123,18 @@ def indiqueParceiro(request):
         mensagem = request.POST.get('mensagem')
         novaIndicacao = indicacao(nome=nome, empresa=empresa, sobrenome=sobrenome, email=email, telefone=telefone, mensagem=mensagem)
         novaIndicacao.save()
+
+        msgEmail = "Contato recebido via website. \n\n\n NOME:\n" + nome +"\n\nEMPRESA:\n" + empresa + "\n\nTELEFONE:\n"+ telefone +"\n\nE-MAIL:\n"+ email + "\n\nMENSAGEM:\n" + mensagem + "\n\n\nEssa mensagem foi gerada automaticamente, não responta."
+        testeEmail = EmailMessage('Contato website - INDICAÇÃO PARCEIRO', msgEmail, to=['winnercallan@uol.com.br'])
+        testeEmail.send()
+
+        #client = Client()        
+        #from_whatsapp_number='whatsapp:+5567991865754'
+        #to_whatsapp_number='whatsapp:+5567991865754'
+        #message = client.messages.create(body='Check out this owl!',
+        #               from_=from_whatsapp_number,
+        #               to=to_whatsapp_number)
+
         msgConfirmação = "Indicação enviada com sucesso!"
         return render(request, 'site/home.html', {'title': 'Home', 'msgConfirmação':msgConfirmação})
     return render(request, 'site/indiqueParceiro.html', {'title': 'Indique Parceiros'})
@@ -132,9 +147,11 @@ def testeNivelamentoView(request):
         telefone = request.POST.get('telefone')
         novoTesteNivelamento = testeNivelamento(nome=nome, email=email, telefone=telefone)
         novoTesteNivelamento.save()
-        qntPerguntas = perguntaModel.objects.filter(estado=1).count()
-        sortPergunta = random.randint(1, qntPerguntas)
-        perguntaObj = perguntaModel.objects.get(id=sortPergunta)
+        perguntaObj = perguntaModel.objects.order_by('?')[0]
+        pergExecutadas = perguntasExecutadas(pergunta=perguntaObj.id)
+        pergExecutadas.save()
+        novoTesteNivelamento.executadas.add(pergExecutadas)
+        novoTesteNivelamento.save()
         contador = contador + 1
         respostas = perguntaObj.respostas.all()
         respostasList = list(respostas)
@@ -143,7 +160,60 @@ def testeNivelamentoView(request):
                                                          'perguntaObj':perguntaObj,
                                                          'contador':contador,
                                                          'respostas':respostas,
-                                                         'respostasList':respostasList})
+                                                         'respostasList':respostasList,
+                                                         'testeNivelamentoObj':novoTesteNivelamento})
+    return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})
+
+
+def PerguntasNivelamento(request):
+    if request.method == "POST" and request.POST.get('contador') != None and request.POST.get('testeNivelamentoID') != None:
+        contador = request.POST.get('contador')
+        if int(contador) < 20:
+            testeNivelamentoID = request.POST.get('testeNivelamentoID')
+            perguntaID = request.POST.get('perguntaID')
+            respostaID = request.POST.get('respostaID')
+            testeNivelamentoObj = testeNivelamento.objects.get(id=testeNivelamentoID)
+            perguntaObj = perguntaModel.objects.get(id=perguntaID)
+            respostaObj = respostaModel.objects.get(id=respostaID)
+            novaRespostaObj = respostaNivelamento(pergunta= perguntaObj, resposta=respostaObj)
+            novaRespostaObj.save()
+            testeNivelamentoObj.respostas.add(novaRespostaObj)
+            testeNivelamentoObj.save()
+            pergExecutadas = perguntasExecutadas(pergunta=perguntaObj.id)
+            pergExecutadas.save()
+            testeNivelamentoObj.executadas.add(pergExecutadas)
+            testeNivelamentoObj.save()
+            perguntasExecList = []
+            for p in testeNivelamentoObj.executadas.all():
+                perguntasExecList.append(p.id)
+            contador = int(contador) + 1
+            perguntaObjeto = perguntaModel.objects.filter(estado=1).exclude(id__in=perguntasExecList).order_by('?')[0]
+
+            respostas = perguntaObjeto.respostas.all()
+            respostasList = list(respostas)
+            shuffle(respostasList)
+            return render(request, 'site/perguntas.html', {'title': 'Nivelamento',
+                                                            'contador':contador,
+                                                            'testeNivelamentoObj':testeNivelamentoObj,
+                                                            'respostasList':respostasList,
+                                                            'perguntaObj':perguntaObjeto,
+                                                            'perguntasExecList':perguntasExecList})
+        if int(contador) >= 20:
+            testeNivelamentoID = request.POST.get('testeNivelamentoID')
+            perguntaID = request.POST.get('perguntaID')
+            respostaID = request.POST.get('respostaID')
+
+            testeNivelamentoObj = testeNivelamento.objects.get(id=testeNivelamentoID)
+            perguntaObj = perguntaModel.objects.get(id=perguntaID)
+            respostaObj = respostaModel.objects.get(id=respostaID)
+            novaRespostaObj = respostaNivelamento(pergunta= perguntaObj, resposta=respostaObj)
+            novaRespostaObj.save()
+            testeNivelamentoObj.respostas.add(novaRespostaObj)
+            testeNivelamentoObj.save()
+
+            return render(request, 'site/perguntas.html', {'title': 'Nivelamento',
+                                                            'contador':contador,
+                                                            'testeNivelamentoObj':testeNivelamentoObj})
     return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})
 
 def viewContato(request):
@@ -156,7 +226,7 @@ def viewContato(request):
         novoContato = contato(nome=nome, sobrenome=sobrenome, email=email, telefone=telefone, mensagem=mensagem)
         novoContato.save()
         msgEmail = "Contato recebido via website. \n\n\n NOME:\n" + nome + " " + sobrenome +"\n\nTELEFONE:\n"+ telefone +"\n\nE-MAIL:\n"+ email + "\n\nMENSAGEM:\n" + mensagem + "\n\n\nEssa mensagem foi gerada automaticamente, não responta."
-        testeEmail = EmailMessage('Contato website', msgEmail, to=['winnercallan@uol.com.br'])
+        testeEmail = EmailMessage('Contato website - CONTATO', msgEmail, to=['winnercallan@uol.com.br'])
         testeEmail.send()
         
         confirmacao = "Mensagem enviada com sucesso!"

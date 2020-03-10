@@ -14,10 +14,10 @@ class eventoModel(models.Model):
     conteudo = models.CharField(max_length=2000, null=True, blank=True)
     imagem_capa = CloudinaryField('image')
     imagem_adicional = models.ManyToManyField(imagensModel)
-    data_publicacao = models.DateTimeField(default=timezone.now())
+    data_publicacao = models.DateTimeField(default=timezone.now)
     data_evento = models.DateField(null=True, blank=True)
     hora_evento = models.TimeField(null=True, blank=True)
-    data_cadastro = models.DateTimeField(default=timezone.now())
+    data_cadastro = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.titulo
