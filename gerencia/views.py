@@ -514,13 +514,10 @@ def testeEdita(request):
             try:
                 perguntaIDGet = request.GET.get('perguntaID')
                 perguntaObjGet = perguntaModel.objects.get(id=perguntaIDGet)
-                respostasObjGet = perguntaObjGet.respostas.all()
-                contador = 1
-                for r in perguntaObjGet.respostas.all():
-                    respNome = "respostaAlternativa"+str(contador)
-                    respValue = r.resposta
-                    respTeste = {respNome:respValue}
-                    respGeral.add(respTeste)
+                resposta1 = perguntaObjGet.respostas.all()[0]
+                resposta2 = perguntaObjGet.respostas.all()[1]
+                resposta3 = perguntaObjGet.respostas.all()[2]
+                resposta4 = perguntaObjGet.respostas.all()[3]
             except:
                 respostasObjGet = None
 
@@ -530,33 +527,53 @@ def testeEdita(request):
                 pergunta = request.POST.get('pergunta')
                 pontuacao = request.POST.get('pontuacao')
                 
+                #Resposta correta
                 respostaCorretaID = request.POST.get('respostaCorretaID')
                 respostaCorretaText = request.POST.get('respostaCorretaText')
                 respostaCorretaObj = respostaModel.objects.get(id=respostaCorretaID)
                 respostaCorretaObj.resposta = respostaCorretaText
                 respostaCorretaObj.save()
 
+                #Resposta errada 1
+                respostasAlternativa1 = request.POST.get('respostasAlternativa1')
+                respostaAlternativaText1 = request.POST.get('respostaAlternativaText1')
+                respostaAlternativaObj1 = respostaModel.objects.get(id=respostasAlternativa1)
+                respostaAlternativaObj1.resposta = respostaAlternativaText1
+                respostaAlternativaObj1.save()
 
-                respostaAlternativaID = request.POST.get('respostaAlternativaID')
-                respostaAlternativaText = request.POST.get('respostaAlternativaText')
-                respostaAlternativaObj = respostaModel.objects.get(id=respostaAlternativaID)
-                respostaAlternativaObj.resposta = respostaAlternativaText
-                respostaAlternativaObj.save()
+                #Resposta errada 2
+                respostasAlternativa2 = request.POST.get('respostasAlternativa2')
+                respostaAlternativaText2 = request.POST.get('respostaAlternativaText2')
+                respostaAlternativaObj2 = respostaModel.objects.get(id=respostasAlternativa2)
+                respostaAlternativaObj2.resposta = respostaAlternativaText2
+                respostaAlternativaObj2.save()
+                
+                #Resposta errada 3
+                respostasAlternativa3 = request.POST.get('respostasAlternativa3')
+                respostaAlternativaText3 = request.POST.get('respostaAlternativaText3')
+                respostaAlternativaObj3 = respostaModel.objects.get(id=respostasAlternativa3)
+                respostaAlternativaObj3.resposta = respostaAlternativaText3
+                respostaAlternativaObj3.save()
 
                 perguntaObj.pergunta = pergunta
                 perguntaObj.pontuacao = pontuacao              
 
                 perguntaObj.save()
+                respostasObj = perguntaObj.respostas.all()
             
                 msgConfirmacao = "Pergunta editada com sucesso!"
                 return render (request, 'gerencia/nivelamento/visualizar.html', {'title':'Visualizar Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'msgConfirmacao':msgConfirmacao,
-                                                            'perguntaObj':perguntaObj})
+                                                            'perguntaObj':perguntaObj,
+                                                            'respostasObj':respostasObj})
                 
             return render (request, 'gerencia/nivelamento/editar.html', {'title':'Editar Pergunta', 
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'perguntaObj':perguntaObjGet,
-                                                            'respostasObj':respostasObjGet})
+                                                            'resposta1':resposta1,
+                                                            'resposta2':resposta2,
+                                                            'resposta3':resposta3,
+                                                            'resposta4':resposta4})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})

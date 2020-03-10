@@ -26,39 +26,43 @@
                 <input type="number" name="pontuacao" value="1" maxlength="2" rows="4" min="0" max="10"
                     class="form-control" value="{{perguntaObj.valor}}">
             </div>
-            {% if respostasObj %}
-            {% for respostaModel in respostasObj %}
-            {% if respostaModel.tipo == '1' %}
             <div class="col-sm-10 col-md-10 col-10">
                 <br>
+                <input type="hidden" class="respostasAlternativas" name="respostaCorretaID"
+                    value="{{resposta1.id}}" />
                 <label style="color: #4EBF46;">Resposta Correta</label>
                 <input type="text" name="respostaCorretaText" class="form-control" maxlength="1000"
-                    placeholder="Resposta Correta..." value="{{respostaModel.resposta}}">
+                    placeholder="Resposta Correta..." value="{{resposta1.resposta}}">
 
             </div>
-            {% endif %}
-
-            {% if respostaModel.tipo == '2' %}
             <div class="col-sm-12 col-md-10 col-10">
                 <br>
-                <input type="hidden" class="respostasAlternativas" name="respostasAlternativa"
-                    value="{{respostaModel.id}}" />
+                <input type="hidden" class="respostasAlternativas" name="respostasAlternativa1"
+                    value="{{resposta2.id}}" />
                 <label style="color: #BF4646;">Resposta Alternativa </label>
-                <input type="text" name="respostaAlternativaText" class="form-control" maxlength="1000"
-                    placeholder="Resposta alternativa ..." value="{{respostaModel.resposta}}">
+                <input type="text" name="respostaAlternativaText1" class="form-control" maxlength="1000"
+                    placeholder="Resposta alternativa ..." value="{{resposta2.resposta}}">
             </div>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
+            <div class="col-sm-12 col-md-10 col-10">
+                <br>
+                <input type="hidden" class="respostasAlternativas" name="respostasAlternativa2"
+                    value="{{resposta3.id}}" />
+                <label style="color: #BF4646;">Resposta Alternativa </label>
+                <input type="text" name="respostaAlternativaText2" class="form-control" maxlength="1000"
+                    placeholder="Resposta alternativa ..." value="{{resposta3.resposta}}">
+            </div>
+            <div class="col-sm-12 col-md-10 col-10">
+                <br>
+                <input type="hidden" class="respostasAlternativas" name="respostasAlternativa3"
+                    value="{{resposta4.id}}" />
+                <label style="color: #BF4646;">Resposta Alternativa </label>
+                <input type="text" name="respostaAlternativaText3" class="form-control" maxlength="1000"
+                    placeholder="Resposta alternativa ..." value="{{resposta4.resposta}}">
+            </div>
         </div>
         <br />
         <button type="button" onclick="goBack()" class="btn btn-secondary float-left">Voltar</button>
         <button type="submit" class="btn btn-primary float-right">Salvar</button>
     </form>
 </main>
-<script>
-    $("input[type='hidden'] respostasAlternativas").each(function (i) {
-        $(this).find('input').attr('name', 'respostasAlternativa' + i);
-    });
-</script>
 {% endblock %}

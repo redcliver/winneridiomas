@@ -76,50 +76,38 @@ def paginaPrincipal(request):
 def cursos(request):
     return render(request, 'site/cursos.html', {'title': 'Cursos'})
 
-
 def kids(request):
     return render(request, 'site/cursos/kids.html', {'title': 'Kids'})
-
 
 def adult(request):
     return render(request, 'site/cursos/adult.html', {'title': 'Adult'})
 
-
 def business(request):
     return render(request, 'site/cursos/business.html', {'title': 'Business'})
-
 
 def inCompany(request):
     return render(request, 'site/cursos/inCompany.html', {'title': 'In Company'})
 
-
 def testPreparation(request):
     return render(request, 'site/cursos/testPreparation.html', {'title': 'Test Preparation'})
-
 
 def vip(request):
     return render(request, 'site/cursos/vip.html', {'title': 'VIP'})
 
-
 def unidades(request):
     return render(request, 'site/unidades.html', {'title': 'Unidades'})
-
 
 def tresLagoas(request):
     return render(request, 'site/tresLagoas.html', {'title': 'Três Lagoas'})
 
-
 def aguaClara(request):
     return render(request, 'site/aguaClara.html', {'title': 'Água Clara'})
-
 
 def ribasRioPardo(request):
     return render(request, 'site/ribasRioPardo.html', {'title': 'Ribas do Rio Pardo'})
 
-
 def parceiros(request):
     return render(request, 'site/parceiros.html', {'title': 'Parceiros'})
-
 
 def indiqueParceiro(request):
     if request.method == 'POST':
@@ -135,28 +123,23 @@ def indiqueParceiro(request):
         return render(request, 'site/home.html', {'title': 'Home', 'msgConfirmação':msgConfirmação})
     return render(request, 'site/indiqueParceiro.html', {'title': 'Indique Parceiros'})
 
-
 def testeNivelamentoView(request):
+    contador = 0
     if request.method == "POST" and request.POST.get('nome') != None:
         nome = request.POST.get('nome')
         email = request.POST.get('email')
         telefone = request.POST.get('telefone')
         novoTesteNivelamento = testeNivelamento(nome=nome, email=email, telefone=telefone)
         novoTesteNivelamento.save()
-        contador = 0
         qntPerguntas = perguntaModel.objects.filter(estado=1).count()
         sortPergunta = random.randint(1, qntPerguntas)
         perguntaObj = perguntaModel.objects.get(id=sortPergunta)
-        respostasList = [perguntaObj.respostaCorreta, perguntaObj.respostaAlternativa1, perguntaObj.respostaAlternativa2, perguntaObj.respostaAlternativa3]
-        respostasList = list(respostasList)
-        respostas = random.shuffle(respostasList)
         contador = contador + 1
         return render(request, 'site/perguntas.html', {'title': 'Nivelamento',
                                                          'perguntaObj':perguntaObj,
                                                          'contador':contador,
                                                          'respostas':respostas})
     return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})
-
 
 def viewContato(request):
     if request.method == 'POST':
@@ -175,7 +158,6 @@ def viewContato(request):
         return render(request, 'site/contato.html', {'title': 'Contato', 'confirmacao': confirmacao})
     
     return render(request, 'site/contato.html', {'title': 'Contato'})
-
 
 def entrar(request):
     if request.user.is_authenticated:
@@ -209,18 +191,14 @@ def entrar(request):
                                                         'msgTelaInicial':msgTelaInicial})
     return render (request, 'site/login.html', {'title':'Login'})
 
-
 def instituicao(request):
     return render(request, 'site/instituicao.html', {'title': 'Instituicao'})
-
 
 def metodo(request):
     return render(request, 'site/metodo.html', {'title': 'Metodo'})
 
-
 def colaboradores(request):
     return render(request, 'site/colaboradores.html', {'title': 'Colaboradores'})
-
 
 def viewRegistro(request):
     if request.method == "POST" and request.POST.get('emailRegistro') != "":
@@ -230,10 +208,8 @@ def viewRegistro(request):
         return render(request, 'site/registro.html', {'title': 'Receber novidades...'})
     return render(request, 'site/registro.html', {'title': 'Receber novidades...'})
 
-
 def error_404(request, exception):
     return render(request, 'site/404.html', {'title': 'Error'})
-
 
 def error_500(request):
     return render(request, 'site/500.html', {'title': 'Error'})
