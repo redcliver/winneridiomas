@@ -6,33 +6,24 @@
         <form method="POST" action="/testePerguntas">
             {% csrf_token %}
             <div class="row">
-                <div class="animacaoText">
-                    <div class="col-12" style="padding: 15px 30px 0px 30px;">
+                <input type="hidden" name="contador" value="{{contador}}" />
+                <div class="col-sm-12 col-md-10 col-10" style="padding: 15px 30px 0px 30px;">
+                    <div class="animacaoText">
                         <h5 class="cursos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{contador}} - {{perguntaObj.pergunta}}</h5>
                     </div>
-                    <div class="col-8" style="padding: 15px 30px 0px 30px;">
+                </div>
+                <div class="col-sm-12 col-md-10 col-10" style="padding: 15px 30px 0px 30px; display: inline-block;">
+                    <div class="animacaoText">
                         <label>Resposta:</label>
                         <br />
-                        {% for item in respostas.split %}
-                        <input type="radio" id="resposta" name="gender" value="{{item|safe}}">
-                        <label for="resposta">{{item|safe}}</label><br>
+                        {% for respostaModel in respostasList %}
+                        <input type="radio" id="resposta" name="resposta" value="{{respostaModel.id}}">
+                        <label for="resposta">{{respostaModel.resposta}}</label><br>
                         {% endfor %}
-
                     </div>
-                    <!--<div class="col-8" style="padding: 15px 30px 0px 30px;">
-                        <label>E-mail :</label>
-                        <input type="email" name="email" class="form-control" maxlength="1000" placeholder="E-mail"
-                            required>
-                    </div>
-                    <div class="col-4"></div>
-                    <div class="col-4" style="padding: 15px 30px 0px 30px;">
-                        <label>Telefone :</label>
-                        <input type="text" class="form-control" name="telefone" placeholder="Telefone" maxlength="14"
-                            onkeydown="javascript: fMasc( this, mTel );" required>
-                    </div>-->
-                    <div class="col-12" style="padding: 15px 30px 15px 30px;">
-                        <button type="submit" class="btn btn-primary float-right">Próxima pergunta</button>
-                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-12" style="padding: 15px 30px 15px 30px;">
+                    <button type="submit" class="btn btn-primary float-right">Próxima pergunta</button>
                 </div>
             </div>
         </form>

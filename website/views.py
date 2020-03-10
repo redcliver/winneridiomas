@@ -4,6 +4,7 @@ from evento.models import eventoModel
 from gerencia.models import perguntaModel
 from django.core.mail import EmailMessage
 import random
+from random import shuffle
 import datetime
 
 # Create your views here.
@@ -135,10 +136,14 @@ def testeNivelamentoView(request):
         sortPergunta = random.randint(1, qntPerguntas)
         perguntaObj = perguntaModel.objects.get(id=sortPergunta)
         contador = contador + 1
+        respostas = perguntaObj.respostas.all()
+        respostasList = list(respostas)
+        shuffle(respostasList)
         return render(request, 'site/perguntas.html', {'title': 'Nivelamento',
                                                          'perguntaObj':perguntaObj,
                                                          'contador':contador,
-                                                         'respostas':respostas})
+                                                         'respostas':respostas,
+                                                         'respostasList':respostasList})
     return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})
 
 def viewContato(request):
