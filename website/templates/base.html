@@ -19,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static '/styles/main_styles.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/styles/responsive.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/styles/estilos.css' %}">
+	<link rel="stylesheet" type="text/scss" href="{% static '/styles/fogosAnimation.scss' %}">
 	<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Chilanka&display=swap" rel="stylesheet">
@@ -37,6 +38,21 @@
 			-o-background-size: cover;
 			background-size: cover;
 		}
+
+		.jumbotron-comemoracao {
+			background-image: url("../../static/images/comemoracao.jpg") !important;
+			background-size: cover !important;
+			background-repeat: no-repeat !important;
+			background-position: center !important;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			border-radius: 20px;
+			min-height: 500px !important;
+			text-align: center;
+			vertical-align: baseline !important;
+		}
+
 
 		.animacaoText {
 			-webkit-animation: fadein 2s;
@@ -249,6 +265,8 @@
 			background-color: transparent;
 			color: #2e61fa;
 		}
+
+
 
 		@media (max-width: 768px) {
 			.logo-winner {
@@ -684,7 +702,15 @@
 			window.history.back();
 		}
 	</script>
-	<script>
+	<script type="text/javascript">
+		function fMasc(objeto, mascara) {
+			obj = objeto
+			masc = mascara
+			setTimeout("fMascEx()", 1)
+		}
+		function fMascEx() {
+			obj.value = masc(obj.value)
+		}
 
 		function mTel(tel) {
 			tel = tel.replace(/\D/g, "")

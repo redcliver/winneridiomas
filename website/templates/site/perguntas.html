@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
-{% if perguntasExecList %}
-<script>alert('{{perguntasExecList}}')</script>
-{% endif %}
 <div class="main-container">
     <div class="jumbotron container">
         <form method="POST" action="/PerguntasNivelamento">

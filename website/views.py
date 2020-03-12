@@ -147,7 +147,7 @@ def testeNivelamentoView(request):
         telefone = request.POST.get('telefone')
         novoTesteNivelamento = testeNivelamento(nome=nome, email=email, telefone=telefone)
         novoTesteNivelamento.save()
-        perguntaObj = perguntaModel.objects.order_by('?')[0]
+        perguntaObj = perguntaModel.objects.filter(estado=1).order_by('?')[0]
         pergExecutadas = perguntasExecutadas(pergunta=perguntaObj.id)
         pergExecutadas.save()
         novoTesteNivelamento.executadas.add(pergExecutadas)
@@ -156,7 +156,7 @@ def testeNivelamentoView(request):
         respostas = perguntaObj.respostas.all()
         respostasList = list(respostas)
         shuffle(respostasList)
-        return render(request, 'site/perguntas.html', {'title': 'Nivelamento',
+        return render(request, 'site/finalNivelamento.html', {'title': 'Nivelamento',
                                                          'perguntaObj':perguntaObj,
                                                          'contador':contador,
                                                          'respostas':respostas,
@@ -185,7 +185,7 @@ def PerguntasNivelamento(request):
             testeNivelamentoObj.save()
             perguntasExecList = []
             for p in testeNivelamentoObj.executadas.all():
-                perguntasExecList.append(p.id)
+                perguntasExecList.append(p.pergunta)
             contador = int(contador) + 1
             perguntaObjeto = perguntaModel.objects.filter(estado=1).exclude(id__in=perguntasExecList).order_by('?')[0]
 
@@ -196,13 +196,11 @@ def PerguntasNivelamento(request):
                                                             'contador':contador,
                                                             'testeNivelamentoObj':testeNivelamentoObj,
                                                             'respostasList':respostasList,
-                                                            'perguntaObj':perguntaObjeto,
-                                                            'perguntasExecList':perguntasExecList})
+                                                            'perguntaObj':perguntaObjeto})
         if int(contador) >= 20:
             testeNivelamentoID = request.POST.get('testeNivelamentoID')
             perguntaID = request.POST.get('perguntaID')
             respostaID = request.POST.get('respostaID')
-
             testeNivelamentoObj = testeNivelamento.objects.get(id=testeNivelamentoID)
             perguntaObj = perguntaModel.objects.get(id=perguntaID)
             respostaObj = respostaModel.objects.get(id=respostaID)
@@ -210,10 +208,26 @@ def PerguntasNivelamento(request):
             novaRespostaObj.save()
             testeNivelamentoObj.respostas.add(novaRespostaObj)
             testeNivelamentoObj.save()
+            pergExecutadas = perguntasExecutadas(pergunta=perguntaObj.id)
+            pergExecutadas.save()
+            testeNivelamentoObj.executadas.add(pergExecutadas)
+            testeNivelamentoObj.save()
+            perguntasExecList = []
+            for p in testeNivelamentoObj.executadas.all():
+                perguntasExecList.append(p.pergunta)
+            contador = int(contador) + 1
+            perguntaObjeto = perguntaModel.objects.filter(estado=1).order_by('?')[0]
 
-            return render(request, 'site/perguntas.html', {'title': 'Nivelamento',
+            respostas = perguntaObjeto.respostas.all()
+            respostasList = list(respostas)
+            shuffle(respostasList)
+            msgConfirmacao = "FINALIZAR AQUI MESMO"
+            return render(request, 'site/finalNivelamento.html', {'title': 'Nivelamento',
                                                             'contador':contador,
-                                                            'testeNivelamentoObj':testeNivelamentoObj})
+                                                            'testeNivelamentoObj':testeNivelamentoObj,
+                                                            'respostasList':respostasList,
+                                                            'perguntaObj':perguntaObjeto,
+                                                            'msgConfirmacao':msgConfirmacao})
     return render(request, 'site/nivelamento.html', {'title': 'Nivelamento'})
 
 def viewContato(request):
