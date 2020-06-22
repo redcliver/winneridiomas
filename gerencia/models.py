@@ -52,7 +52,7 @@ class colaboradorModel(models.Model):
         ('2', 'Bloqueado'),
         ('3', 'Inativo'),
     )
-    user = models.OneToOneField(User, on_delete="models.CASCADE")
+    user = models.OneToOneField(User, on_delete='models.CASCADE')
     liberacao = models.CharField(max_length=1, choices=ES, default=1)
     nome = models.CharField(max_length=300, null=True, blank=True)
     sobrenome = models.CharField(max_length=400, null=True, blank=True)

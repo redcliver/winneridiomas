@@ -324,7 +324,7 @@ section {
     left: 0;
     right: 0;
     width: auto;
-    height: 104px;
+    height: 12vh;
     background: #FFFFFF;
     z-index: 10;
     transform: none;
@@ -444,7 +444,7 @@ section {
 .main_nav_container {
     display: inline-block;
     margin-left: auto;
-    padding-right: 93px;
+    padding-right: 3vh;
 }
 
 .main_nav {
@@ -462,7 +462,7 @@ section {
 
 .main_nav_item a {
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    font-size: 20px;
     text-transform: uppercase;
     font-weight: 700;
     color: #3a3a3a;
@@ -526,9 +526,9 @@ section {
 }
 
 .hamburger_container i {
-    font-size: 24px;
-    padding: 10px;
-    color: #3a3a3a;
+    font-size: 33px;
+    padding: 14px;
+    color: #f6f6f6;
 }
 
 .hamburger_container:hover i {

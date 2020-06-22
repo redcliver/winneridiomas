@@ -53,8 +53,9 @@
     }
 	
 	.logo-winner{
-		height: 60px;
+		height: 21vh;
 		width: auto;
+		margin-left: 15vh;
 	}
 
 	.whatsapp {
@@ -118,7 +119,7 @@
 		background-color: transparent;
 		border: none;
 		font-family: 'Open Sans', sans-serif;
-		font-size: 14px;
+		font-size: 20px;
 		text-transform: uppercase;
 		font-weight: 700;
 		color: #3a3a3a;
@@ -164,13 +165,20 @@
 
 	.dropdown-winner:hover .dropbtn-winner {background-color: transparent; color: #2e61fa;}
 
+	.idiomas {
+		height: 20px;
+		width: auto;
+	}
+
+
 	@media (max-width: 768px) {
 		.logo-winner{
 			height: auto;
-			width: 190px !important;
+			width: 100px !important;
+			margin-left: 1vh;
 		}
 		.header_side{
-			width: 60px !important;
+			width: 80px !important;
 		}
 		.header_side span{
 			display: none;
@@ -211,7 +219,7 @@
 			padding-top: 0px;
 		}
 		.logo img {
-			width: 170px !important;
+			width: 100px !important;
 		}
 		div.item {
 			vertical-align: top;
@@ -266,7 +274,7 @@
 			<!-- Logo -->
 			<div class="logo_container">
 				<div class="logo">
-					<a href="/"><img class="logo-winner" src="{% static '/images/winner_logo2.png' %}" alt="Winner Idiomas."></a>
+					<a href="/"><img class="logo-winner" src="{% static '/images/logo1.png' %}" alt="Winner Idiomas."></a>
                     
 				</div>
 			</div>
@@ -315,10 +323,18 @@
 			</nav>
 		</div>
 		<div class="nav-radius-tel header_side d-flex flex-row justify-content-center align-items-center">
-			<div style="display: inline">
-				<span><img src="{% static '/images/phone-call.svg' %}" alt="">
-				+55 67 3522-9642</span>
-				
+			<div>
+				<div style="text-align: center;">
+					<a href="#"><img class="idiomas" src="{% static '/icones/brazil.svg' %}" alt=""></a>
+					<a href="#"><img class="idiomas" src="{% static '/icones/spain.svg' %}" alt=""></a>
+					<a href="#"><img class="idiomas" src="{% static '/icones/united-kingdom.svg' %}" alt=""></a>
+					<a href="#"><img class="idiomas" src="{% static '/icones/germany.svg' %}" alt=""></a>
+				</div>
+				<div style="display: inline">
+					<a href="tel: +556735229642" style="font-size: 20px; color: #f1f1f1; font-weight: 700;"><img src="{% static '/images/phone-call.svg' %}" alt="">
+					+55 67 3522-9642</a>
+					
+				</div> 
 			</div>
 		</div>
 

@@ -7,14 +7,14 @@
 }
 
 .nav-radius-main {
-    box-shadow: 0px 1px 20px #000000b3, inset 0px 1px 60px rgba(42, 20, 236, 0.2);
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
+    box-shadow: 0px 1px 20px #000000b3;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .box-style {
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.9), inset 0px 1px 60px rgba(42, 20, 236, 0.2);
-    background-color: rgb(246, 251, 255);
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255);
     border-radius: 14px;
 }
 

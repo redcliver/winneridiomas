@@ -141,9 +141,10 @@
 			/* IE6-9 */
 		}
 
-		.logo-winner {
-			height: 60px;
+		.logo-winner{
+			height: 21vh;
 			width: auto;
+			margin-left: 15vh;
 		}
 
 		.whatsapp {
@@ -211,7 +212,7 @@
 			background-color: transparent;
 			border: none;
 			font-family: 'Open Sans', sans-serif;
-			font-size: 14px;
+			font-size: 20px;
 			text-transform: uppercase;
 			font-weight: 700;
 			color: #3a3a3a;
@@ -267,15 +268,22 @@
 		}
 
 
+		.idiomas {
+			height: 20px;
+			width: auto;
+		}
+
+
 
 		@media (max-width: 768px) {
-			.logo-winner {
+			.logo-winner{
 				height: auto;
-				width: 190px !important;
+				width: 100px !important;
+				margin-left: 1vh;
 			}
 
 			.header_side {
-				width: 60px !important;
+				width: 80px !important;
 			}
 
 			.header_side span {
@@ -388,7 +396,7 @@
 				<div class="logo_container">
 					<div class="logo">
 						<a href="/"><img class="logo-winner"
-								src="{% static '/images/winner_logo2.png' %}"
+								src="{% static '/images/logo1.png' %}"
 								alt="Winner Idiomas."></a>
 
 					</div>
@@ -445,12 +453,19 @@
 					</div>
 				</nav>
 			</div>
-			<div
-				class="nav-radius-tel header_side d-flex flex-row justify-content-center align-items-center">
-				<div style="display: inline">
-					<span><img src="{% static '/images/phone-call.svg' %}" alt="">
+			<div class="nav-radius-tel header_side d-flex flex-row justify-content-center align-items-center">
+				<div>
+					<div style="text-align: center;">
+						<a href="#"><img class="idiomas" src="{% static '/icones/brazil.svg' %}" alt=""></a>
+						<a href="#"><img class="idiomas" src="{% static '/icones/spain.svg' %}" alt=""></a>
+						<a href="#"><img class="idiomas" src="{% static '/icones/united-kingdom.svg' %}" alt=""></a>
+						<a href="#"><img class="idiomas" src="{% static '/icones/germany.svg' %}" alt=""></a>
+					</div>
+					<div style="display: inline">
+						<span style="font-size: 20px;"><img src="{% static '/images/phone-call.svg' %}" alt="">
 						+55 67 3522-9642</span>
-
+						
+					</div> 
 				</div>
 			</div>
 
